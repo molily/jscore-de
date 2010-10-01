@@ -34,15 +34,6 @@ p {
 	color: #000;
 }
 
-pre {
-	color: #008;
-	border: 1px solid #ccc;
-	background-color: #fafafa;
-	padding: 1.5em;
-	font-size: 0.9em;
-	line-height: 1.5;
-}
-
 figure, figcaption {
 	display: block;
 }
@@ -55,6 +46,19 @@ figure {
 
 figcaption {
 	margin-top: 0.5em;
+}
+
+pre, code {
+	color: #02A;
+	font-family: consolas, 'bitstream vera sans monospace', 'lucida console', 'liberation mono', monaco, 'courier new', courier, monospace;
+}
+
+pre {
+	border: 1px solid #ccc;
+	background-color: #fafafa;
+	padding: 1.5em;
+	font-size: 0.9em;
+	line-height: 1.5;
 }
 
 em[lang="en"] {
@@ -97,7 +101,7 @@ document.createElement('figure'), document.createElement('figcaption');
 
 <p class="definition">Ein Objekt ist eine <em>Sammlung von Eigenschaften</em> und hat ein <em>einziges Prototyp-Objekt</em>. Der Prototyp kann ebenso ein Objekt sein oder der Wert <em>null</em>.</p>
 
-<p>Fangen wir mit einem einfachen Schaubild eines Beispiel-Objekts an, mit dem wir in den folgenden Erklärungen arbeiten werden. Der Prototyp eines Objekts wird über die interne Eigenschaft [[Prototype]] referenziert. Trotzdem werden wir in den Diagrammen die Schreibweise »__interne-Eigenschaft__« verwenden. Im Falle des Prototype-Objekts ist das <em>__proto__</em>. Das ist eine nicht standardisierte Eigenschaft, die allerdings in manchen ECMAScript-Engines wie SpiderMonkey (damit u.a. in Firefox) tatsächlich existiert.</p>
+<p>Fangen wir mit einem einfachen Schaubild eines Beispiel-Objekts an, mit dem wir in den folgenden Erklärungen arbeiten werden. Der Prototyp eines Objekts wird über die interne Eigenschaft [[Prototype]] referenziert. Trotzdem werden wir in den Diagrammen die Schreibweise <code>__interne-Eigenschaft__</code> verwenden. Im Falle des Prototype-Objekts ist das <em>__proto__</em>. Das ist eine nicht standardisierte Eigenschaft, die allerdings in manchen ECMAScript-Engines wie SpiderMonkey (damit u.a. in Firefox) tatsächlich existiert.</p>
 
 <p>Betrachten wir folgendes Codebeispiel:</p>
 
@@ -370,7 +374,7 @@ foo(10, 20);</pre>
 
 <h2 id="scope-chain">Scope-Chain (Kette von Gültigkeitsbereichen)</h2> 
 
-<p class="definition">Die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) ist eine <em>Liste von Objekten</em>, die nacheinander durchsucht werden, wenn im Code <em>Bezeichner</em> (<em>identifiers</em>) angetroffen werden. Dieser Vorgang nennt sich Auflösung von Bezeichnern (<em>identifier resolution</em>).</p>
+<p class="definition">Die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) ist eine <em>Liste von Objekten</em>, die nacheinander durchsucht werden, wenn im Code <em>Bezeichner</em> (<em lang="en">identifiers</em>) angetroffen werden. Dieser Vorgang nennt sich Auflösung von Bezeichnern (<em lang="en">identifier resolution</em>).</p>
 
 <p>Die Regel ist abermals einfach und gleicht der der Prototype-Kette: Wenn eine Variable nicht im eigenen Gültigkeitsbereich (dem Variablen- bzw. Aktivierungsobjekt) gefunden wird, wird bei dem Variablenobjekt des aufrufenden Kontexts gesucht.</p>
 
@@ -392,7 +396,7 @@ foo(10, 20);</pre>
   })();
 })();</pre>
 
-<p>Wir können uns die Verlinkung zwischen den Objekten in der Scope-Chain über eine interne Eigenschaft <em>__parent__</em> vorstellen, welche auf das nächste Objekt in der Kette verweist. Dieser Ansatz kann <a href="http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#feature-of-implementations-property-__parent__">mit dem Rhino-Interpreter getestet werden</a>. Eben dieser Ansatz wird auch in ECMAScript 5 für sogenannte <em>lexikalische Umgebungen</em> (<em>lexical environments</em>) verwendet. Eine weitere Veranschaulichung der Scope-Chain wäre ein einfacher Array. Mithilfe des __parent__-Konzepts und dem Wissen, dass übergeordnete Variablenobjekte in der internen Funktionseigenschaft [[Scope]] gespeichert werden, können wir das obige Codebeispiel veranschaulichen:</p>
+<p>Wir können uns die Verlinkung zwischen den Objekten in der Scope-Chain über eine interne Eigenschaft <em>__parent__</em> vorstellen, welche auf das nächste Objekt in der Kette verweist. Dieser Ansatz kann <a href="http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#feature-of-implementations-property-__parent__">mit dem Rhino-Interpreter getestet werden</a>. Eben dieser Ansatz wird auch in ECMAScript 5 für sogenannte <em>lexikalische Umgebungen</em> (<em lang="en">lexical environments</em>) verwendet. Eine weitere Veranschaulichung der Scope-Chain wäre ein einfacher Array. Mithilfe des __parent__-Konzepts und dem Wissen, dass übergeordnete Variablenobjekte in der internen Funktionseigenschaft [[Scope]] gespeichert werden, können wir das obige Codebeispiel veranschaulichen:</p>
 
 <figure>
 	<img class="figure" src="scope-chain.png"/>
