@@ -516,7 +516,6 @@ console.log(x); // 10
 }
  
 // »foo« gibt eine Funktion zurück und diese verwendet die freie Variable »x«
- 
 var returnedFunction = foo();
  
 // Eine globale Variable namens »x«
@@ -533,7 +532,6 @@ returnedFunction(); // ergibt 10, nicht 20</pre>
 // Globale Variable »x«
 var x = 10;
  
-// global function
 // Globale Funktion »foo«
 function foo() {
   console.log(x);
