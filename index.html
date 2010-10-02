@@ -373,7 +373,7 @@ console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
 
 <figure>
 	<img class="figure" src="variable-object.png"/>
-	<figcaption>Abbildung 7. Das globale Variablenobjekt.</figcaption>
+	<figcaption>Abbildung 7. Das globale Variablenobjekt.<br>(VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Hier zeigt sich, dass die Funktion <code>baz</code> nicht im Variablenobjekt gespeichert wird, weil sie als <em>Funktionsausdruck</em> notiert wurde. Daher tritt ein <em>ReferenceError</em> auf beim Versuch, außerhalb der Funktion auf <code>baz</code> zuzugreifen.</p>
@@ -441,7 +441,7 @@ foo(10, 20);</pre>
 
 <figure>
 	<img class="figure" src="scope-chain.png"/>
-	<figcaption>Abbildung 9. Eine Scope-Chain (Kette von Gültigkeitsbereichen).</figcaption>
+	<figcaption>Abbildung 9. Eine Scope-Chain (Kette von Gültigkeitsbereichen).<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Während der Ausführung des Codes kann die Scope-Chain mithilfe der <em><code>with</code>-Anweisung</em> und dem <em><code>catch</code>-Abschnitt</em> um Objekte erweitert werden. Diese Objekte haben wie alle Objekte Prototypen und Prototyp-Ketten. Dieser Umstand führt uns zu dazu, dass das Nachschlagen eines Bezeichners in der Scope-Chain tatsächlich <em>zweidimensional</em> verläuft: 1. Folge dem Verweis auf den übergeordneten Gültigkeitsbereich, 2. durchlaufe die Prototyp-Kette eines jeden Objekts in der Scope-Chain.</p>
@@ -489,7 +489,7 @@ console.log(x); // 10
 
 <figure>
 	<img class="figure" src="scope-chain-with.png"/>
-	<figcaption>Abbildung 10. Eine durch »with« erweiterte Scope-Chain.</figcaption>
+	<figcaption>Abbildung 10. Eine durch »with« erweiterte Scope-Chain.<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Nicht in allen ECMAScript-Interpretern erbt das globale Objekt von <code>Object.prototype</code>. Das in der Abbildung gezeigte Verhalten, dass der globale Kontext auf die »nicht definierte« Variable <code>x</code> verweist, kann im SpiderMonkey (u.a. Firefox) nachvollzogen werden.
@@ -582,7 +582,7 @@ console.log(
 
 <figure>
 	<img class="figure" src="shared-scope.png"/>
-	<figcaption>Abbildung 11. Ein gemeinsamer [[Scope]].</figcaption>
+	<figcaption>Abbildung 11. Ein gemeinsamer [[Scope]].<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Aus diesem Verhalten resultiert das Problem, das beim Erzeugen von Funktionen in einer Schleife auftritt. Viele Programmierer stoßen auf ein unerwartetes Verhalten, wenn sie den Schleifenzähler in den erzeugten Funktionen verwenden. In diesem Fall haben alle Funktionen Zugriff auf <em>denselben</em> Zählerwert. Es sollte nun klar geworden sein, warum dies so ist: Nämlich weil all diese Funktionen denselben <code>[[Scope]]</code> besitzen, in welchem der Schleifenzähler den letzten ihm zugewiesenen Wert besitzt.</p>
