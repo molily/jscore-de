@@ -154,7 +154,7 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 <p>Wir haben hier zwei explizite, <em>eigene</em> Eigenschaften und eine implizite Eigenschaft <code>__proto__</code>. Diese ist der Verweis (die Referenz) auf den Prototypen von <code>foo</code>:</p>
 
 <figure>
-	<img class="figure" src="basic-object.png">
+	<img class="figure" src="basic-object-de.png">
 	<figcaption>Abbildung 1. Ein einfaches Objekt mit einem Prototypen.</figcaption>
 </figure>
 
@@ -208,7 +208,7 @@ c.calculate(40); // 80</pre>
 <div></div>
 
 <figure>
-	<img class="figure" src="prototype-chain.png">
+	<img class="figure" src="prototype-chain-de.png">
 	<figcaption>Abbildung 2. Eine Prototyp-Kette.</figcaption>
 </figure>
 
@@ -276,7 +276,7 @@ console.log(
 <div></div>
 
 <figure>
-	<img class="figure" src="constructor-proto-chain.png">
+	<img class="figure" src="constructor-proto-chain-de.png">
 	<figcaption>Abbildung 3. Ein Konstruktor und die Objektbeziehungen.</figcaption>
 </figure>
 
@@ -313,7 +313,7 @@ foo(30);</pre>
 <p>Das bedeutet, die Laufzeit eines ECMAScript-Programms kann als <em>Stapel von Ausführungskontexten</em> beschrieben werden, an deren <em>Spitze</em> der gerade <em>aktive</em> Kontext liegt:</p>
 
 <figure>
-	<img class="figure" src="ec-stack.png">
+	<img class="figure" src="ec-stack-de.png">
 	<figcaption>Abbildung 4. Der Stapel von Ausführungskontexten.</figcaption>
 </figure>
 
@@ -324,7 +324,7 @@ foo(30);</pre>
 <p>Im nächsten Schaubild kommen zwei Kontexte vor, ein Funktionskontext namens »EC1« und der globale Kontext, abgekürzt mit »Global EC«. Das Bild zeigt die Änderung des Stapels beim Aktivieren des Funktionskontexts sowie beim Verlassen desselben:</p>
 
 <figure>
-	<img class="figure" src="ec-stack-changes.png">
+	<img class="figure" src="ec-stack-changes-de.png">
 	<figcaption>Abbildung 5. Der Ausführungskontext ändert sich.</figcaption>
 </figure>
 
@@ -339,7 +339,7 @@ foo(30);</pre>
 <p>Einen Ausführungskontext können wir uns abstrakt als gewöhnliches Objekt vorstellen. Jeder Ausführungskontext hat eine bestimmte Anzahl an Eigenschaften (Zustände des Kontexts), die notwendig sind, um den Fortschritt der Codeausführung nachzuhalten. Die folgende Abbildung zeigt die Struktur eines Kontexts:</p>
 
 <figure>
-	<img class="figure" src="execution-context.png">
+	<img class="figure" src="execution-context-de.png">
 	<figcaption>Abbildung 6. Die Struktur eines Ausführungskontexts.</figcaption>
 </figure>
 
@@ -372,7 +372,7 @@ console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
 <p>Dieser Code erzeugt folgende Eigenschaften beim Variablenobjekt des globalen Kontexts:</p>
 
 <figure>
-	<img class="figure" src="variable-object.png">
+	<img class="figure" src="variable-object-de.png">
 	<figcaption>Abbildung 7. Das globale Variablenobjekt.<br>(VO = Variablenobjekt)</figcaption>
 </figure>
 
@@ -403,7 +403,7 @@ foo(10, 20);</pre>
 <p>Das Aktivierungsobjekt des <code>foo</code>-Funktionskontexts enthält folgende Daten:</p>
 
 <figure>
-	<img class="figure" src="activation-object.png">
+	<img class="figure" src="activation-object-de.png">
 	<figcaption>Abbildung 8. Ein Aktivierungsobjekt.</figcaption>
 </figure>
 
@@ -440,7 +440,7 @@ foo(10, 20);</pre>
 <p>Wir können uns die Verlinkung zwischen den Objekten in der Scope-Chain über eine interne Eigenschaft <code>__parent__</code> vorstellen, welche auf das nächste Objekt in der Kette verweist. Dieser Ansatz kann <a href="http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#feature-of-implementations-property-__parent__">mit dem Rhino-Interpreter getestet werden</a>. Eben dieser Ansatz wird auch in ECMAScript 5 für sogenannte <em>lexikalische Umgebungen</em> (<em lang="en">lexical environments</em>) verwendet. Eine weitere Veranschaulichung der Scope-Chain wäre ein einfacher Array. Mithilfe des <code>__parent__</code>-Konzepts und dem Wissen, dass übergeordnete Variablenobjekte in der internen Funktionseigenschaft <code>[[Scope]]</code> gespeichert werden, können wir das obige Codebeispiel veranschaulichen:</p>
 
 <figure>
-	<img class="figure" src="scope-chain.png">
+	<img class="figure" src="scope-chain-de.png">
 	<figcaption>Abbildung 9. Eine Scope-Chain (Kette von Gültigkeitsbereichen).<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
@@ -488,7 +488,7 @@ console.log(x); // 10
 <p>Wir haben es also mit folgender Struktur zu tun. Bevor dem <code>__parent__</code>-Verweis gefolgt wird, wird erst die <code>__proto__</code>-Kette abgearbeitet:</p>
 
 <figure>
-	<img class="figure" src="scope-chain-with.png">
+	<img class="figure" src="scope-chain-with-de.png">
 	<figcaption>Abbildung 10. Eine durch »with« erweiterte Scope-Chain.<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
@@ -581,7 +581,7 @@ console.log(
 <p>Dieser Code kann folgendermaßen veranschaulicht werden:</p>
 
 <figure>
-	<img class="figure" src="shared-scope.png">
+	<img class="figure" src="shared-scope-de.png">
 	<figcaption>Abbildung 11. Ein gemeinsamer [[Scope]].<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
