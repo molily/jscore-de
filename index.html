@@ -138,7 +138,7 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 
 <h2 id="an-object">Das Objekt</h2>
 
-<p>ECMAScript ist eine stark abstrakte, objektorientierte Sprache, die mit <em>Objekten</em> arbeiten. Es gibt zwar auch <em>Primitives</em> (einfache Werte), aber diese werden bei Bedarf in Objekte umgewandelt.</p>
+<p>ECMAScript ist eine stark abstrakte, objektorientierte Sprache, die mit <em>Objekten</em> arbeitet. Es gibt zwar auch <em>Primitives</em> (einfache Werte), aber diese werden bei Bedarf in Objekte umgewandelt.</p>
 
 <p class="definition">Ein Objekt ist eine <em>Sammlung von Eigenschaften</em> und hat ein <em>einziges Prototyp-Objekt</em>. Der Prototyp kann ebenso ein Objekt sein oder der Wert <code>null</code>.</p>
 
@@ -500,7 +500,7 @@ console.log(x); // 10
 
 <p>In ECMAScript sind Funktionen Objekte »erster Klasse«. Das bedeutet, dass Funktionen als Parameter an andere Funktionen übergeben werden können. Solche Funktionen werden <em>funktionale Parameter</em> genannt (<em lang="en">functional arguments</em>, kurz <em lang="en">funargs</em>). Zudem können Funktionen von anderen Funktionen als Ergebnis zurückgegeben werden. Funktionen, die andere zurückgeben, werden Funktion mit <em>funktionalem Wert</em> genannt (<em lang="en">function valued functions</em> oder <em lang="en">functions with functional value</em>).</p>
 
-<p>Es gibt zwei konzeptionelle Probleme bei funktionalen Parametern und funktionalen Rückgabewerten. Diese sind Unterprobleme des allgemeinen <em>»Funarg-Problems«</em> (das Problem eines funktionalen Parameters). Um dieses Problem vollständig zu lösen, wurde das Konzept der <em>Closures</em> erfunden. Betrachten wir diese beiden Unterprobleme genauer. Wir werden sehen, das beide in ECMAScript mithilfe der Eigenschaft <code>[[Scope]]</code> gelöst werden, welche bereits in den Schaubildern vorgekommen ist.</p>
+<p>Es gibt zwei konzeptionelle Probleme bei funktionalen Parametern und funktionalen Rückgabewerten. Diese sind Unterprobleme des allgemeinen <em>»Funarg-Problems«</em> (das Problem eines funktionalen Parameters). Um dieses Problem vollständig zu lösen, wurde das Konzept der <em>Closures</em> erfunden &ndash; auf Deutsch oft <em>Funktionsabschluss</em> genannt. Betrachten wir diese beiden Unterprobleme genauer. Wir werden sehen, das beide in ECMAScript mithilfe der Eigenschaft <code>[[Scope]]</code> gelöst werden, welche bereits in den Schaubildern vorgekommen ist.</p>
 
 <p>Der erste Untertyp des Funarg-Problems ist das <em>Aufwärts</em>-Problem. Es tritt auf, wenn eine Funktion aus einer anderen nach »oben« gegeben wird und auf freie Variablen zugreift (diesen Begriff haben wir bereits kennengelernt). Damit eine solche innere Funktion auf die Variablen seines übergeordneten Kontexts zugreifen kann <em>auch nachdem dieser Kontext bereits beendet wurde</em>, speichert die innere Funktion <em>im Moment ihrer Erzeugung</em> die <em>Scope-Chain</em> des übergeordneten Kontext in seiner Eigenschaft <code>[[Scope]]</code>. Wenn diese Funktion nun <em>aufgerufen</em> wird, besteht dessen Scope-Chain aus einer Kombination des Aktivierungsobjekts und eben jener Eigenschaft <code>[[Scope]]</code> &ndash; das haben wir im Grunde schon in den obigen Schaubildern gesehen:</p>
 
@@ -526,7 +526,7 @@ returnedFunction(); // ergibt 10, nicht 20</pre>
 
 <p>Diese Art des Gültigkeitsbereichs wird <em>statischer</em> oder <em>lexikalischer</em> Gültigkeitsbereich (<em>lexical scope</em>) genannt. Es zeigt sich, dass die Variable <code>x</code> im gespeicherten <code>[[Scope]]</code> der zurückgegebenen Funktion <code>bar</code> gefunden wird. In der Theorie gibt es auch einen <em>dynamischen Gültigkeitsbereich</em> (<em>dynamic scope</em>). Damit würde die Variable <code>x</code> im Beispiel zu 20 aufgelöst werden, nicht zu 10. Allerdings wird ein dynamischer Gültigkeitsbereich in ECMAScript nicht verwendet.</p>
 
-<p>Der zweite Untertyp des Funargs-Problem ist das <em>Abwärts</em>-Problem. In diesem Fall existiert zwar ein übergeordneter Kontext, allerdings liegt eine Mehrdeutigkeit beim Auflösen eines Bezeichners vor. Die Frage ist, aus welchem Gültigkeitsbereich der zu einem Bezeichner passende Wert genommen wird: Aus dem statischen, der bei der Erzeugung der Funktion gespeichert wurde, oder aus dem dynamischen bei der Ausführung (also dem des aufrufenden Kontexts)? Um diese Frage zu klären und eine Closure zu erzeugen, entschied man sich für einen <em>statischen Gültigkeitsbereich</em>:
+<p>Der zweite Untertyp des Funargs-Problem ist das <em>Abwärts</em>-Problem. In diesem Fall existiert zwar ein übergeordneter Kontext, allerdings liegt eine Mehrdeutigkeit beim Auflösen eines Bezeichners vor. Die Frage ist, aus welchem Gültigkeitsbereich der zu einem Bezeichner passende Wert genommen wird: Aus dem statischen, der bei der Erzeugung der Funktion gespeichert wurde, oder aus dem dynamischen bei der Ausführung (also dem des aufrufenden Kontexts)? Um diese Frage zu klären und eine Closure zu erzeugen, entschied man sich für einen <em>statischen Gültigkeitsbereich</em>:</p>
 
 <pre>
 // Globale Variable »x«
