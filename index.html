@@ -164,7 +164,7 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 
 <p>Prototyp-Objekte sind gewöhnliche Objekte und können wiederum selbst eigene Prototypen besitzen. Wenn ein Prototyp einen Verweis auf einen weiteren Prototyp besitzt, der nicht <code>null</code> ist, spricht man von einer Prototypen-Kette.</p>
 
-<p class="definition">Eine Prototyp-Kette (<em lang="en">prototype chain</em>) ist eine <em>endliche</em> Kette an Objekte, die verwendet wird, um <em>Vererbung</em> und <em>gemeinsame Eigenschaften</em> umzusetzen.</p>
+<p class="definition">Eine Prototyp-Kette (<em lang="en">prototype chain</em>) ist eine <em>endliche</em> Kette von Objekten, die verwendet wird, um <em>Vererbung</em> und <em>gemeinsame Eigenschaften</em> umzusetzen.</p>
 
 <p>Stellen wir uns zwei Objekte vor, die sich nur in einem kleinen Teil unterscheiden und sich in den restlichen Teilen gleichen. In einem gut entworfenen System wollen wir diese gleiche Funktionalität selbstverständlich <em>wiederverwenden</em>, ohne den Code für jedes Objekt zu wiederholen. In klassenbasierten Systemen wird die Programmiertechnik der <em>Code-Wiederverwendung</em> <em>klassenbasierte Vererbung</em> genannt: Man bringt die gemeinsame Funktionalität in Klasse <code>A</code> unter und legt die Klassen <code>B</code> und <code>C</code> an, welche von <code>A</code> erben und zudem eigene kleine Änderungen enthalten.</p>
 
@@ -292,7 +292,7 @@ console.log(
 
 <p>Es gibt drei Typen von ECMAScript-Code: <em>globalen</em> Code, <em>Funktionscode</em> und <em><code>eval</code>-Code</em>. Sämtlicher Code wird in einem zugehörigen <em>Ausführungskontext</em> (<em lang="en">execution context</em>) ausgewertet. Während es nur einen globalen Kontext gibt, sind zahlreiche Funktions- und <code>eval</code>-Kontexte möglich. Bei jedem Funktionsaufruf wird in den Ausführungskontext der aufgerufenen Funktion gesprungen und der Funktionscode darin ausgeführt. Ebenso erzeugt jeder Aufruf der vordefinierten Methode <code>eval</code> einen <code>eval</code>-Ausführungskontext und führt den Code darin aus.</p>
 
-<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst wenn die Funktion sich selbst rekursiv aufruft &ndash;, wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
+<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst wenn die Funktion sich selbst rekursiv aufruft &ndash; wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
 
 <pre>function foo(bar) {}
  
@@ -353,7 +353,7 @@ foo(30);</pre>
 
 <p>Übrigens werden <em>Funktionsausdrücke</em> (<em lang="en">function expressions</em>) im Gegensatz zu <em>Funktionsdeklarationen</em> (<em lang="en">function declarations</em>) nicht im Variablenobjekt gespeichert.</p>
 
-<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedene einzelne Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen &ndash; bei clientseitigem JavaScript ist das globale Objekt üblicherweise <code>window</code>.</p>
+<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedenen einzelnen Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen &ndash; bei clientseitigem JavaScript ist das globale Objekt üblicherweise <code>window</code>.</p>
 
 <p>Gehen wir von folgendem Codebeispiel im globalen Ausführungskontext aus:</p>
 
@@ -378,7 +378,7 @@ console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
 
 <p>Hier zeigt sich, dass die Funktion <code>baz</code> nicht im Variablenobjekt gespeichert wird, weil sie als <em>Funktionsausdruck</em> notiert wurde. Daher tritt ein <em>ReferenceError</em> auf beim Versuch, außerhalb der Funktion auf <code>baz</code> zuzugreifen.</p>
 
-<p>Anders als in anderen Programmiersprachen wie etwa C oder C++ sind in ECMAScript <em>Funktionen die einzige Möglichkeit</em>, um neue Variablen-Gültigkeitsbereiche (Scopes) zu erzeugen. Variablen und verschachtelte Funktionen, die innerhalb eines solchen Funktions-Gültigkeitsbereich angelegt werden, sind nicht nach außen hin sichtbar und »verschmutzen« das globalen Variablenobjekt nicht.</p>
+<p>Anders als in anderen Programmiersprachen wie etwa C oder C++ sind in ECMAScript <em>Funktionen die einzige Möglichkeit</em>, um neue Variablen-Gültigkeitsbereiche (Scopes) zu erzeugen. Variablen und verschachtelte Funktionen, die innerhalb eines solchen Funktions-Gültigkeitsbereiches angelegt werden, sind nicht nach außen hin sichtbar und »verschmutzen« das globalen Variablenobjekt nicht.</p>
 
 <p>Bei der Verwendung von <code>eval</code> wird ebenfalls ein neuer Ausführungskontext erzeugt. Allerdings besitzt dieser Kontext kein eigenes Variablenobjekt, sondern verwendet entweder das globale Variablenobjekt oder das Variablenobjekt des Kontexts, von dem aus <code>eval</code> aufgerufen wurde.</p>
 
@@ -386,7 +386,7 @@ console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
 
 <h2 id="activation-object">Das Aktivierungsobjekt</h2>
 
-<p>Wenn eine Funktion aus einem Kontext heraus <em>aktiviert</em> (aufgerufen) wird, dann wird ein spezielles Objekt erzeugt, das <em>Aktivierungsobjekt</em> (<em lang="en">activation object</em>). Dieses enhält die <em>formalen Parameter</em> sowie das <code>arguments</code>-Objekt, welches die sämtliche, auch nicht deklarierte Parameter unter numerischen Indizes speichert. Das Aktivierungsobjekt wird zudem als Variablenobjekt des Funktionskontexts verwendet.</p>
+<p>Wenn eine Funktion aus einem Kontext heraus <em>aktiviert</em> (aufgerufen) wird, dann wird ein spezielles Objekt erzeugt, das <em>Aktivierungsobjekt</em> (<em lang="en">activation object</em>). Dieses enhält die <em>formalen Parameter</em> sowie das <code>arguments</code>-Objekt, welches alle, auch nicht deklarierte Parameter unter numerischen Indizes speichert. Das Aktivierungsobjekt wird zudem als Variablenobjekt des Funktionskontexts verwendet.</p>
 
 <p>Das Variablenobjekt <em>einer Funktion</em> ist zunächst ein gewöhnliches Variablenobjekt, wie wir es bereits kennengelernt haben. Es speichert neben den lokalen Variablen und Funktionsdeklarationen zusätzlich noch die formalen Parameter und das <code>arguments</code>-Objekt. Daher bekommt es den eigenen Namen »Aktivierungsobjekt«.</p>
 
@@ -419,7 +419,7 @@ foo(10, 20);</pre>
 
 <p>Die Regel ist abermals einfach und gleicht der der Prototype-Kette: Wenn eine Variable nicht im eigenen Gültigkeitsbereich (dem Variablen- bzw. Aktivierungsobjekt) gefunden wird, wird bei dem Variablenobjekt des aufrufenden Kontexts gesucht.</p>
 
-<p>Bezeichner sind Namen von Variablen, Funktionsdeklarationen, formalen Parametern usw. Wenn eine Funktion einen Bezeichner enthält, der weder auf eine lokale Variable, eine lokale Funktion oder einen formalen Parameter verweist, so wird diese Variable eine <em>freie Variable</em> genannt. Und um diese freien Variablen zu Objekten auzulösen, wird die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) verwendet.</p>
+<p>Bezeichner sind Namen von Variablen, Funktionsdeklarationen, formalen Parametern usw. Wenn eine Funktion einen Bezeichner enthält, der weder auf eine lokale Variable, noch eine lokale Funktion oder einen formalen Parameter verweist, so wird diese Variable eine <em>freie Variable</em> genannt. Und um diese freien Variablen zu Objekten auzulösen, wird die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) verwendet.</p>
 
 <p>Im allgemeinen Fall ist diese Kette eine Liste mit allen <em>übergeordneten Variablenobjekten</em>. Hinzu kommt ganz am Anfang der Kette das Variablen- bzw. Aktivierungsobjekt der Funktion selbst. Die Kette kann allerdings auch andere Objekte enthalten, welche dynamisch bei der Ausführung des Kontexts eingefügt wurden. Das passiert bei der Verwendung von <code>with</code> oder <code>try/catch</code>.</p>
 
@@ -437,7 +437,7 @@ foo(10, 20);</pre>
   })();
 })();</pre>
 
-<p>Wir können uns die Verlinkung zwischen den Objekten in der Scope-Chain über eine interne Eigenschaft <code>__parent__</code> vorstellen, welche auf das nächste Objekt in der Kette verweist. Dieser Ansatz kann <a href="http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#feature-of-implementations-property-__parent__">mit dem Rhino-Interpreter getestet werden</a>. Eben dieser Ansatz wird auch in ECMAScript 5 für sogenannte <em>lexikalische Umgebungen</em> (<em lang="en">lexical environments</em>) verwendet. Eine weitere Veranschaulichung der Scope-Chain wäre ein einfacher Array. Mithilfe des <code>__parent__</code>-Konzepts und dem Wissen, dass übergeordnete Variablenobjekte in der internen Funktionseigenschaft <code>[[Scope]]</code> gespeichert werden, können wir das obige Codebeispiel veranschaulichen:</p>
+<p>Wir können uns die Verlinkung zwischen den Objekten in der Scope-Chain über eine interne Eigenschaft <code>__parent__</code> vorstellen, welche auf das nächste Objekt in der Kette verweist. Dieser Ansatz kann <a href="http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#feature-of-implementations-property-__parent__">mit dem Rhino-Interpreter getestet werden</a>. Eben dieser Ansatz wird auch in ECMAScript 5 für sogenannte <em>lexikalische Umgebungen</em> (<em lang="en">lexical environments</em>) verwendet. Eine weitere Veranschaulichung der Scope-Chain wäre ein einfacher Array. Mithilfe des <code>__parent__</code>-Konzepts und mit dem Wissen, dass übergeordnete Variablenobjekte in der internen Funktionseigenschaft <code>[[Scope]]</code> gespeichert werden, können wir das obige Codebeispiel veranschaulichen:</p>
 
 <figure>
 	<img class="figure" src="scope-chain.png">
