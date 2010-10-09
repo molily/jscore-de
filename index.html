@@ -167,7 +167,7 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 
 <h2 id="a-prototype-chain">Die Prototyp-Kette</h2>
 
-<p>Prototyp-Objekte sind gewöhnliche Objekte und können wiederum selbst eigene Prototypen besitzen. Wenn ein Prototyp einen Verweis auf einen weiteren Prototyp besitzt, der nicht <code>null</code> ist, spricht man von einer Prototypen-Kette.</p>
+<p>Prototyp-Objekte sind gewöhnliche Objekte und können wiederum selbst eigene Prototypen besitzen. Wenn ein Prototyp einen Verweis auf einen weiteren Prototyp besitzt, der nicht <code>null</code> ist, spricht man von einer Prototyp-Kette.</p>
 
 <p class="definition">Eine Prototyp-Kette (<em lang="en">prototype chain</em>) ist eine <em>endliche</em> Kette von Objekten, die verwendet wird, um <em>Vererbung</em> und <em>gemeinsame Eigenschaften</em> umzusetzen.</p>
 
@@ -285,7 +285,7 @@ console.log(
 	<figcaption>Abbildung 3. Ein Konstruktor und die Objektbeziehungen.</figcaption>
 </figure>
 
-<p>Diese Abbildung zeigt erneut, dass jedes Objekt einen Prototypen besitzt. Die Konstruktorfunktion <code>Foo</code> besitzt ebenfalls seinen eigenen <code>__proto__</code>-Verweis, welcher seinerseits über <code>__proto__</code> auf den obersten Prototyp <code>Objekt.prototype</code> verweist. Wie gesagt ist <code>Foo.prototype</code> eine besondere Eigenschaft des Funktionsobjekts <code>Foo</code>, welche auf den Prototyp von <code>b</code> und <code>c</code> verweist.</p>
+<p>Diese Abbildung zeigt erneut, dass jedes Objekt einen Prototyp besitzt. Die Konstruktorfunktion <code>Foo</code> besitzt ebenfalls seinen eigenen <code>__proto__</code>-Verweis, welcher seinerseits über <code>__proto__</code> auf den obersten Prototyp <code>Objekt.prototype</code> verweist. Wie gesagt ist <code>Foo.prototype</code> eine besondere Eigenschaft des Funktionsobjekts <code>Foo</code>, welche auf den Prototyp von <code>b</code> und <code>c</code> verweist.</p>
 
 <p class="translation-note">Anmerkung der Übersetzung: Verwechseln Sie die Eigenschaften <code>__proto__</code> und <code>prototype</code> nicht. <code>__proto__</code> ist eine Eigenschaft eines jeden Objekts, die einen Verweis auf dessen Prototyp-Objekt enthält. Sie ist wie gesagt nicht standardisiert und daher nicht in allen ECMAScript-Interpretern verfügbar. <code>prototype</code> hingegen ist eine Eigenschaft von Funktionen (Funktionsobjekten). Sie enthält das Objekt, das als Prototyp für die Objekte dient, die beim Aufruf der Funktion mittels <code>new</code> erzeugt werden.</p>
 
@@ -430,7 +430,7 @@ foo(10, 20);</pre>
 
 <p>Im allgemeinen Fall ist diese Kette eine Liste mit allen <em>übergeordneten Variablenobjekten</em>. Hinzu kommt ganz am Anfang der Kette das Variablen- bzw. Aktivierungsobjekt der Funktion selbst. Die Kette kann allerdings auch andere Objekte enthalten, welche dynamisch bei der Ausführung des Kontexts eingefügt wurden. Das passiert bei der Verwendung von <code>with</code> oder <code>try/catch</code>.</p>
 
-<p>Wenn ein Bezeichner aufgelöst wird, so wird die Scope-Chain ausgehend vom Aktivierungsobjekt durchsucht. Wenn der Bezeichner dort nicht gefunden wird, so wird beim nächsten Objekt in der Kette gesucht. Das geht so weiter, bis das oberste Objekt in der Kette erreicht wird &ndash; genau wie bei der Prototypen-Ketten.</p>
+<p>Wenn ein Bezeichner aufgelöst wird, so wird die Scope-Chain ausgehend vom Aktivierungsobjekt durchsucht. Wenn der Bezeichner dort nicht gefunden wird, so wird beim nächsten Objekt in der Kette gesucht. Das geht so weiter, bis das oberste Objekt in der Kette erreicht wird &ndash; genau wie bei der Prototyp-Ketten.</p>
 
 <pre>var x = 10;
  
