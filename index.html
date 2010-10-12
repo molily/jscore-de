@@ -124,7 +124,7 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 		<li><a href="#an-object">Das Objekt</a></li>
 		<li><a href="#a-prototype-chain">Die Prototyp-Kette</a></li>
 		<li><a href="#constructor">Der Konstruktor</a></li>
-		<li><a href="#execution-context-stack">Der Stapel von Anführungskontexten</a></li>
+		<li><a href="#execution-context-stack">Der Stapel von Ausführungskontexten</a></li>
 		<li><a href="#execution-context">Der Ausführungskontext</a></li>
 		<li><a href="#variable-object">Das Variablenobjekt</a></li>
 		<li><a href="#activation-object">Das Aktivierungsobjekt</a></li>
@@ -173,7 +173,7 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 
 <p>Stellen wir uns zwei Objekte vor, die sich nur in einem kleinen Teil unterscheiden und sich in den restlichen Teilen gleichen. In einem gut entworfenen System wollen wir diese gleiche Funktionalität selbstverständlich <em>wiederverwenden</em>, ohne den Code für jedes Objekt zu wiederholen. In klassenbasierten Systemen wird die Programmiertechnik der <em>Code-Wiederverwendung</em> <em>klassenbasierte Vererbung</em> genannt: Man bringt die gemeinsame Funktionalität in Klasse <code>A</code> unter und legt die Klassen <code>B</code> und <code>C</code> an, welche von <code>A</code> erben und zudem eigene kleine Änderungen enthalten.</p>
 
-<p>ECMAScript kennt das Konzept der Klasse nicht. Dennoch unterscheidet sich die Art der Code-Wiederverwendung nicht groß, sie ist lediglich in mancher Hinsicht flexibler: Wiederverwendbarer Code wird über die <em>Prototyp-Kette</em> erreicht. Diese Art der Vererbung wird <em>auf Delegation basierte Vererbung</em> genannt (im Falle von ECMAScript genauer <em>Prototyp-basierte Vererbung</em>).</p>
+<p>ECMAScript kennt das Konzept der Klasse nicht. Dennoch unterscheidet sich die Art der Code-Wiederverwendung nicht groß, sie ist lediglich in mancher Hinsicht flexibler: Code-Recycling wird über die <em>Prototyp-Kette</em> erreicht. Diese Art der Vererbung wird <em>auf Delegation basierte Vererbung</em> genannt (im Falle von ECMAScript genauer <em>Prototyp-basierte Vererbung</em>).</p>
 
 <p>Wie im Beispiel mit den Klassen <code>A</code>, <code>B</code> und <code>C</code>, erzeugt man in ECMAScript Objekte: <code>a</code>, <code>b</code>und <code>c</code>. Objekt <code>a</code> speichert die Gemeinsamkeiten der Objekte <code>b</code> und <code>c</code>. Diese wiederum speichern lediglich ihre besonderen, zusätzlichen Eigenschaften oder Methoden, die sie voneinander unterscheiden. </p>
 
@@ -204,7 +204,7 @@ c.calculate(40); // 80</pre>
 
 <p>Ziemlich einfach, oder? Das Beispiel zeigt, dass <code>b</code> und <code>c</code> Zugriff auf die Methode <code>calculate</code> haben, welche beim Objekt <code>a</code> definiert ist. Eben das macht die Prototyp-Kette möglich. Die Regel ist einfach: Wenn eine Eigenschaft oder Methode nicht bei einem Objekt selbst gefunden wird, d.h. wenn das Objekt keine <em>eigene</em> Eigenschaft dieses Namens besitzt, dann wird versucht, diese Eigenschaft/Methode in der Prototyp-Kette zu finden. Wenn die Eigenschaft auch nicht beim Prototyp gefunden wird, dann wird dessen Prototyp berücksichtigt und so weiter, bis die gesamte Prototyp-Kette durchlaufen wurde. (Übrigens passiert dasselbe bei klassenbasierter Vererbung beim Auflösen einer vererbten <em>Methode</em>: Dort wird die <em>Klassen-Kette</em> durchgegangen.) Beim Durchsuchen der Prototyp-Kette wird die erste Eigenschaft/Methode mit dem gesuchten Namen verwendet. Diese wird <em>vererbte</em> Eigenschaft genannt. Wenn eine Eigenschaft beim Nachschlagen in der Prototyp-Kette nicht gefunden wird, dann ergibt der Ausdruck den Wert <code>undefined</code>.</p>
 
-<p>Beachten Sie, dass das Schlüsselwort <code>this</code> in einer vererbten Methode immer auf das <em>Originalobjekt</em> zeigt, nicht auf das (Prototyp-)Objekt, bei dem die Methode gefunden wurde. Das heißt, <code>this.y</code> im Beispiel verweist auf die Eigenschaft <code>y</code> von den Objekten <code>b</code> und <code>c</code>, nicht vom Objekt <code>a</code>. Hingegen wird bei <code>this.x</code> die Eigenschaft <code>x</code> vom Objekt <code>a</code> verwendet &ndash; hier kommt die <em>Prototyp-Kette</em> zum Einsatz. (Den <code>this</code>-Wert werden wir später noch genauer unter die Lupe nehmen.)</p>
+<p>Beachten Sie, dass der <code>this</code>-Operator in einer vererbten Methode immer auf das <em>Originalobjekt</em> zeigt, nicht auf das (Prototyp-)Objekt, bei dem die Methode gefunden wurde. Das heißt, <code>this.y</code> im Beispiel verweist auf die Eigenschaft <code>y</code> von den Objekten <code>b</code> und <code>c</code>, nicht vom Objekt <code>a</code>. Hingegen wird bei <code>this.x</code> die Eigenschaft <code>x</code> vom Objekt <code>a</code> verwendet &ndash; hier kommt die <em>Prototyp-Kette</em> zum Einsatz. (Den <code>this</code>-Wert werden wir später noch genauer unter die Lupe nehmen.)</p>
 
 <p>Wenn der Prototyp eines Objekts nicht ausdrücklich angegeben ist, dann wird der Standard-Wert für <code>__proto__</code> verwendet &ndash; das ist das Objekt <code>Object.prototype</code>. Dieses hat ebenfalls eine Eigenschaft <code>__proto__</code>. Sie ist allerdings das letzte Glied in der Prototyp-Kette, denn sie hat den Wert <code>null</code>.</p>
 
@@ -217,7 +217,7 @@ c.calculate(40); // 80</pre>
 	<figcaption>Abbildung 2. Eine Prototyp-Kette.</figcaption>
 </figure>
 
-<p>Oftmals braucht man Objekte mit <em>derselben oder einer ähnlichen Struktur</em> (d.h. demselben Set an Eigenschaften), aber unterschiedlichen <em>Status-Variablen</em>. In diesem Fall lässt sich eine <em>Konstruktorfunktion</em> verwenden, die Objekte anhand eines <em>angegebenen Musters</em> erzeugt.</p>
+<p>Oftmals braucht man Objekte mit <em>derselben oder einer ähnlichen Struktur</em> (d.h. derselben Menge von Eigenschaften), aber unterschiedlichen Zuständen (<em>Status-Variablen</em>). In diesem Fall lässt sich eine <em>Konstruktorfunktion</em> verwenden, die Objekte anhand eines <em>angegebenen Musters</em> erzeugt.</p>
 
 <h2 id="constructor">Der Konstruktor</h2>
 
@@ -287,7 +287,7 @@ console.log(
 
 <p>Diese Abbildung zeigt erneut, dass jedes Objekt einen Prototyp besitzt. Die Konstruktorfunktion <code>Foo</code> besitzt ebenfalls seinen eigenen <code>__proto__</code>-Verweis, welcher seinerseits über <code>__proto__</code> auf den obersten Prototyp <code>Objekt.prototype</code> verweist. Wie gesagt ist <code>Foo.prototype</code> eine besondere Eigenschaft des Funktionsobjekts <code>Foo</code>, welche auf den Prototyp von <code>b</code> und <code>c</code> verweist.</p>
 
-<p class="translation-note">Anmerkung der Übersetzung: Verwechseln Sie die Eigenschaften <code>__proto__</code> und <code>prototype</code> nicht. <code>__proto__</code> ist eine Eigenschaft eines jeden Objekts, die einen Verweis auf dessen Prototyp-Objekt enthält. Sie ist wie gesagt nicht standardisiert und daher nicht in allen ECMAScript-Interpretern verfügbar. <code>prototype</code> hingegen ist eine Eigenschaft von Funktionen (Funktionsobjekten). Sie enthält das Objekt, das als Prototyp für die Objekte dient, die beim Aufruf der Funktion mittels <code>new</code> erzeugt werden.</p>
+<p class="translation-note">Anmerkung der Übersetzung: Verwechseln Sie die Eigenschaften <code>__proto__</code> und <code>prototype</code> nicht. <code>__proto__</code> ist eine Eigenschaft eines jeden Objekts, die einen Verweis auf dessen Prototyp-Objekt enthält. Sie ist wie gesagt nicht standardisiert und daher nicht in allen ECMAScript-Interpretern verfügbar. <code>prototype</code> hingegen ist eine Eigenschaft von Funktionen (Funktionsobjekten). Sie enthält das Objekt, das als Prototyp für die Objekte dient, die beim Aufruf der Funktion über den <code>new</code>-Operator erzeugt werden.</p> 
 
 <p>Rein formal gesehen, aus Sicht einer »Klassifizierung«, könnte die Kombination aus Konstruktorfunktion und Prototyp-Objekt auch »Klasse« genannt werden. Denn wir haben soeben ein neues, gesondertes Ding <code>Foo</code> erzeugt. Tatsächlich verwenden beispielsweise die dynamischen Klassen in der Programmiersprache Python exakt eine solche Auflösung der Eigenschaften/Methoden. So gesehen sind Klassen in Python lediglich »syntaktischer Zuckerguss« für eine auf Delegation basierende Vererbung, wie sie in ECMAScript Anwendung findet.</p>
 
@@ -297,9 +297,9 @@ console.log(
 
 <h2 id="execution-context-stack">Der Stapel von Ausführungskontexten</h2>
 
-<p>Es gibt drei Typen von ECMAScript-Code: <em>globalen</em> Code, <em>Funktionscode</em> und <em><code>eval</code>-Code</em>. Sämtlicher Code wird in einem zugehörigen <em>Ausführungskontext</em> (<em lang="en">execution context</em>) ausgewertet. Während es nur einen globalen Kontext gibt, sind zahlreiche Funktions- und <code>eval</code>-Kontexte möglich. Bei jedem Funktionsaufruf wird in den Ausführungskontext der aufgerufenen Funktion gesprungen und der Funktionscode darin ausgeführt. Ebenso erzeugt jeder Aufruf der vordefinierten Methode <code>eval</code> einen <code>eval</code>-Ausführungskontext und führt den Code darin aus.</p>
+<p>Es gibt drei Typen von ECMAScript-Code: <em>global</em>er Code, <em>Funktionscode</em> und <em><code>eval</code>-Code</em>. Sämtlicher Code wird in einem zugehörigen <em>Ausführungskontext</em> (<em lang="en">execution context</em>) ausgewertet. Während es nur einen globalen Kontext gibt, sind zahlreiche Funktions- und <code>eval</code>-Kontexte möglich. Bei jedem Funktionsaufruf wird in den Ausführungskontext der aufgerufenen Funktion gesprungen und der Funktionscode darin ausgeführt. Ebenso erzeugt jeder Aufruf der vordefinierten Methode <code>eval</code> einen <code>eval</code>-Ausführungskontext und führt den Code darin aus.</p>
 
-<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst wenn die Funktion sich selbst rekursiv aufruft &ndash; wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
+<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst dann, wenn die Funktion sich rekursiv aufruft &ndash; wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
 
 <pre>function foo(bar) {}
  
@@ -339,11 +339,11 @@ foo(30);</pre>
 
 <p>Mehr Informationen zu Ausführungskontexten in ECMAScript finden Sie im passenden Kapitel <a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/">Chapter 1. Execution context</a>.</p>
 
-<p>Wie wir bereits gesehen haben, kann jeder Ausführungskontext als ein Objekt dargestellt werden. Betrachten wir nun dessen Struktur und welche Zustände (also welche Eigenschaften) notwendig sind, damit der Code darin ausgeführt werden kann.</p>
+<p>Wie wir bereits gesehen haben, kann jeder Ausführungskontext als ein Objekt dargestellt werden. Betrachten wir nun dessen Struktur, und sehen wir uns an, welche Zustände (also welche Eigenschaften) notwendig sind, damit der Code darin ausgeführt werden kann.</p>
 
 <h2 id="execution-context">Der Ausführungskontext</h2>
 
-<p>Einen Ausführungskontext können wir uns abstrakt als gewöhnliches Objekt vorstellen. Jeder Ausführungskontext hat eine bestimmte Anzahl an Eigenschaften (Zustände des Kontexts), die notwendig sind, um den Fortschritt der Codeausführung nachzuhalten. Die folgende Abbildung zeigt die Struktur eines Kontexts:</p>
+<p>Einen Ausführungskontext können wir uns abstrakt als gewöhnliches Objekt vorstellen. Jeder Ausführungskontext hat eine bestimmte Anzahl an Eigenschaften (Zustände des Kontexts), die notwendig sind, um den Fortschritt in der Ausführung des mit ihm verknüpften Codes verfolgen zu können. Die folgende Abbildung zeigt die Struktur eines Kontexts:</p>
 
 <figure>
 	<img class="figure" src="execution-context.png">
@@ -356,11 +356,11 @@ foo(30);</pre>
 
 <h2 id="variable-object">Das Variablenobjekt</h2>
 
-<p class="definition">Ein <em>Variablenobjekt</em> ist der <em>Gültigkeitsbereich</em> (<em lang="en">Scope</em>) von Daten, die dem Ausführungskontext zugehörig sind. Dies ist ein spezielles Objekt, das die <em>Variablen</em> und <em>Funktionsdeklarationen</em> speichert, die in dem Kontext definiert werden.</p>
+<p class="definition">Ein <em>Variablenobjekt</em> ist der <em>Gültigkeitsbereich</em> (<em lang="en">Scope</em>) von Daten, die dem Ausführungskontext zugehörig sind. Dies ist ein spezielles Objekt, das die <em>Variablen</em> und <em>Funktionsdeklarationen</em> speichert, die innerhalb dieses Kontexts definiert wurden.</p>
 
 <p>Übrigens werden <em>Funktionsausdrücke</em> (<em lang="en">function expressions</em>) im Gegensatz zu <em>Funktionsdeklarationen</em> (<em lang="en">function declarations</em>) nicht im Variablenobjekt gespeichert.</p>
 
-<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedenen einzelnen Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen &ndash; bei clientseitigem JavaScript ist das globale Objekt üblicherweise <code>window</code>.</p>
+<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedenen einzelnen Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen &ndash; bei clientseitigem JavaScript lautet das globale Objekt üblicherweise <code>window</code>.</p>
 
 <p>Gehen wir von folgendem Codebeispiel im globalen Ausführungskontext aus:</p>
 
@@ -385,7 +385,7 @@ console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
 
 <p>Hier zeigt sich, dass die Funktion <code>baz</code> nicht im Variablenobjekt gespeichert wird, weil sie als <em>Funktionsausdruck</em> notiert wurde. Daher tritt ein <em>ReferenceError</em> auf beim Versuch, außerhalb der Funktion auf <code>baz</code> zuzugreifen.</p>
 
-<p>Anders als in anderen Programmiersprachen wie etwa C oder C++ sind in ECMAScript <em>Funktionen die einzige Möglichkeit</em>, um neue Variablen-Gültigkeitsbereiche (Scopes) zu erzeugen. Variablen und verschachtelte Funktionen, die innerhalb eines solchen Funktions-Gültigkeitsbereiches angelegt werden, sind nicht nach außen hin sichtbar und »verschmutzen« das globalen Variablenobjekt nicht.</p>
+<p>Anders als in anderen Programmiersprachen wie etwa C oder C++ sind in ECMAScript <em>Funktionen die einzige Möglichkeit</em>, um neue Variablen-Gültigkeitsbereiche (Scopes) zu erzeugen. Variablen und verschachtelte Funktionen, die innerhalb eines solchen Funktions-Gültigkeitsbereiches angelegt werden, sind nach außen hin nicht sichtbar und »verschmutzen« das globalen Variablenobjekt nicht.</p>
 
 <p>Bei der Verwendung von <code>eval</code> wird ebenfalls ein neuer Ausführungskontext erzeugt. Allerdings besitzt dieser Kontext kein eigenes Variablenobjekt, sondern verwendet entweder das globale Variablenobjekt oder das Variablenobjekt des Kontexts, von dem aus <code>eval</code> aufgerufen wurde.</p>
 
