@@ -124,7 +124,7 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 		<li><a href="#an-object">Das Objekt</a></li>
 		<li><a href="#a-prototype-chain">Die Prototyp-Kette</a></li>
 		<li><a href="#constructor">Der Konstruktor</a></li>
-		<li><a href="#execution-context-stack">Der Stapel von Anführungskontexten</a></li>
+		<li><a href="#execution-context-stack">Der Stapel von Ausführungskontexten</a></li>
 		<li><a href="#execution-context">Der Ausführungskontext</a></li>
 		<li><a href="#variable-object">Das Variablenobjekt</a></li>
 		<li><a href="#activation-object">Das Aktivierungsobjekt</a></li>
@@ -217,7 +217,7 @@ c.calculate(40); // 80</pre>
 	<figcaption>Abbildung 2. Eine Prototyp-Kette.</figcaption>
 </figure>
 
-<p>Oftmals braucht man Objekte mit <em>derselben oder einer ähnlichen Struktur</em> (d.h. demselben Set an Eigenschaften), aber unterschiedlichen <em>Status-Variablen</em>. In diesem Fall lässt sich eine <em>Konstruktorfunktion</em> verwenden, die Objekte anhand eines <em>angegebenen Musters</em> erzeugt.</p>
+<p>Oftmals braucht man Objekte mit <em>derselben oder einer ähnlichen Struktur</em> (d.h. derselben Menge an Eigenschaften), aber unterschiedlichen <em>Status-Variablen</em>. In diesem Fall lässt sich eine <em>Konstruktorfunktion</em> verwenden, die Objekte anhand eines <em>angegebenen Musters</em> erzeugt.</p>
 
 <h2 id="constructor">Der Konstruktor</h2>
 
@@ -297,9 +297,9 @@ console.log(
 
 <h2 id="execution-context-stack">Der Stapel von Ausführungskontexten</h2>
 
-<p>Es gibt drei Typen von ECMAScript-Code: <em>globalen</em> Code, <em>Funktionscode</em> und <em><code>eval</code>-Code</em>. Sämtlicher Code wird in einem zugehörigen <em>Ausführungskontext</em> (<em lang="en">execution context</em>) ausgewertet. Während es nur einen globalen Kontext gibt, sind zahlreiche Funktions- und <code>eval</code>-Kontexte möglich. Bei jedem Funktionsaufruf wird in den Ausführungskontext der aufgerufenen Funktion gesprungen und der Funktionscode darin ausgeführt. Ebenso erzeugt jeder Aufruf der vordefinierten Methode <code>eval</code> einen <code>eval</code>-Ausführungskontext und führt den Code darin aus.</p>
+<p>Es gibt drei Typen von ECMAScript-Code: <em>globaler</em> Code, <em>Funktionscode</em> und <em><code>eval</code>-Code</em>. Sämtlicher Code wird in einem zugehörigen <em>Ausführungskontext</em> (<em lang="en">execution context</em>) ausgewertet. Während es nur einen globalen Kontext gibt, sind zahlreiche Funktions- und <code>eval</code>-Kontexte möglich. Bei jedem Funktionsaufruf wird in den Ausführungskontext der aufgerufenen Funktion gesprungen und der Funktionscode darin ausgeführt. Ebenso erzeugt jeder Aufruf der vordefinierten Methode <code>eval</code> einen <code>eval</code>-Ausführungskontext und führt den Code darin aus.</p>
 
-<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst wenn die Funktion sich selbst rekursiv aufruft &ndash; wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
+<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst dann, wenn die Funktion sich selbst rekursiv aufruft &ndash; wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
 
 <pre>function foo(bar) {}
  
@@ -339,7 +339,7 @@ foo(30);</pre>
 
 <p>Mehr Informationen zu Ausführungskontexten in ECMAScript finden Sie im passenden Kapitel <a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/">Chapter 1. Execution context</a>.</p>
 
-<p>Wie wir bereits gesehen haben, kann jeder Ausführungskontext als ein Objekt dargestellt werden. Betrachten wir nun dessen Struktur und welche Zustände (also welche Eigenschaften) notwendig sind, damit der Code darin ausgeführt werden kann.</p>
+<p>Wie wir bereits gesehen haben, kann jeder Ausführungskontext als ein Objekt dargestellt werden. Betrachten wir nun dessen Struktur und die Zustände (Eigenschaften), die zur Ausführung des Codes notwendig sind.</p>
 
 <h2 id="execution-context">Der Ausführungskontext</h2>
 
@@ -356,11 +356,11 @@ foo(30);</pre>
 
 <h2 id="variable-object">Das Variablenobjekt</h2>
 
-<p class="definition">Ein <em>Variablenobjekt</em> ist der <em>Gültigkeitsbereich</em> (<em lang="en">Scope</em>) von Daten, die dem Ausführungskontext zugehörig sind. Dies ist ein spezielles Objekt, das die <em>Variablen</em> und <em>Funktionsdeklarationen</em> speichert, die in dem Kontext definiert werden.</p>
+<p class="definition">Ein <em>Variablenobjekt</em> ist der <em>Gültigkeitsbereich</em> (<em lang="en">Scope</em>) von Daten, die dem Ausführungskontext zugehörig sind. Dies ist ein spezielles Objekt, das die <em>Variablen</em> und <em>Funktionsdeklarationen</em> speichert, die innerhalb dieses Kontexts definiert werden.</p>
 
 <p>Übrigens werden <em>Funktionsausdrücke</em> (<em lang="en">function expressions</em>) im Gegensatz zu <em>Funktionsdeklarationen</em> (<em lang="en">function declarations</em>) nicht im Variablenobjekt gespeichert.</p>
 
-<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedenen einzelnen Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen &ndash; bei clientseitigem JavaScript ist das globale Objekt üblicherweise <code>window</code>.</p>
+<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedenen einzelnen Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen &ndash; bei clientseitigem JavaScript lautet das globale Objekt üblicherweise <code>window</code>.</p>
 
 <p>Gehen wir von folgendem Codebeispiel im globalen Ausführungskontext aus:</p>
 
@@ -385,7 +385,7 @@ console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
 
 <p>Hier zeigt sich, dass die Funktion <code>baz</code> nicht im Variablenobjekt gespeichert wird, weil sie als <em>Funktionsausdruck</em> notiert wurde. Daher tritt ein <em>ReferenceError</em> auf beim Versuch, außerhalb der Funktion auf <code>baz</code> zuzugreifen.</p>
 
-<p>Anders als in anderen Programmiersprachen wie etwa C oder C++ sind in ECMAScript <em>Funktionen die einzige Möglichkeit</em>, um neue Variablen-Gültigkeitsbereiche (Scopes) zu erzeugen. Variablen und verschachtelte Funktionen, die innerhalb eines solchen Funktions-Gültigkeitsbereiches angelegt werden, sind nicht nach außen hin sichtbar und »verschmutzen« das globalen Variablenobjekt nicht.</p>
+<p>Anders als in anderen Programmiersprachen wie etwa C oder C++ sind in ECMAScript <em>Funktionen die einzige Möglichkeit</em>, um neue Variablen-Gültigkeitsbereiche (Scopes) zu erzeugen. Variablen und verschachtelte Funktionen, die innerhalb eines solchen Funktions-Gültigkeitsbereiches angelegt werden, sind nach außen hin nicht sichtbar und »verschmutzen« das globalen Variablenobjekt nicht.</p>
 
 <p>Bei der Verwendung von <code>eval</code> wird ebenfalls ein neuer Ausführungskontext erzeugt. Allerdings besitzt dieser Kontext kein eigenes Variablenobjekt, sondern verwendet entweder das globale Variablenobjekt oder das Variablenobjekt des Kontexts, von dem aus <code>eval</code> aufgerufen wurde.</p>
 
@@ -426,7 +426,7 @@ foo(10, 20);</pre>
 
 <p>Die Regel ist abermals einfach und gleicht der der Prototype-Kette: Wenn eine Variable nicht im eigenen Gültigkeitsbereich (dem Variablen- bzw. Aktivierungsobjekt) gefunden wird, wird beim Variablenobjekt des aufrufenden Kontexts gesucht.</p>
 
-<p>Bezeichner sind Namen von Variablen, Funktionsdeklarationen, formalen Parametern usw. Wenn eine Funktion einen Bezeichner enthält, der weder auf eine lokale Variable, noch eine lokale Funktion oder einen formalen Parameter verweist, so wird diese Variable eine <em>freie Variable</em> genannt. Und um diese freien Variablen zu Objekten auzulösen, wird die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) verwendet.</p>
+<p>Bezeichner sind Namen von Variablen, Funktionsdeklarationen, formalen Parametern usw. Wenn eine Funktion einen Bezeichner enthält, der weder auf eine lokale Variable, noch eine lokale Funktion oder einen formalen Parameter verweist, so wird diese Variable eine <em>freie Variable</em> genannt. Und um diese freien Variablen zu Objekten aufzulösen, wird die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) verwendet.</p>
 
 <p>Im allgemeinen Fall ist diese Kette eine Liste mit allen <em>übergeordneten Variablenobjekten</em>. Hinzu kommt ganz am Anfang der Kette das Variablen- bzw. Aktivierungsobjekt der Funktion selbst. Die Kette kann allerdings auch andere Objekte enthalten, welche dynamisch bei der Ausführung des Kontexts eingefügt wurden. Das passiert bei der Verwendung von <code>with</code> oder <code>try/catch</code>.</p>
 
@@ -505,7 +505,7 @@ console.log(x); // 10
 
 <h2 id="closures">Closures</h2>
 
-<p>In ECMAScript sind Funktionen Objekte »erster Klasse«. Das bedeutet, dass Funktionen als Parameter an andere Funktionen übergeben werden können. Solche Funktionen werden <em>funktionale Parameter</em> genannt (<em lang="en">functional arguments</em>, kurz <em lang="en">funargs</em>). Zudem können Funktionen von anderen Funktionen als Ergebnis zurückgegeben werden. Funktionen, die andere zurückgeben, werden Funktionen mit <em>funktionalem Wert</em> genannt (<em lang="en">function valued functions</em> oder <em lang="en">functions with functional value</em>).</p>
+<p>In ECMAScript sind Funktionen Objekte »erster Klasse«. Das bedeutet, dass Funktionen als Parameter an andere Funktionen übergeben werden können. Solche Funktionen werden <em>funktionale Parameter</em> genannt (<em lang="en">functional arguments</em>, kurz <em lang="en">funargs</em>). Funktionen, deren Aufruf wiederum mit funktionalen Parametern erfolgt, werden <em>Funktionen höherer Ordnung</em> bzw. &ndash; in Anlehnung an die Mathematik &ndash; <em>Operatoren</em> genannt. Zudem können Funktionen von anderen Funktionen als Ergebnis zurückgegeben werden. Funktionen, die andere zurückgeben, werden Funktionen mit <em>funktionalem Wert</em> genannt (<em lang="en">function valued functions</em> oder <em lang="en">functions with functional value</em>).</p>
 
 <p>Es gibt zwei konzeptionelle Probleme bei funktionalen Parametern und funktionalen Rückgabewerten. Diese sind Unterprobleme des allgemeinen <em>»Funarg-Problems«</em> (das Problem eines funktionalen Parameters). Um dieses Problem vollständig zu lösen, wurde das Konzept der <em>Closures</em> erfunden &ndash; auf Deutsch oft <em>Funktionsabschluss</em> genannt. Betrachten wir diese beiden Unterprobleme genauer. Wir werden sehen, das beide in ECMAScript mithilfe der Eigenschaft <code>[[Scope]]</code> gelöst werden, welche bereits in den Schaubildern vorgekommen ist.</p>
 
@@ -533,7 +533,7 @@ returnedFunction(); // ergibt 10, nicht 20</pre>
 
 <p>Diese Art des Gültigkeitsbereichs wird <em>statischer</em> oder <em>lexikalischer</em> Gültigkeitsbereich (<em>lexical scope</em>) genannt. Es zeigt sich, dass die Variable <code>x</code> im gespeicherten <code>[[Scope]]</code> der zurückgegebenen Funktion <code>bar</code> gefunden wird. In der Theorie gibt es auch einen <em>dynamischen Gültigkeitsbereich</em> (<em>dynamic scope</em>). Damit würde die Variable <code>x</code> im Beispiel zu 20 aufgelöst werden, nicht zu 10. Allerdings wird ein dynamischer Gültigkeitsbereich in ECMAScript nicht verwendet.</p>
 
-<p>Der zweite Untertyp des Funargs-Problem ist das <em>Abwärts</em>-Problem. In diesem Fall existiert zwar ein übergeordneter Kontext, allerdings liegt eine Mehrdeutigkeit beim Auflösen eines Bezeichners vor. Die Frage ist, aus welchem Gültigkeitsbereich der zu einem Bezeichner passende Wert genommen wird: Aus dem statischen, der bei der Erzeugung der Funktion gespeichert wurde, oder aus dem dynamischen bei der Ausführung (also dem Gültigkeitsbereich des aufrufenden Kontexts)? Um diese Frage zu klären und eine Closure zu erzeugen, entschied man sich für einen <em>statischen Gültigkeitsbereich</em>:</p>
+<p>Der zweite Untertyp des Funargs-Problem ist das <em>Abwärts</em>-Problem. In diesem Fall existiert zwar ein übergeordneter Kontext, allerdings liegt eine Mehrdeutigkeit beim Auflösen eines Bezeichners vor. Die Frage ist, aus welchem Gültigkeitsbereich der zu einem Bezeichner passende Wert genommen wird: Aus dem statischen, der bei der Erzeugung der Funktion gespeichert wurde, oder aus dem dynamischen bei der Ausführung (also dem Gültigkeitsbereich des aufrufenden Kontexts)? Um diese Unklarheit zu beseitigen und eine Closure erzeugen zu können, entschied man sich für einen <em>statischen Gültigkeitsbereich</em>:</p>
 
 <pre>
 // Globale Variable »x«
@@ -553,9 +553,9 @@ function foo() {
   // verwendet, welches im statischen [[Scope]] der Funktion »foo«
   // gespeichert wurde, und nicht etwa das »x« aus dem Kontext,
   // aus dem »funArg« aufgerufen wird.
-  funArg(); // 10, but not 20
+  funArg(); // 10, nicht 20
 
-})(foo); // übergebe »foo« als Parameter »funarg« abwärts in eine Funktion hinein
+})(foo); // übergib »foo« als Parameter »funarg« abwärts in eine Funktion hinein
 </pre> 
 
 <p>Zusammengefasst ist ein <em>statischer Gültigkeitsbereich</em> ein unverzichtbares Erfordernis, damit Closures in einer Sprache möglich sind. Allerdings bieten manche Programmiersprachen eine Kombination aus dynamischem und statischem Gültigkeitsbereich, sodass sie dem Programmierer die Wahl lassen, ob Closures erzeugt werden. Da ECMAScript ausschließlich auf statische Gültigkeitsbereiche als Lösung beider Funarg-Probleme setzt, lautet das Fazit: <em>ECMAScript hat eine vollständige Unterstützung von Closures</em>, die intern mit der Eigenschaft <code>[[Scope]]</code> von Funktionen realisiert wird. Nun können wir eine korrekte Definition einer Closure geben:</p>
@@ -612,7 +612,7 @@ for (var k = 0; k &lt; 3; k++) {
     return function () {
       alert(x);
     };
-  })(k); // übergebe den Wert »k«
+  })(k); // übergib den Wert »k«
 }
  
 // Nun stimmen die Ausgaben
@@ -622,13 +622,13 @@ data[2](); // 2</pre>
 
 <p>Wer näher an der Theorie der Closures sowie ihrer praktischen Anwendung interessiert ist, wird in <a href="http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/">Chapter 6. Closures</a> fündig. Mehr über die Scope-Chain finden Sie in <a href="http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/">Chapter 4. Scope chain</a>.</p>
 
-<p>Im folgenden Abschnitt beschäftigen wir uns mit der letzten Eigenschaft eines Ausführungskontexts: der <em><code>this</code>-Wert</em>.</p>
+<p>Im folgenden Abschnitt beschäftigen wir uns mit der letzten Eigenschaft eines Ausführungskontexts: dem <em><code>this</code>-Wert</em>.</p>
 
 <h2 id="this-value">Der Wert <code>this</code></h2>
 
 <p class="definition">Der Wert <code>this</code> ist ein besonderes Objekt, das mit dem Ausführungskontext verbunden ist. Daher kann es auch <em>Kontextobjekt</em> genannt werden.</p>
 
-<p><em>Jedes beliebige Objekt</em> kann als <code>this</code>-Wert eines Kontexts dienen. Ich möchte Missverständnissen entgegentreten, die sich manchmal in Beschreibungen des Ausführungskontexts in ECMAScript und insbesondere des <code>this</code>-Werts finden. Oft wird der <code>this</code>-Wert fälschlicherweise als eine Eigenschaft des Variablenobjekts beschrieben. Ein kürzliches Vorkommen dieses Fehlers findet sich in <a href="http://yuiblog.com/assets/High_Perf_JavaScr_Ch2.pdf">diesem Buch</a> (auch wenn das verlinkte Kapitel ansonsten sehr gut ist). Zur Wiederholung:</p>
+<p><em>Jedes beliebige Objekt</em> kann als <code>this</code>-Wert eines Kontexts dienen. Ich möchte Missverständnissen entgegentreten, die sich manchmal in Beschreibungen des Ausführungskontexts in ECMAScript und insbesondere des <code>this</code>-Werts finden. Oft wird der <code>this</code>-Wert fälschlicherweise als eine Eigenschaft des Variablenobjekts beschrieben &ndash; vor kurzem erst in <a href="http://yuiblog.com/assets/High_Perf_JavaScr_Ch2.pdf">diesem Buch</a> (auch wenn das verlinkte Kapitel ansonsten sehr gut ist). Zur Wiederholung:</p>
 
 <p class="definition">Der <em>Wert <code>this</code></em> ist eine <em>Eigenschaft des Ausführungskontexts</em>, <em>nicht</em> eine Eigenschaft des Variablenobjekts.</p>
 
@@ -675,7 +675,7 @@ bar.baz(); // this ist bar
 var otherFoo = bar.baz;
 otherFoo(); // this ist wieder das globale Objekt</pre>
 
-<p>Um zu genauer zu verstehen, warum und vor allem wie der <code>this</code>-Wert vom Funktionsaufruf abhängt, können Sie <a href="http://dmitrysoshnikov.com/ecmascript/chapter-3-this/">Chapter 3. This</a> lesen, in dem die genannten Fälle detailliert besprochen werden.</p> 
+<p>Um genauer zu verstehen, warum und vor allem wie der <code>this</code>-Wert vom Funktionsaufruf abhängt, können Sie <a href="http://dmitrysoshnikov.com/ecmascript/chapter-3-this/">Chapter 3. This</a> lesen, in dem die genannten Fälle detailliert besprochen werden.</p> 
 
 <h2 id="conclusion">Fazit</h2>
 
