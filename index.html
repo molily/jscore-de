@@ -424,7 +424,7 @@ foo(10, 20);</pre>
 
 <p class="definition">Die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) ist eine <em>Liste von Objekten</em>, die nacheinander durchsucht werden, wenn im Code <em>Bezeichner</em> (<em lang="en">identifiers</em>) angetroffen werden. Dieser Vorgang nennt sich Auflösung von Bezeichnern (<em lang="en">identifier resolution</em>).</p>
 
-<p>Die Regel ist abermals einfach und gleicht der der Prototype-Kette: Wenn eine Variable nicht im eigenen Gültigkeitsbereich (dem Variablen- bzw. Aktivierungsobjekt) gefunden wird, wird beim Variablenobjekt des aufrufenden Kontexts gesucht.</p>
+<p>Die Regel ist abermals einfach und gleicht der der Prototype-Kette: Wenn eine Variable nicht im eigenen Gültigkeitsbereich (dem Variablen- bzw. Aktivierungsobjekt) gefunden wird, wird beim Variablenobjekt des übergeordneten Kontexts gesucht.</p>
 
 <p>Bezeichner sind Namen von Variablen, Funktionsdeklarationen, formalen Parametern usw. Wenn eine Funktion einen Bezeichner enthält, der weder auf eine lokale Variable, noch eine lokale Funktion oder einen formalen Parameter verweist, so wird diese Variable eine <em>freie Variable</em> genannt. Und um diese freien Variablen zu Objekten aufzulösen, wird die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) verwendet.</p>
 
