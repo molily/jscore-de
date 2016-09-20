@@ -1,138 +1,139 @@
 <!DOCTYPE html>
-<html lang="de"> 
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <title>Die Grundlagen von JavaScript von Dmitry A. Soshnikov (Deutsche Übersetzung)</title>
-<meta name="description" content="Beschreibung der wichtigsten Konzepte und Interna von JavaScript/ECMAScript (ECMA-262-3)"> 
-<style type="text/css">
-body {
-	color: #202020;
-	background-color: white;
-	font-family: Calibri, 'Fontin Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	max-width: 42em;
-	margin-left: auto;
-	margin-right: auto;
-	line-height: 1.7;
+<meta name="description" content="Beschreibung der wichtigsten Konzepte und Interna von JavaScript/ECMAScript (ECMA-262-3)">
+<meta name="viewport" content="width=device-width">
+<style>
+html {
+  margin: 0;
+  padding: 2em;
 }
 
-hgroup {
-	margin: 2em 0;
-	text-align: center;
+body {
+  margin: 0 auto;
+  max-width: 44em;
+  color: #202020;
+  background-color: white;
+  font-family: Calibri, 'Fontin Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  margin: 2em 0;
+  text-align: center;
 }
 
 h1 {
-	border-bottom: 2px solid #284A66;
-	margin: 0;
-	font-size: 2.5em;
-	font-weight: normal;
+  border-bottom: 2px solid #284A66;
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: normal;
 }
 
-hgroup h2 {
-	border-style: none;
-	margin: 0.6em 0 0;
-	font-size: 120%;
+.subtitle {
+  margin: 1em 0;
+  font-size: 120%;
 }
+
 nav {
-	margin: 2em 0;
+  margin: 2em 0;
 }
 
 h2 {
-	margin: 2em 0 1.5em;
-	border-bottom: 2px solid #284A66;
-	padding-left: 2px;
-	font-size: 1.7em;
-	font-weight: normal;
+  margin: 2em 0 1.5em;
+  border-bottom: 2px solid #284A66;
+  padding-left: 2px;
+  font-size: 1.7em;
+  font-weight: normal;
 }
 
 p {
-	margin-top: 1.2em;
-	margin-bottom: 1.2em;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
 }
 
 .definition {
-	margin-left: 2px;
-	border-left: 2px solid #284A66;
-	padding-left: 1em;
-	color: #000;
-}
-
-hgroup, figure, figcaption {
-	display: block;
+  margin-left: 2px;
+  border-left: 2px solid #284A66;
+  padding-left: 1em;
+  color: #000;
 }
 
 figure {
-	margin: 2.5em 0;
-	text-align: center;
-	color: #444;
+  margin: 2.5em 0;
+  text-align: center;
+  color: #444;
 }
 
 figcaption {
-	margin-top: 0.5em;
+  margin-top: 0.5em;
+}
+
+img {
+  max-width: 100%;
 }
 
 pre, code {
-	color: #02A;
-	padding: 2px;
-	font-family: consolas, 'bitstream vera sans monospace', 'lucida console', 'liberation mono', monaco, 'courier new', courier, monospace;
+  color: #02A;
+  padding: 2px;
+  font-family: consolas, 'bitstream vera sans monospace', 'lucida console', 'liberation mono', monaco, 'courier new', courier, monospace;
 }
 
 pre {
-	margin: 1.3em 0;
-	border: 1px solid #ccc;
-	padding: 1em 1.5em;
-	background-color: #fafafa;
-	font-size: 90%;
-	line-height: 1.5;
+  margin: 1.3em 0;
+  border: 1px solid #ccc;
+  padding: 1em 1.5em;
+  background-color: #fafafa;
+  font-size: 90%;
+  line-height: 1.5;
+  white-space: pre-wrap;
 }
 
 pre strong {
-	color: green;
-	font-weight: normal;
+  color: green;
+  font-weight: normal;
 }
 
 em[lang="en"] {
-	color: #505050;
+  color: #505050;
 }
 
 .bct {
-	margin: 0;
-	font-size: 80%;
+  margin: 0;
+  font-size: 80%;
 }
 
 .translation-note {
-	color: #505050;
-	font-size: 90%;
+  color: #505050;
+  font-size: 90%;
 }
 </style>
-<!--[if lt IE 9]>
-<script>
-document.createElement('hgroup'), document.createElement('nav'), document.createElement('figure'), document.createElement('figcaption');
-</script>
-<![endif]-->
-</head> 
-<body> 
+</head>
+<body>
 
 <p class="bct"><a href="http://molily.de/" title="Startseite">molily.de</a></p>
 
-<hgroup>
-	<h1>Die Grundlagen von JavaScript</h1>
-	<h2>Deutsche Übersetzung des Artikels <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript. The core.</a> von <a href="http://dmitrysoshnikov.com/">Dmitry A. Soshnikov</a></h2>
-</hgroup>
+<header>
+  <h1>Die Grundlagen von JavaScript</h1>
+  <p class="subtitle">Deutsche Übersetzung des Artikels <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript. The core.</a> von <a href="http://dmitrysoshnikov.com/">Dmitry A. Soshnikov</a></p>
+</header>
 
 <nav>
-	<ol>
-		<li><a href="#an-object">Das Objekt</a></li>
-		<li><a href="#a-prototype-chain">Die Prototyp-Kette</a></li>
-		<li><a href="#constructor">Der Konstruktor</a></li>
-		<li><a href="#execution-context-stack">Der Stapel von Ausführungskontexten</a></li>
-		<li><a href="#execution-context">Der Ausführungskontext</a></li>
-		<li><a href="#variable-object">Das Variablenobjekt</a></li>
-		<li><a href="#activation-object">Das Aktivierungsobjekt</a></li>
-		<li><a href="#scope-chain">Die Scope-Chain (Kette von Gültigkeitsbereichen)</a></li>
-		<li><a href="#closures">Closures</a></li>
-		<li><a href="#this-value">Der Wert this</a></li>
-		<li><a href="#conclusion">Fazit</a></li>
-	</ol>
+  <ol>
+    <li><a href="#an-object">Das Objekt</a></li>
+    <li><a href="#a-prototype-chain">Die Prototyp-Kette</a></li>
+    <li><a href="#constructor">Der Konstruktor</a></li>
+    <li><a href="#execution-context-stack">Der Stapel von Ausführungskontexten</a></li>
+    <li><a href="#execution-context">Der Ausführungskontext</a></li>
+    <li><a href="#variable-object">Das Variablenobjekt</a></li>
+    <li><a href="#activation-object">Das Aktivierungsobjekt</a></li>
+    <li><a href="#scope-chain">Die Scope-Chain (Kette von Gültigkeitsbereichen)</a></li>
+    <li><a href="#closures">Closures</a></li>
+    <li><a href="#this-value">Der Wert this</a></li>
+    <li><a href="#conclusion">Fazit</a></li>
+  </ol>
 </nav>
 
 <p>Dieser Artikel ist eine Übersicht und Zusammenfassung dessen, was wir in der Artikelserie <a href="http://dmitrysoshnikov.com/tag/ecma-262-3/">ECMA-262-3 in detail</a> gelernt haben. Jeder Abschnitt enthält Verweise auf die jeweiligen Kapitel der ECMAScript-3-Reihe, die Sie bei Interesse lesen können, um ein tieferes Verständnis und weitere Erklärungen zu bekommen.</p>
@@ -154,13 +155,13 @@ document.createElement('hgroup'), document.createElement('nav'), document.create
 <pre>var foo = {
   x: 10,
   y: 20
-};</pre> 
+};</pre>
 
 <p>Wir haben hier zwei explizite, <em>eigene</em> Eigenschaften und eine implizite Eigenschaft <code>__proto__</code>. Diese ist der Verweis (die Referenz) auf den Prototyp von <code>foo</code>:</p>
 
 <figure>
-	<img class="figure" src="basic-object.png">
-	<figcaption>Abbildung 1. Ein einfaches Objekt mit einem Prototypen.</figcaption>
+  <img class="figure" src="basic-object.png">
+  <figcaption>Abbildung 1. Ein einfaches Objekt mit einem Prototypen.</figcaption>
 </figure>
 
 <p>Wofür werden diese Prototypen gebraucht? Um diese Frage zu beantworten, beschäftigen wir uns mit dem Konzept der <em>Prototyp-Kette</em>.</p>
@@ -187,7 +188,7 @@ var a = {
     return this.x + this.y + z
   }
 };
- 
+
 var b = {
   y: 20,
   __proto__: a
@@ -197,10 +198,10 @@ var c = {
   y: 30,
   __proto__: a
 };
- 
+
 // Rufe die vererbte Methode auf
 b.calculate(30); // 60
-c.calculate(40); // 80</pre> 
+c.calculate(40); // 80</pre>
 
 <p>Ziemlich einfach, oder? Das Beispiel zeigt, dass <code>b</code> und <code>c</code> Zugriff auf die Methode <code>calculate</code> haben, welche beim Objekt <code>a</code> definiert ist. Eben das macht die Prototyp-Kette möglich. Die Regel ist einfach: Wenn eine Eigenschaft oder Methode nicht bei einem Objekt selbst gefunden wird, d.h. wenn das Objekt keine <em>eigene</em> Eigenschaft dieses Namens besitzt, dann wird versucht, diese Eigenschaft/Methode in der Prototyp-Kette zu finden. Wenn die Eigenschaft auch nicht beim Prototyp gefunden wird, dann wird dessen Prototyp berücksichtigt und so weiter, bis die gesamte Prototyp-Kette durchlaufen wurde. (Übrigens passiert dasselbe bei klassenbasierter Vererbung beim Auflösen einer vererbten <em>Methode</em>: Dort wird die <em>Klassen-Kette</em> durchgegangen.) Beim Durchsuchen der Prototyp-Kette wird die erste Eigenschaft/Methode mit dem gesuchten Namen verwendet. Diese wird <em>vererbte</em> Eigenschaft genannt. Wenn eine Eigenschaft beim Nachschlagen in der Prototyp-Kette nicht gefunden wird, dann ergibt der Ausdruck den Wert <code>undefined</code>.</p>
 
@@ -213,8 +214,8 @@ c.calculate(40); // 80</pre>
 <div></div>
 
 <figure>
-	<img class="figure" src="prototype-chain.png">
-	<figcaption>Abbildung 2. Eine Prototyp-Kette.</figcaption>
+  <img class="figure" src="prototype-chain.png">
+  <figcaption>Abbildung 2. Eine Prototyp-Kette.</figcaption>
 </figure>
 
 <p>Oftmals braucht man Objekte mit <em>derselben oder einer ähnlichen Struktur</em> (d.h. derselben Menge an Eigenschaften), aber unterschiedlichen <em>Status-Variablen</em>. In diesem Fall lässt sich eine <em>Konstruktorfunktion</em> verwenden, die Objekte anhand eines <em>angegebenen Musters</em> erzeugt.</p>
@@ -232,48 +233,48 @@ function Foo(y) {
   // Die Objekte haben nach ihrer Erzeugung eine eigene Eigenschaft »y«
   this.y = y;
 }
- 
+
 // Zudem ist in »Foo.prototype« ein Verweis auf den Prototyp aller
 // neu erzeugten Objekte gespeichert. Wir können diese Eigenschaft nutzen,
 // um gemeinsame, vererbte Eigenschaften oder Methoden zu definieren.
 // Analog zum ersten Beispiel notieren wir:
- 
+
 // Vererbte Eigenschaft »x«
 Foo.prototype.x = 10;
- 
+
 // Vererbte Methode »calculate«
 Foo.prototype.calculate = function (z) {
   this.x + this.y + z;
 };
- 
+
 // Nun erzeugen wir unsere Objekte »b« und »c«,
 // Foo dient als Muster bzw. Vorlage:
 var b = new Foo(20);
 var c = new Foo(30);
- 
+
 // Rufe die vererbte Methode auf
 b.calculate(30); // 60
 c.calculate(40); // 80
- 
+
 // Überprüfen wir, ob die korrekten Eigenschaften referenziert werden:
 
 console.log(
- 
+
   b.__proto__ === Foo.prototype, // true
   c.__proto__ === Foo.prototype, // true
- 
+
   // Zusätzlich zum Verweis auf den Prototyp wird die besondere Eigenschaft
   // »constructor« angelegt. Das ist ein Verweis auf die Konstruktorfunktion
   // selbst. Die Instanzen »b« und »c« können diese Eigenschaft per
   // Delegation erreichen und darüber auf ihren Konstruktor zugreifen.
- 
+
   b.constructor === Foo, // true
   c.constructor === Foo, // true
   Foo.prototype.constructor === Foo // true
- 
+
   b.calculate === b.__proto__.calculate, // true
   b.__proto__.calculate === Foo.prototype.calculate // true
- 
+
 );</pre>
 
 <p>Folgendes Modell veranschaulicht die Beziehungen zwischen den Objekten:</p>
@@ -281,8 +282,8 @@ console.log(
 <div></div>
 
 <figure>
-	<img class="figure" src="constructor-proto-chain.png">
-	<figcaption>Abbildung 3. Ein Konstruktor und die Objektbeziehungen.</figcaption>
+  <img class="figure" src="constructor-proto-chain.png">
+  <figcaption>Abbildung 3. Ein Konstruktor und die Objektbeziehungen.</figcaption>
 </figure>
 
 <p>Diese Abbildung zeigt erneut, dass jedes Objekt einen Prototyp besitzt. Die Konstruktorfunktion <code>Foo</code> besitzt ebenfalls seinen eigenen <code>__proto__</code>-Verweis, welcher seinerseits über <code>__proto__</code> auf den obersten Prototyp <code>Objekt.prototype</code> verweist. Wie gesagt ist <code>Foo.prototype</code> eine besondere Eigenschaft des Funktionsobjekts <code>Foo</code>, welche auf den Prototyp von <code>b</code> und <code>c</code> verweist.</p>
@@ -302,11 +303,11 @@ console.log(
 <p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst dann, wenn die Funktion sich selbst rekursiv aufruft &ndash; wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
 
 <pre>function foo(bar) {}
- 
+
 // Rufe dieselbe Funktion mehrfach auf. Dabei werden drei Kontexte mit drei
 // unterschiedlichen Kontext-Zuständen erzeugt, denn der Wert des Parameters
 // »bar« ändert sich.
- 
+
 foo(10);
 foo(20);
 foo(30);</pre>
@@ -320,8 +321,8 @@ foo(30);</pre>
 <p>Das bedeutet, die Laufzeit eines ECMAScript-Programms kann als <em>Stapel von Ausführungskontexten</em> beschrieben werden, an deren <em>Spitze</em> der gerade <em>aktive</em> Kontext liegt:</p>
 
 <figure>
-	<img class="figure" src="ec-stack.png">
-	<figcaption>Abbildung 4. Der Stapel von Ausführungskontexten.<br>(EC = <em lang="en">execution context</em> = Ausführungskontext, ECN = der <var>n</var>-te Ausführungskontext)</figcaption>
+  <img class="figure" src="ec-stack.png">
+  <figcaption>Abbildung 4. Der Stapel von Ausführungskontexten.<br>(EC = <em lang="en">execution context</em> = Ausführungskontext, ECN = der <var>n</var>-te Ausführungskontext)</figcaption>
 </figure>
 
 <p class="figure"></p>
@@ -331,8 +332,8 @@ foo(30);</pre>
 <p>Im nächsten Schaubild kommen zwei Kontexte vor, ein Funktionskontext namens »EC1« und der globale Kontext, abgekürzt mit »Globaler EC«. Das Bild zeigt die Änderung des Stapels beim Aktivieren des Funktionskontexts sowie bei dessen Verlassen:</p>
 
 <figure>
-	<img class="figure" src="ec-stack-changes.png">
-	<figcaption>Abbildung 5. Der Ausführungskontext ändert sich.<br>(EC = <em lang="en">execution context</em> = Ausführungskontext)</figcaption>
+  <img class="figure" src="ec-stack-changes.png">
+  <figcaption>Abbildung 5. Der Ausführungskontext ändert sich.<br>(EC = <em lang="en">execution context</em> = Ausführungskontext)</figcaption>
 </figure>
 
 <p>Auf diese Weise regelt ein ECMAScript-Interpreter die Ausführung von Code.</p>
@@ -346,8 +347,8 @@ foo(30);</pre>
 <p>Einen Ausführungskontext können wir uns abstrakt als gewöhnliches Objekt vorstellen. Jeder Ausführungskontext hat eine bestimmte Anzahl an Eigenschaften (Zustände des Kontexts), die notwendig sind, um den Fortschritt der Codeausführung nachzuhalten. Die folgende Abbildung zeigt die Struktur eines Kontexts:</p>
 
 <figure>
-	<img class="figure" src="execution-context.png">
-	<figcaption>Abbildung 6. Die Struktur eines Ausführungskontexts.</figcaption>
+  <img class="figure" src="execution-context.png">
+  <figcaption>Abbildung 6. Die Struktur eines Ausführungskontexts.</figcaption>
 </figure>
 
 <p>Neben diesen drei notwendigen Eigenschaften &ndash; dem <em>Variablenobjekt</em>, dem <em>this</em>-Wert sowie der <em>Scope-Chain</em> &ndash;, kann ein Ausführungskontext je nach ECMAScript-Interpreter beliebige weitere Zustände besitzen.</p>
@@ -365,22 +366,22 @@ foo(30);</pre>
 <p>Gehen wir von folgendem Codebeispiel im globalen Ausführungskontext aus:</p>
 
 <pre>var foo = 10;
- 
+
 function bar() {} // Funktionsdeklaration
 (function baz() {}); // Funktionsausdruck
- 
+
 console.log(
   this.foo == foo, // true
   window.bar == bar // true
 );
- 
+
 console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
 
 <p>Dieser Code erzeugt folgende Eigenschaften beim Variablenobjekt des globalen Kontexts:</p>
 
 <figure>
-	<img class="figure" src="variable-object.png">
-	<figcaption>Abbildung 7. Das globale Variablenobjekt.<br>(VO = Variablenobjekt)</figcaption>
+  <img class="figure" src="variable-object.png">
+  <figcaption>Abbildung 7. Das globale Variablenobjekt.<br>(VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Hier zeigt sich, dass die Funktion <code>baz</code> nicht im Variablenobjekt gespeichert wird, weil sie als <em>Funktionsausdruck</em> notiert wurde. Daher tritt ein <em>ReferenceError</em> auf beim Versuch, außerhalb der Funktion auf <code>baz</code> zuzugreifen.</p>
@@ -404,14 +405,14 @@ console.log(baz); // ReferenceError, &quot;baz&quot; is not defined</pre>
   function bar() {} // Funktionsdeklaration
   (function baz() {}); // Funktionsausdruck
 }
- 
+
 foo(10, 20);</pre>
 
 <p>Das Aktivierungsobjekt des <code>foo</code>-Funktionskontexts enthält folgende Daten:</p>
 
 <figure>
-	<img class="figure" src="activation-object.png">
-	<figcaption>Abbildung 8. Ein Aktivierungsobjekt.</figcaption>
+  <img class="figure" src="activation-object.png">
+  <figcaption>Abbildung 8. Ein Aktivierungsobjekt.</figcaption>
 </figure>
 
 <p>Wieder ist der Funktionsausdruck <code>baz</code> nicht im Variablen- bzw. Aktivierungsobjekt gespeichert.</p>
@@ -420,7 +421,7 @@ foo(10, 20);</pre>
 
 <p>Kommen wir zum nächsten Teil. Es ist bekannt, dass wir in ECMAScript <em>verschachtelte Funktionen</em> notieren und darin auf die Variablen der äußeren Funktion sowie auf die Variablen des globalen Kontexts zugreifen können. Das besagte Variablenobjekt stellt den Gültigkeitsbereich eines Kontexts dar. Analog zur oben beschriebenen Prototyp-Kette existiert eine Kette von Gültigkeitsbereichen.</p>
 
-<h2 id="scope-chain">Die Scope-Chain (Kette von Gültigkeitsbereichen)</h2> 
+<h2 id="scope-chain">Die Scope-Chain (Kette von Gültigkeitsbereichen)</h2>
 
 <p class="definition">Die <em>Kette von Gültigkeitsbereichen</em> (<em>Scope-Chain</em>) ist eine <em>Liste von Objekten</em>, die nacheinander durchsucht werden, wenn im Code <em>Bezeichner</em> (<em lang="en">identifiers</em>) angetroffen werden. Dieser Vorgang nennt sich Auflösung von Bezeichnern (<em lang="en">identifier resolution</em>).</p>
 
@@ -433,7 +434,7 @@ foo(10, 20);</pre>
 <p>Wenn ein Bezeichner aufgelöst wird, so wird die Scope-Chain ausgehend vom Aktivierungsobjekt durchsucht. Wenn der Bezeichner dort nicht gefunden wird, so wird beim nächsten Objekt in der Kette gesucht. Das geht so weiter, bis das oberste Objekt in der Kette erreicht wird &ndash; genau wie bei der Prototyp-Ketten.</p>
 
 <pre>var x = 10;
- 
+
 (function foo() {
   var y = 20;
   (function bar() {
@@ -447,8 +448,8 @@ foo(10, 20);</pre>
 <p>Wir können uns die Verlinkung zwischen den Objekten in der Scope-Chain als eine interne Eigenschaft <code>__parent__</code> vorstellen, welche auf das nächste Objekt in der Kette verweist. Dieser Ansatz kann <a href="http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#feature-of-implementations-property-__parent__">mit dem Rhino-Interpreter getestet werden</a>. Eben dieser Ansatz wird auch in ECMAScript 5 für sogenannte <em>lexikalische Umgebungen</em> (<em lang="en">lexical environments</em>) verwendet. Eine weitere Veranschaulichung der Scope-Chain wäre ein einfacher Array. Mithilfe des <code>__parent__</code>-Konzepts und mit dem Wissen, dass übergeordnete Variablenobjekte in der internen Funktionseigenschaft <code>[[Scope]]</code> gespeichert werden, können wir das obige Codebeispiel veranschaulichen:</p>
 
 <figure>
-	<img class="figure" src="scope-chain.png">
-	<figcaption>Abbildung 9. Eine Scope-Chain (Kette von Gültigkeitsbereichen).<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
+  <img class="figure" src="scope-chain.png">
+  <figcaption>Abbildung 9. Eine Scope-Chain (Kette von Gültigkeitsbereichen).<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Während der Ausführung des Codes kann die Scope-Chain mithilfe der <em><code>with</code>-Anweisung</em> und dem <em><code>catch</code>-Abschnitt</em> um Objekte erweitert werden. Diese Objekte haben wie alle Objekte Prototypen und Prototyp-Ketten. Dieser Umstand führt uns zu dazu, dass das Nachschlagen eines Bezeichners in der Scope-Chain tatsächlich <em>zweidimensional</em> verläuft: 1. Folge dem Verweis auf den übergeordneten Gültigkeitsbereich, 2. durchlaufe die Prototyp-Kette eines jeden Objekts in der Scope-Chain.</p>
@@ -456,47 +457,47 @@ foo(10, 20);</pre>
 <p>Beispielsweise:</p>
 
 <pre>Object.prototype.x = 10;
- 
+
 var w = 20;
 var y = 30;
- 
+
 // Im SpiderMonkey, der JavaScript-Interpreter in Firefox, erbt das globale Objekt,
 // das ist das Variablenobjekt des globalen Gültigkeitsbereichs, von
 // »Objekt.prototype«. Daher können wir auf »x« zugreifen, obwohl eine globale
 // Variable dieses Namens nicht definiert wurde. Allerdings wird »x« in der
 // Prototyp-Kette des globalen Objekts gefunden.
- 
+
 console.log(x); // 10
- 
+
 (function foo() {
- 
+
   // Lokale Variablen der Funktion »foo«
   var x = 100;
   var w = 40;
- 
+
   // »x« wird in »Object.prototype« gefunden, weil {z: 50} davon erbt:
- 
+
   with ({z: 50}) {
     console.log(w, x, y , z); // 40, 10, 30, 50
   }
- 
+
   // Nachdem das »with«-Objekt wieder aus der Scope-Chain entfernt wurde,
   // wird »x« wieder im Aktivierungsobjekt des »foo«-Funktionskontexts gefunden.
   // Die Variable »w« ist ebenfalls eine lokale.
-  
+
   console.log(x, w); // 100, 40
- 
+
   // Auf die folgende Weise können wir auf die verdeckte globale Variable »w«
   // in der Host-Umgebung des Browsers zugreifen:
   console.log(window.w); // 20
- 
-})();</pre> 
+
+})();</pre>
 
 <p>Wir haben es also mit folgender Struktur zu tun. Bevor dem <code>__parent__</code>-Verweis gefolgt wird, wird erst die <code>__proto__</code>-Kette abgearbeitet:</p>
 
 <figure>
-	<img class="figure" src="scope-chain-with.png">
-	<figcaption>Abbildung 10. Eine durch »with« erweiterte Scope-Chain.<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
+  <img class="figure" src="scope-chain-with.png">
+  <figcaption>Abbildung 10. Eine durch »with« erweiterte Scope-Chain.<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Nicht in allen ECMAScript-Interpretern erbt das globale Objekt von <code>Object.prototype</code>. Das in der Abbildung gezeigte Verhalten, dass der globale Kontext auf die »nicht definierte« Variable <code>x</code> verweist, kann im SpiderMonkey (u.a. Firefox) nachvollzogen werden.
@@ -521,13 +522,13 @@ console.log(x); // 10
     console.log(x);
   };
 }
- 
+
 // »foo« gibt eine Funktion zurück und diese verwendet die freie Variable »x«
 var returnedFunction = foo();
- 
+
 // Eine globale Variable namens »x«
 var x = 20;
- 
+
 // Die zurückgegebene Funktion wird aufgerufen
 returnedFunction(); // ergibt 10, nicht 20</pre>
 
@@ -538,14 +539,14 @@ returnedFunction(); // ergibt 10, nicht 20</pre>
 <pre>
 // Globale Variable »x«
 var x = 10;
- 
+
 // Globale Funktion »foo«
 function foo() {
   console.log(x);
 }
- 
+
 (function (funArg) {
- 
+
   // Lokale Variable »x«
   var x = 20;
 
@@ -556,7 +557,7 @@ function foo() {
   funArg(); // 10, nicht 20
 
 })(foo); // übergib »foo« als Parameter »funarg« abwärts in eine Funktion hinein
-</pre> 
+</pre>
 
 <p>Zusammengefasst ist ein <em>statischer Gültigkeitsbereich</em> ein unverzichtbares Erfordernis, damit Closures in einer Sprache möglich sind. Allerdings bieten manche Programmiersprachen eine Kombination aus dynamischem und statischem Gültigkeitsbereich, sodass sie dem Programmierer die Wahl lassen, ob Closures erzeugt werden. Da ECMAScript ausschließlich auf statische Gültigkeitsbereiche als Lösung beider Funarg-Probleme setzt, lautet das Fazit: <em>ECMAScript hat eine vollständige Unterstützung von Closures</em>, die intern mit der Eigenschaft <code>[[Scope]]</code> von Funktionen realisiert wird. Nun können wir eine korrekte Definition einer Closure geben:</p>
 
@@ -574,9 +575,9 @@ function baz() {
     bar: function bar() { return --x; }
   };
 }
- 
+
 var closures = baz();
- 
+
 console.log(
   closures.foo(), // 2
   closures.bar()  // 1
@@ -585,20 +586,20 @@ console.log(
 <p>Dieser Code kann folgendermaßen veranschaulicht werden:</p>
 
 <figure>
-	<img class="figure" src="shared-scope.png">
-	<figcaption>Abbildung 11. Ein gemeinsamer [[Scope]].<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
+  <img class="figure" src="shared-scope.png">
+  <figcaption>Abbildung 11. Ein gemeinsamer [[Scope]].<br>(AO = Aktivierungsobjekt, VO = Variablenobjekt)</figcaption>
 </figure>
 
 <p>Aus diesem Verhalten resultiert das Problem, das beim Erzeugen von Funktionen in einer Schleife auftritt. Viele Programmierer stoßen auf ein unerwartetes Verhalten, wenn sie den Schleifenzähler in den erzeugten Funktionen verwenden. In diesem Fall haben alle Funktionen Zugriff auf <em>denselben</em> Zählerwert. Es sollte nun klar geworden sein, warum dies so ist: Nämlich weil all diese Funktionen denselben <code>[[Scope]]</code> besitzen, in welchem der Schleifenzähler den letzten ihm zugewiesenen Wert besitzt.</p>
 
 <pre>var data = [];
- 
+
 for (var k = 0; k &lt; 3; k++) {
   data[k] = function () {
     alert(k);
   };
 }
- 
+
 data[0](); // 3, nicht 0
 data[1](); // 3, nicht 1
 data[2](); // 3, nicht 2</pre>
@@ -606,7 +607,7 @@ data[2](); // 3, nicht 2</pre>
 <p>Es gibt verschiedene Möglichkeiten, diesen Fallstrick zu umgehen. Eine mögliche Lösung ist das Einfügen eines zusätzlichen Objekts in die Scope-Chain, beispielsweise mithilfe einer zusätzlichen Funktion:</p>
 
 <pre>var data = [];
- 
+
 for (var k = 0; k &lt; 3; k++) {
   data[k] = (function (x) {
     return function () {
@@ -614,11 +615,11 @@ for (var k = 0; k &lt; 3; k++) {
     };
   })(k); // übergib den Wert »k«
 }
- 
+
 // Nun stimmen die Ausgaben
 data[0](); // 0
 data[1](); // 1
-data[2](); // 2</pre> 
+data[2](); // 2</pre>
 
 <p>Wer näher an der Theorie der Closures sowie ihrer praktischen Anwendung interessiert ist, wird in <a href="http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/">Chapter 6. Closures</a> fündig. Mehr über die Scope-Chain finden Sie in <a href="http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/">Chapter 4. Scope chain</a>.</p>
 
@@ -639,7 +640,7 @@ data[2](); // 2</pre>
 <p>Im globalen Kontext verweist <code>this</code> auf das globale Objekt selbst. In diesem Fall ist der <em><code>this</code>-Wert</em> identisch mit dem <em>Variablenobjekt</em>:</p>
 
 <pre>var x = 10;
- 
+
 console.log(
   x, // 10
   this.x, // 10
@@ -651,44 +652,44 @@ console.log(
 <pre>
 // Der Code der Funktion »foo« ändert sich nicht, aber der this-Wert
 // unterscheidet sich bei jedem Aufruf
- 
+
 function foo() {
   alert(this);
 }
- 
+
 // Der Aufrufer aktiviert »foo« und stellt den this-Wert bereit
- 
+
 foo(); // this ist das globale Objekt
 foo.prototype.constructor(); // this ist foo.prototype
- 
+
 var bar = {
   baz: foo
 };
- 
+
 bar.baz(); // this ist bar
- 
+
 (bar.baz)(); // this ist hier ebenfalls bar
 (bar.baz = bar.baz)(); // hier wiederum das globale Objekt
 (bar.baz, bar.baz)(); // ebenfalls das globale Objekt
 (false || bar.baz)(); // ebenfalls das globale Objekt
- 
+
 var otherFoo = bar.baz;
 otherFoo(); // this ist wieder das globale Objekt</pre>
 
-<p>Um genauer zu verstehen, warum und vor allem wie der <code>this</code>-Wert vom Funktionsaufruf abhängt, können Sie <a href="http://dmitrysoshnikov.com/ecmascript/chapter-3-this/">Chapter 3. This</a> lesen, in dem die genannten Fälle detailliert besprochen werden.</p> 
+<p>Um genauer zu verstehen, warum und vor allem wie der <code>this</code>-Wert vom Funktionsaufruf abhängt, können Sie <a href="http://dmitrysoshnikov.com/ecmascript/chapter-3-this/">Chapter 3. This</a> lesen, in dem die genannten Fälle detailliert besprochen werden.</p>
 
 <h2 id="conclusion">Fazit</h2>
 
 <p>An dieser Stelle sind wir am Ende dieser kurzen Übersicht angelangt &ndash; auch wenn sie letztendlich nicht kurz wurde. ;) Trotzdem würde die eingehende Erläuterung dieser Themen ein ganzes Buch erfordern. Wir haben zwei große Themen noch nicht einmal berührt: Funktionen und die verschiedenen Typen von Funktionen (<em>Funktionsausdrücke</em> vs. <em>Funktionsdeklarationen</em>) sowie die Auswertungsstrategie in ECMAScript. Beide Themen werden in gesonderten Kapiteln der Artikelreihe behandelt: <a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/">Chapter 5. Functions</a> und <a href="http://dmitrysoshnikov.com/ecmascript/chapter-8-evaluation-strategy/">Chapter 8. Evaluation strategy</a>.
 
 <p>Falls Sie Kommentare, Fragen oder Ergänzungen haben, stehe ich gerne für Diskussionen in den <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">Blog-Kommentaren</a> zur Verfügung.</p>
-	
+
 <p>Viel Erfolg beim Lernen von ECMAScript!</p>
 
 <p><strong>Verfasser:</strong> <a href="http://dmitrysoshnikov.com/">Dmitry A. Soshnikov</a><br />
-	<strong>Veröffentlicht am:</strong> 2010-09-02</p>
+  <strong>Veröffentlicht am:</strong> 2010-09-02</p>
 
-<p><strong>Deutsche Übersetzung:</strong> Mathias Schäfer (<a href="http://molily.de/">molily</a>), <a href="mailto:zapperlott@gmail.com">zapperlott@gmail.com</a>. Dank geht an Ingo Chao, Peter Seliger und Axel Wienberg für Feedback und Korrekturen zur Übersetzung.</p>
- 
-</body> 
+<p><strong>Deutsche Übersetzung:</strong> <a href="http://molily.de/">Mathias Schäfer (molily</a>), <a href="mailto:zapperlott@gmail.com">zapperlott@gmail.com</a>. Dank geht an Ingo Chao, Peter Seliger und Axel Wienberg für Feedback und Korrekturen zur Übersetzung.</p>
+
+</body>
 </html>
