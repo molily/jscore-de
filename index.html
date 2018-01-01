@@ -205,9 +205,9 @@ c.calculate(40); // 80</pre>
 
 <p>Ziemlich einfach, oder? Das Beispiel zeigt, dass <code>b</code> und <code>c</code> Zugriff auf die Methode <code>calculate</code> haben, welche beim Objekt <code>a</code> definiert ist. Eben das macht die Prototyp-Kette möglich. Die Regel ist einfach: Wenn eine Eigenschaft oder Methode nicht bei einem Objekt selbst gefunden wird, d.h. wenn das Objekt keine <em>eigene</em> Eigenschaft dieses Namens besitzt, dann wird versucht, diese Eigenschaft/Methode in der Prototyp-Kette zu finden. Wenn die Eigenschaft auch nicht beim Prototyp gefunden wird, dann wird dessen Prototyp berücksichtigt und so weiter, bis die gesamte Prototyp-Kette durchlaufen wurde. (Übrigens passiert dasselbe bei klassenbasierter Vererbung beim Auflösen einer vererbten <em>Methode</em>: Dort wird die <em>Klassen-Kette</em> durchgegangen.) Beim Durchsuchen der Prototyp-Kette wird die erste Eigenschaft/Methode mit dem gesuchten Namen verwendet. Diese wird <em>vererbte</em> Eigenschaft genannt. Wenn eine Eigenschaft beim Nachschlagen in der Prototyp-Kette nicht gefunden wird, dann ergibt der Ausdruck den Wert <code>undefined</code>.</p>
 
-<p>Beachten Sie, dass das Schlüsselwort <code>this</code> in einer vererbten Methode immer auf das <em>Originalobjekt</em> zeigt, nicht auf das (Prototyp-)Objekt, bei dem die Methode gefunden wurde. Das heißt, <code>this.y</code> im Beispiel verweist auf die Eigenschaft <code>y</code> von den Objekten <code>b</code> und <code>c</code>, nicht vom Objekt <code>a</code>. Hingegen wird bei <code>this.x</code> die Eigenschaft <code>x</code> vom Objekt <code>a</code> verwendet &ndash; hier kommt die <em>Prototyp-Kette</em> zum Einsatz. (Den <code>this</code>-Wert werden wir später noch genauer unter die Lupe nehmen.)</p>
+<p>Beachten Sie, dass das Schlüsselwort <code>this</code> in einer vererbten Methode immer auf das <em>Originalobjekt</em> zeigt, nicht auf das (Prototyp-)Objekt, bei dem die Methode gefunden wurde. Das heißt, <code>this.y</code> im Beispiel verweist auf die Eigenschaft <code>y</code> von den Objekten <code>b</code> und <code>c</code>, nicht vom Objekt <code>a</code>. Hingegen wird bei <code>this.x</code> die Eigenschaft <code>x</code> vom Objekt <code>a</code> verwendet – hier kommt die <em>Prototyp-Kette</em> zum Einsatz. (Den <code>this</code>-Wert werden wir später noch genauer unter die Lupe nehmen.)</p>
 
-<p>Wenn der Prototyp eines Objekts nicht ausdrücklich angegeben ist, dann wird der Standard-Wert für <code>__proto__</code> verwendet &ndash; das ist das Objekt <code>Object.prototype</code>. Dieses hat ebenfalls eine Eigenschaft <code>__proto__</code>. Sie ist allerdings das letzte Glied in der Prototyp-Kette, denn sie hat den Wert <code>null</code>.</p>
+<p>Wenn der Prototyp eines Objekts nicht ausdrücklich angegeben ist, dann wird der Standard-Wert für <code>__proto__</code> verwendet – das ist das Objekt <code>Object.prototype</code>. Dieses hat ebenfalls eine Eigenschaft <code>__proto__</code>. Sie ist allerdings das letzte Glied in der Prototyp-Kette, denn sie hat den Wert <code>null</code>.</p>
 
 <p>Das folgende Schaubild zeigt die Vererbungshierarchie unserer Objekte <code>a</code>, <code>b</code> und <code>c</code>:</p>
 
@@ -300,7 +300,7 @@ console.log(
 
 <p>Es gibt drei Typen von ECMAScript-Code: <em>globaler</em> Code, <em>Funktionscode</em> und <em><code>eval</code>-Code</em>. Sämtlicher Code wird in einem zugehörigen <em>Ausführungskontext</em> (<em lang="en">execution context</em>) ausgewertet. Während es nur einen globalen Kontext gibt, sind zahlreiche Funktions- und <code>eval</code>-Kontexte möglich. Bei jedem Funktionsaufruf wird in den Ausführungskontext der aufgerufenen Funktion gesprungen und der Funktionscode darin ausgeführt. Ebenso erzeugt jeder Aufruf der vordefinierten Methode <code>eval</code> einen <code>eval</code>-Ausführungskontext und führt den Code darin aus.</p>
 
-<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf &ndash; selbst dann, wenn die Funktion sich selbst rekursiv aufruft &ndash; wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
+<p>Dabei ist zu beachten, dass eine Funktion eine unendliche Menge an Kontexten erzeugen kann, denn bei jedem Funktionsaufruf – selbst dann, wenn die Funktion sich selbst rekursiv aufruft – wird ein neuer Kontext mit einem neuen <em>Kontext-Zustand</em> (<em lang="en">context state</em>) erzeugt:</p>
 
 <pre>function foo(bar) {}
 
@@ -351,7 +351,7 @@ foo(30);</pre>
   <figcaption>Abbildung 6. Die Struktur eines Ausführungskontexts.</figcaption>
 </figure>
 
-<p>Neben diesen drei notwendigen Eigenschaften &ndash; dem <em>Variablenobjekt</em>, dem <em>this</em>-Wert sowie der <em>Scope-Chain</em> &ndash;, kann ein Ausführungskontext je nach ECMAScript-Interpreter beliebige weitere Zustände besitzen.</p>
+<p>Neben diesen drei notwendigen Eigenschaften – dem <em>Variablenobjekt</em>, dem <em>this</em>-Wert sowie der <em>Scope-Chain</em> –, kann ein Ausführungskontext je nach ECMAScript-Interpreter beliebige weitere Zustände besitzen.</p>
 
 <p>Schauen wir uns diese drei wichtigen Eigenschaften im Detail an.</p>
 
@@ -361,7 +361,7 @@ foo(30);</pre>
 
 <p>Übrigens werden <em>Funktionsausdrücke</em> (<em lang="en">function expressions</em>) im Gegensatz zu <em>Funktionsdeklarationen</em> (<em lang="en">function declarations</em>) nicht im Variablenobjekt gespeichert.</p>
 
-<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedenen einzelnen Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen &ndash; bei clientseitigem JavaScript lautet das globale Objekt üblicherweise <code>window</code>.</p>
+<p>Das Variablenobjekt ist ein abstraktes Konzept: Je nach Kontext-Typ haben wir es mit verschiedenen einzelnen Objekten zu tun. Im globalen Kontext beispielsweise ist das Variablenobjekt das <em>globale Objekt selbst</em>. Daher ist es möglich, globale Variablen als Eigenschaften des globalen Objekts anzusprechen – bei clientseitigem JavaScript lautet das globale Objekt üblicherweise <code>window</code>.</p>
 
 <p>Gehen wir von folgendem Codebeispiel im globalen Ausführungskontext aus:</p>
 
@@ -431,7 +431,7 @@ foo(10, 20);</pre>
 
 <p>Im allgemeinen Fall ist diese Kette eine Liste mit allen <em>übergeordneten Variablenobjekten</em>. Hinzu kommt ganz am Anfang der Kette das Variablen- bzw. Aktivierungsobjekt der Funktion selbst. Die Kette kann allerdings auch andere Objekte enthalten, welche dynamisch bei der Ausführung des Kontexts eingefügt wurden. Das passiert bei der Verwendung von <code>with</code> oder <code>try/catch</code>.</p>
 
-<p>Wenn ein Bezeichner aufgelöst wird, so wird die Scope-Chain ausgehend vom Aktivierungsobjekt durchsucht. Wenn der Bezeichner dort nicht gefunden wird, so wird beim nächsten Objekt in der Kette gesucht. Das geht so weiter, bis das oberste Objekt in der Kette erreicht wird &ndash; genau wie bei der Prototyp-Ketten.</p>
+<p>Wenn ein Bezeichner aufgelöst wird, so wird die Scope-Chain ausgehend vom Aktivierungsobjekt durchsucht. Wenn der Bezeichner dort nicht gefunden wird, so wird beim nächsten Objekt in der Kette gesucht. Das geht so weiter, bis das oberste Objekt in der Kette erreicht wird – genau wie bei der Prototyp-Ketten.</p>
 
 <pre>var x = 10;
 
@@ -506,11 +506,11 @@ console.log(x); // 10
 
 <h2 id="closures">Closures</h2>
 
-<p>In ECMAScript sind Funktionen Objekte »erster Klasse«. Das bedeutet, dass Funktionen als Parameter an andere Funktionen übergeben werden können. Solche Funktionen werden <em>funktionale Parameter</em> genannt (<em lang="en">functional arguments</em>, kurz <em lang="en">funargs</em>). Funktionen, deren Aufruf wiederum mit funktionalen Parametern erfolgt, werden <em>Funktionen höherer Ordnung</em> bzw. &ndash; in Anlehnung an die Mathematik &ndash; <em>Operatoren</em> genannt. Zudem können Funktionen von anderen Funktionen als Ergebnis zurückgegeben werden. Funktionen, die andere zurückgeben, werden Funktionen mit <em>funktionalem Wert</em> genannt (<em lang="en">function valued functions</em> oder <em lang="en">functions with functional value</em>).</p>
+<p>In ECMAScript sind Funktionen Objekte »erster Klasse«. Das bedeutet, dass Funktionen als Parameter an andere Funktionen übergeben werden können. Solche Funktionen werden <em>funktionale Parameter</em> genannt (<em lang="en">functional arguments</em>, kurz <em lang="en">funargs</em>). Funktionen, deren Aufruf wiederum mit funktionalen Parametern erfolgt, werden <em>Funktionen höherer Ordnung</em> bzw. – in Anlehnung an die Mathematik – <em>Operatoren</em> genannt. Zudem können Funktionen von anderen Funktionen als Ergebnis zurückgegeben werden. Funktionen, die andere zurückgeben, werden Funktionen mit <em>funktionalem Wert</em> genannt (<em lang="en">function valued functions</em> oder <em lang="en">functions with functional value</em>).</p>
 
-<p>Es gibt zwei konzeptionelle Probleme bei funktionalen Parametern und funktionalen Rückgabewerten. Diese sind Unterprobleme des allgemeinen <em>»Funarg-Problems«</em> (das Problem eines funktionalen Parameters). Um dieses Problem vollständig zu lösen, wurde das Konzept der <em>Closures</em> erfunden &ndash; auf Deutsch oft <em>Funktionsabschluss</em> genannt. Betrachten wir diese beiden Unterprobleme genauer. Wir werden sehen, das beide in ECMAScript mithilfe der Eigenschaft <code>[[Scope]]</code> gelöst werden, welche bereits in den Schaubildern vorgekommen ist.</p>
+<p>Es gibt zwei konzeptionelle Probleme bei funktionalen Parametern und funktionalen Rückgabewerten. Diese sind Unterprobleme des allgemeinen <em>»Funarg-Problems«</em> (das Problem eines funktionalen Parameters). Um dieses Problem vollständig zu lösen, wurde das Konzept der <em>Closures</em> erfunden – auf Deutsch oft <em>Funktionsabschluss</em> genannt. Betrachten wir diese beiden Unterprobleme genauer. Wir werden sehen, das beide in ECMAScript mithilfe der Eigenschaft <code>[[Scope]]</code> gelöst werden, welche bereits in den Schaubildern vorgekommen ist.</p>
 
-<p>Der erste Untertyp des Funarg-Problems ist das <em>Aufwärts</em>-Problem. Es tritt auf, wenn eine Funktion aus einer anderen nach »oben« gegeben wird und auf freie Variablen zugreift (diesen Begriff haben wir bereits kennengelernt). Damit eine solche innere Funktion auf die Variablen seines übergeordneten Kontexts zugreifen kann, <em>auch nachdem dieser Kontext bereits beendet wurde</em>, speichert die innere Funktion <em>im Moment ihrer Erzeugung</em> die <em>Scope-Chain</em> des übergeordneten Kontext in seiner Eigenschaft <code>[[Scope]]</code>. Wenn diese Funktion nun <em>aufgerufen</em> wird, besteht dessen Scope-Chain aus einer Kombination des Aktivierungsobjekts und eben jener Eigenschaft <code>[[Scope]]</code> &ndash; das haben wir im Grunde schon in den obigen Schaubildern gesehen:</p>
+<p>Der erste Untertyp des Funarg-Problems ist das <em>Aufwärts</em>-Problem. Es tritt auf, wenn eine Funktion aus einer anderen nach »oben« gegeben wird und auf freie Variablen zugreift (diesen Begriff haben wir bereits kennengelernt). Damit eine solche innere Funktion auf die Variablen seines übergeordneten Kontexts zugreifen kann, <em>auch nachdem dieser Kontext bereits beendet wurde</em>, speichert die innere Funktion <em>im Moment ihrer Erzeugung</em> die <em>Scope-Chain</em> des übergeordneten Kontext in seiner Eigenschaft <code>[[Scope]]</code>. Wenn diese Funktion nun <em>aufgerufen</em> wird, besteht dessen Scope-Chain aus einer Kombination des Aktivierungsobjekts und eben jener Eigenschaft <code>[[Scope]]</code> – das haben wir im Grunde schon in den obigen Schaubildern gesehen:</p>
 
 <pre>Scope-Chain = Aktivierungsobjekt + [[Scope]]</pre>
 
@@ -629,7 +629,7 @@ data[2](); // 2</pre>
 
 <p class="definition">Der Wert <code>this</code> ist ein besonderes Objekt, das mit dem Ausführungskontext verbunden ist. Daher kann es auch <em>Kontextobjekt</em> genannt werden.</p>
 
-<p><em>Jedes beliebige Objekt</em> kann als <code>this</code>-Wert eines Kontexts dienen. Ich möchte Missverständnissen entgegentreten, die sich manchmal in Beschreibungen des Ausführungskontexts in ECMAScript und insbesondere des <code>this</code>-Werts finden. Oft wird der <code>this</code>-Wert fälschlicherweise als eine Eigenschaft des Variablenobjekts beschrieben &ndash; vor kurzem erst in <a href="http://shop.oreilly.com/product/9780596802806.do">diesem Buch</a> (auch wenn das Kapitel 2 ansonsten sehr gut ist). Zur Wiederholung:</p>
+<p><em>Jedes beliebige Objekt</em> kann als <code>this</code>-Wert eines Kontexts dienen. Ich möchte Missverständnissen entgegentreten, die sich manchmal in Beschreibungen des Ausführungskontexts in ECMAScript und insbesondere des <code>this</code>-Werts finden. Oft wird der <code>this</code>-Wert fälschlicherweise als eine Eigenschaft des Variablenobjekts beschrieben – vor kurzem erst in <a href="http://shop.oreilly.com/product/9780596802806.do">diesem Buch</a> (auch wenn das Kapitel 2 ansonsten sehr gut ist). Zur Wiederholung:</p>
 
 <p class="definition">Der <em>Wert <code>this</code></em> ist eine <em>Eigenschaft des Ausführungskontexts</em>, <em>nicht</em> eine Eigenschaft des Variablenobjekts.</p>
 
@@ -647,7 +647,7 @@ console.log(
   window.x // 10
 );</pre>
 
-<p>In einem Funktionskontext kann sich der <em><code>this</code>-Wert</em> bei <em>jedem Funktionsaufruf unterscheiden</em>. Hier wird der <code>this</code>-Wert vom aufrufenden Kontext bereitgestellt, und zwar über die <em>Art des Aufruf-Ausdrucks</em> (<em lang="en">call expression</em>) &ndash; das ist die Weise, wie die Funktion aufgerufen wird. Im Beispiel wird die Funktion <code>foo</code> (der Aufgerufene) vom globalen Kontext aufgerufen (der Aufrufende). Anhand des Beispiels sehen wir, wie sich der <code>this</code>-Wert bei gleichbleibendem Funktionscode abhängig von der Art des Aufrufs unterscheidet.
+<p>In einem Funktionskontext kann sich der <em><code>this</code>-Wert</em> bei <em>jedem Funktionsaufruf unterscheiden</em>. Hier wird der <code>this</code>-Wert vom aufrufenden Kontext bereitgestellt, und zwar über die <em>Art des Aufruf-Ausdrucks</em> (<em lang="en">call expression</em>) – das ist die Weise, wie die Funktion aufgerufen wird. Im Beispiel wird die Funktion <code>foo</code> (der Aufgerufene) vom globalen Kontext aufgerufen (der Aufrufende). Anhand des Beispiels sehen wir, wie sich der <code>this</code>-Wert bei gleichbleibendem Funktionscode abhängig von der Art des Aufrufs unterscheidet.
 
 <pre>
 // Der Code der Funktion »foo« ändert sich nicht, aber der this-Wert
@@ -680,7 +680,7 @@ otherFoo(); // this ist wieder das globale Objekt</pre>
 
 <h2 id="conclusion">Fazit</h2>
 
-<p>An dieser Stelle sind wir am Ende dieser kurzen Übersicht angelangt &ndash; auch wenn sie letztendlich nicht kurz wurde. ;) Trotzdem würde die eingehende Erläuterung dieser Themen ein ganzes Buch erfordern. Wir haben zwei große Themen noch nicht einmal berührt: Funktionen und die verschiedenen Typen von Funktionen (<em>Funktionsausdrücke</em> vs. <em>Funktionsdeklarationen</em>) sowie die Auswertungsstrategie in ECMAScript. Beide Themen werden in gesonderten Kapiteln der Artikelreihe behandelt: <a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/">Chapter 5. Functions</a> und <a href="http://dmitrysoshnikov.com/ecmascript/chapter-8-evaluation-strategy/">Chapter 8. Evaluation strategy</a>.
+<p>An dieser Stelle sind wir am Ende dieser kurzen Übersicht angelangt – auch wenn sie letztendlich nicht kurz wurde. ;) Trotzdem würde die eingehende Erläuterung dieser Themen ein ganzes Buch erfordern. Wir haben zwei große Themen noch nicht einmal berührt: Funktionen und die verschiedenen Typen von Funktionen (<em>Funktionsausdrücke</em> vs. <em>Funktionsdeklarationen</em>) sowie die Auswertungsstrategie in ECMAScript. Beide Themen werden in gesonderten Kapiteln der Artikelreihe behandelt: <a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/">Chapter 5. Functions</a> und <a href="http://dmitrysoshnikov.com/ecmascript/chapter-8-evaluation-strategy/">Chapter 8. Evaluation strategy</a>.
 
 <p>Falls Sie Kommentare, Fragen oder Ergänzungen haben, stehe ich gerne für Diskussionen in den <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">Blog-Kommentaren</a> zur Verfügung.</p>
 
