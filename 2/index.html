@@ -67,16 +67,17 @@ body {
 }
 
 header {
-  margin: 2rem 0;
+  margin: 3rem 0;
   text-align: center;
 }
 
 h1 {
-  border-top: 2px solid #284a66;
-  border-bottom: 2px solid #284a66;
+  border-style: solid none solid;
+  border-width: 2px;
+  border-color: navy;
   margin: 0;
-  padding: 1rem 0;
-  font-size: 2rem;
+  padding: 2rem 0;
+  font-size: 2.5rem;
   font-weight: normal;
   line-height: 1.4;
 }
@@ -92,22 +93,22 @@ nav {
 
 h2 {
   margin: 2rem 0 1.5rem;
-  border-bottom: 2px solid #284a66;
+  border-bottom: 2px solid navy;
   padding-left: 2px;
   font-size: 1.7rem;
   font-weight: normal;
 }
 
-p {
-  margin-top: 1.2rem;
-  margin-bottom: 1.2rem;
+p, pre {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .definition {
   margin-left: 3px;
-  border-left: 3px solid #2c69a0;
+  border-left: 3px solid navy;
   padding-left: 1rem;
-  color: #000;
+  color: black;
 }
 
 .note {
@@ -154,16 +155,14 @@ img {
 
 pre, code {
   color: #02a;
-  padding: 2px;
   font-family: 'Monaco', 'Consolas', 'Droid Sans Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', 'Liberation Mono', 'Courier New', monospace;
 }
 
 pre {
-  margin: 1.3rem 0;
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0;
   padding: 1rem 1.5rem;
-  background-color: #fafafa;
-  font-size: 90%;
+  background-color: #fbfbfb;
+  font-size: 0.9rem;
   line-height: 1.5;
   white-space: pre-wrap;
 }
@@ -171,6 +170,10 @@ pre {
 pre strong {
   color: green;
   font-weight: normal;
+}
+
+code {
+  padding: 2px;
 }
 
 a:link {
@@ -186,18 +189,18 @@ em[lang='en'] {
   font-size: 80%;
 }
 
-p[lang='en'],
-pre[lang='en'],
-figure[lang='en'] {
-  color: #aaa;
-  font-size: 0.9rem;
-}
-
 hr {
   border-style: none none solid;
   border-width: 1px;
   border-color: #ccc;
   height: 0;
+}
+
+p[lang='en'],
+pre[lang='en'],
+figure[lang='en'] {
+  color: #aaa;
+  font-size: 0.9rem;
 }
 </style>
 </head>
@@ -217,13 +220,14 @@ hr {
   </h1>
   <p class='subtitle'>Deutsche Übersetzung des Artikels
     <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/'>JavaScript. The Core: 2nd Edition</a><br>
-    von <a href='http://dmitrysoshnikov.com/'>Dmitry A. Soshnikov</a></p>
+    von <a href='http://dmitrysoshnikov.com/'>Dmitry A. Soshnikov</a>
+  </p>
 </header>
 
 <p lang='en'>This is the <em>second edition</em> of the
   <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/'>JavaScript. The Core</a> overview lecture, devoted to ECMAScript programming language and core components of its runtime system.
 </p>
-<p>Dies ist die <strong>zweite Ausgabe</strong> des Übersichtsartikels <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/' lang='de'>JavaScript. The Core</a>, der sich der Programmiersprache ECMAScript und den Kernkomponenten der Laufzeitumgebung widmet.</p>
+<p>Dies ist die <strong>zweite Ausgabe</strong> des Übersichtsartikels <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/' lang='de'>JavaScript. The Core</a>, der sich der Programmiersprache ECMAScript und den Kernkomponenten ihrer Laufzeitumgebung widmet.</p>
 
 <p lang='en'><strong>Audience:</strong> experienced programmers, experts.</p>
 <p>Die <strong>Zielgruppe</strong> dieses Artikels sind erfahrene Programmierer und Experten.</p>
@@ -247,7 +251,7 @@ hr {
 <p lang='en'>The
   <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/'>first edition</a> of the article covers generic aspects of JS language, using abstractions mostly from the legacy ES3 spec, with some references to the appropriate changes in ES5 and ES6 (aka ES2015).
 </p>
-<p>Die <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/' lang='en'>erste Ausgabe dieses Artikels</a> (<a href='https://molily.de/javascript-core/'>deutsche Übersetzung</a>) behandelte die allgemeinen Aspekte der Sprache JavaScript unter Bezugnahme auf Konzepte der veralteten ECMAScript-3-Spezifikation mit Verweis auf Änderungen in ECMAScript 5 und 6 (auch ES2015 genannt).</p>
+<p>Die <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/' lang='en'>erste Ausgabe dieses Artikels</a> (<a href='../'>deutsche Übersetzung</a>) behandelte die allgemeinen Aspekte der Sprache JavaScript unter Bezugnahme auf Konzepte der veralteten ECMAScript-3-Spezifikation mit Verweis auf Änderungen in ECMAScript 5 und 6 (auch ES2015 genannt).</p>
 <p lang='en'>Starting since ES2015, the specification changed descriptions and structures of some core components, introduced new models, etc. And in this edition we focus on the newer abstractions, updated terminology, but still maintaining the very basic JS structures which stay consistent throughout the spec versions.</p>
 <p>Mit ES2015 änderten sich die Beschreibungen und Strukturen mancher Kernkomponenten. Neue Modelle wurden eingefügt. In dieser Ausgabe richten wir unser Augenmerk auf die neueren Konzepte und die aktualisierte Terminologie. Dabei behalten wir die basalen JavaScript-Strukturen bei, die durch die Versionen gleich geblieben sind. </p>
 <p lang='en'>This article covers ES2017+ runtime system.</p>
@@ -1852,7 +1856,7 @@ onmessage = (message) =&gt; {
 <p lang='en'>Here though we tried to represent the
   <em>logical structure</em> of an ECMAScript program itself, and hopefully it clarified these details. If you have any questions, suggestions or feedback, &#8212; as always I’ll be glad to discuss them in comments.
 </p>
-<p>Dieser Artikel hingegen hat versucht, die <em>logische Struktur</em> eines ECMAScript-Programms darzustellen. Falls Sie Fragen, Anregungen oder Feedback haben – ich freue mich immer darauf, sie im Kommentarbereich zu diskutieren.</p>
+<p>Dieser Artikel hingegen hat versucht, die <em>logische Struktur</em> eines ECMAScript-Programms darzustellen. Falls Sie Fragen, Anregungen oder Feedback haben – ich freue mich immer darauf, sie im <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/#comments'>Kommentarbereich</a> zu diskutieren.</p>
 <p lang='en'>I’d like to thank the TC-39 representatives and spec editors which helped with clarifications for this article. The discussion can be found in
   <a href='https://twitter.com/DmitrySoshnikov/status/930507793047592960'>this Twitter thread</a>.
 </p>

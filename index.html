@@ -8,12 +8,12 @@
 <style>
 html {
   margin: 0;
-  padding: 2em;
+  padding: 2rem;
 }
 
 body {
   margin: 0 auto;
-  max-width: 44em;
+  max-width: 43rem;
   color: #202020;
   background-color: white;
   font-family: 'Fontin Sans', "-apple-system", system-ui, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -21,72 +21,76 @@ body {
 }
 
 header {
-  margin: 2em 0;
+  margin: 3rem 0;
   text-align: center;
 }
 
 h1 {
-  border-bottom: 2px solid #284A66;
+  border-style: solid none solid;
+  border-width: 2px;
+  border-color: navy;
   margin: 0;
-  font-size: 2.5em;
+  padding: 2rem 0;
+  font-size: 2.5rem;
   font-weight: normal;
+  line-height: 1.4;
 }
 
 .subtitle {
-  margin: 1em 0;
-  font-size: 120%;
+  margin: 1rem 0;
+  font-size: 1.2rem;
 }
 
 nav {
-  margin: 2em 0;
+  margin: 2rem 0;
 }
 
 h2 {
-  margin: 2em 0 1.5em;
-  border-bottom: 2px solid #284A66;
+  margin: 2rem 0 1.5rem;
+  border-bottom: 2px solid navy;
   padding-left: 2px;
-  font-size: 1.7em;
+  font-size: 1.7rem;
   font-weight: normal;
 }
 
-p {
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
+p, pre {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .definition {
-  margin-left: 2px;
-  border-left: 2px solid #284A66;
-  padding-left: 1em;
-  color: #000;
+  margin-left: 3px;
+  border-left: 3px solid navy;
+  padding-left: 1rem;
+  color: black;
 }
 
 figure {
-  margin: 2.5em 0;
-  text-align: center;
-  color: #444;
+  margin: 2rem 0;
 }
 
 figcaption {
-  margin-top: 0.5em;
+  margin-top: 1rem;
+  text-align: center;
+  color: #666;
 }
 
 img {
+  display: block;
+  margin: auto;
   max-width: 100%;
 }
 
 pre, code {
-  color: #02A;
-  padding: 2px;
-  font-family: consolas, 'bitstream vera sans monospace', 'lucida console', 'liberation mono', monaco, 'courier new', courier, monospace;
+  color: #02a;
+  font-family: 'Monaco', 'Consolas', 'Droid Sans Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', 'Liberation Mono', 'Courier New', monospace;
 }
 
 pre {
-  margin: 1.3em 0;
-  border: 1px solid #ccc;
-  padding: 1em 1.5em;
-  background-color: #fafafa;
-  font-size: 90%;
+  border: 1px solid #e0e0e0;
+  padding: 1rem 1.5rem;
+  background-color: #fbfbfb;
+  font-size: 0.9rem;
   line-height: 1.5;
   white-space: pre-wrap;
 }
@@ -96,18 +100,22 @@ pre strong {
   font-weight: normal;
 }
 
+code {
+  padding: 2px;
+}
+
 em[lang="en"] {
-  color: #505050;
+  color: #705050;
 }
 
 .bct {
   margin: 0;
-  font-size: 80%;
+  font-size: 0.8rem;
 }
 
 .translation-note {
   color: #505050;
-  font-size: 90%;
+  font-size: 0.9rem;
 }
 </style>
 </head>
@@ -118,7 +126,9 @@ em[lang="en"] {
 <header>
   <h1>Die Grundlagen von JavaScript</h1>
   <p class="subtitle">
-    Deutsche Übersetzung des Artikels <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript. The core.</a> von <a href="http://dmitrysoshnikov.com/">Dmitry A. Soshnikov</a></p>
+    Deutsche Übersetzung des Artikels <a href="http://dmitrysoshnikov.com/ecmascript/javascript-the-core/">JavaScript. The core.</a><br>
+    von <a href="http://dmitrysoshnikov.com/">Dmitry A. Soshnikov</a>
+  </p>
 </header>
 
 <nav>
