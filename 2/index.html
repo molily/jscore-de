@@ -200,6 +200,10 @@ figure[lang='en'] {
   <a href='https://molily.de/' title='Startseite'>molily.de</a>
 </p>
 
+<button onclick='document.querySelectorAll("p[lang=en],pre[lang=en],figure[lang=en]").forEach((e)=>{e.remove()});this.remove()'>
+  Englisches Original verstecken
+</button>
+
 <header>
   <h1>
     Die Grundlagen von JavaScript:<br>Zweite Ausgabe
@@ -245,7 +249,7 @@ figure[lang='en'] {
   <strong>Note:</strong> the latest version of the
   <a href='https://tc39.github.io/ecma262/'>ECMAScript specification</a> can be found on the TC-39 website.
 </p>
-<p class='note'><strong>Hinweis:</strong> The neueste Version der <a href='https://tc39.github.io/ecma262/'>ECMAScript-Spezifikation</a> finden Sie auf der Website der <abbr title='Technical Committee' lang='en'>TC</abbr>-39-Arbeitsgruppe.</p>
+<p class='note'><strong>Hinweis:</strong> Die neueste Version der <a href='https://tc39.github.io/ecma262/'>ECMAScript-Spezifikation</a> finden Sie auf der Website der <abbr title='Technical Committee' lang='en'>TC</abbr>-39-Arbeitsgruppe.</p>
 <p lang='en'>We start our discussion with the concept of an
   <em>object</em>, which is fundamental to ECMAScript.</p>
 <p>Wir beginnen die Abhandlung mit dem Konzept des <em>Objekts</em>, denn es ist fundamental für ECMAScript.</p>
@@ -680,7 +684,7 @@ console.log(
   <em>execution context</em> is a specification device that is used to track the runtime evaluation of the code.
 </p>
 <p class='definition'><strong>Definition 7: Ausführungskontext:</strong> Ein <em>Ausführungskontext</em> ist das Mittel der ECMAScript-Spezifikation, um die Auswertung des Codes zur Laufzeit zu protokollieren.</p>
-<p>There are several types of ECMAScript code: the
+<p lang='en'>There are several types of ECMAScript code: the
   <em>global code</em>, <em>function code</em>,
   <em><code>eval</code> code</em>, and
   <em>module code</em>; each code is evaluated in its execution context. Different code types, and their appropriate objects may affect the structure of an execution context: for example,
@@ -1006,9 +1010,9 @@ console.log(
   <em>nor a local variable</em> of this function.
 </p>
 <p class='definition'><strong>Definition 12: Freie Variable:</strong> eine Variable, die <em>weder ein Parameter</em> noch eine <em>lokale Variable</em> der jeweiligen Funktion ist.</p>
-<p>Let’s take a look at the Funarg problem, and see how it’s solved in ECMAScript.</p>
+<p lang='en'>Let’s take a look at the Funarg problem, and see how it’s solved in ECMAScript.</p>
 <p>Schauen wir uns das Funarg-Problem und seine Lösung in ECMAScript an.</p>
-<p>Consider the following code snippet:</p>
+<p lang='en'>Consider the following code snippet:</p>
 <p>Untersuchen wir folgenden Code-Schnipsel:</p>
 <pre lang='en'>
 let x = 10;
@@ -1545,7 +1549,7 @@ console.log(
 <p lang='en'>Current version of the specification doesn’t provide an ability to explicitly create realms, but they can be created implicitly by the implementations. There is a
   <a href='https://github.com/tc39/proposal-realms/'>proposal</a> though to expose this API to user-code.
 </p>
-<p>Die aktuelle Version der ECMAScript-Spezifikatio bietet keine Möglichkeit, um Gebiete programmatisch zu erstellen. Sie können jedoch implizit von den Implementierungen erstellt werden. Es gibt einen <a href='https://github.com/tc39/proposal-realms/'>Vorschlag</a>, der vorsieht diese Programmierschnittstelle (API) für normalen Benutzer-Code zugänglich zu machen.</p>
+<p>Die aktuelle Version der ECMAScript-Spezifikation bietet keine Möglichkeit, um Gebiete programmatisch zu erstellen. Sie können jedoch implizit von den Implementierungen erstellt werden. Es gibt einen <a href='https://github.com/tc39/proposal-realms/'>Vorschlag</a>, der vorsieht diese Programmierschnittstelle (API) für normalen Benutzer-Code zugänglich zu machen.</p>
 <p lang='en'>Logically though, each context from the stack is always associated with its realm:</p>
 <p>Jeder Kontext auf dem Stapel hat eine logische Verbindung zu seinem Gebiet:</p>
 <figure lang='en'>
