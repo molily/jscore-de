@@ -404,7 +404,7 @@ console.log(
   <b>Def. 4: Delegation:</b> a mechanism used to resolve a property in the inheritance chain. The process happens at runtime, hence is also called
   <strong><em>dynamic dispatch</em></strong>.
 </p>
-<p class='definition'><strong>Definition 4: Delegation:</strong> Ein Mechanismus zur Auflösung einer Eigenschaft entlang der Vererbungs-Kette. Dieser Prozess findet zur Laufzeit statt, daher wird er auch <strong><em>dynamische Auslieferung</em></strong> (<em lang='en'>dynamic dispatch</em>) genannt.</p>
+<p class='definition'><strong>Definition 4: Delegation:</strong> Ein Mechanismus zur Auflösung einer Eigenschaft entlang der Vererbungskette. Dieser Prozess findet zur Laufzeit statt, daher wird er auch <strong><em>dynamische Auslieferung</em></strong> (<em lang='en'>dynamic dispatch</em>) genannt.</p>
 <p class='note' lang='en'><strong>Note:</strong> in contrast with
   <em>static dispatch</em> when references are resolved at
   <em>compile time</em>,
@@ -464,7 +464,7 @@ console.log(dict.toString); // undefined
 <p lang='en'>The <em>dynamic dispatch</em> mechanism allows
   <em>full mutability</em> of the inheritance chain, providing an ability to change the delegation object:
 </p>
-<p>Die <em>dynamische Auslieferung</em> ermöglicht das <em>uneingeschränkte Ändern</em> der Vererbungs-Kette. Sie erlaubt es, das Objekt zu ändern, an das delegiert wird:</p>
+<p>Die <em>dynamische Auslieferung</em> ermöglicht das <em>uneingeschränkte Ändern</em> der Vererbungskette. Sie erlaubt es, das Objekt zu ändern, an das delegiert wird:</p>
 <pre lang='en'>
 let protoA = {x: 10};
 let protoB = {x: 20};
@@ -769,7 +769,7 @@ recursive(0);
 <p lang='en'>You can find more details on execution contexts in the
   <a href='http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/'>appropriate chapter</a>.
 </p>
-<p>Mehr Informationen zu Ausführungskontexten in ECMAScript finden Sie im <a href='http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/'>entsprechenden Kapitel</a>.</p>
+<p>Mehr Informationen zu Ausführungskontexten in ECMAScript finden Sie <a href='http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/'>im entsprechenden Kapitel</a>.</p>
 <p lang='en'>In general, the code of a context
   <em>runs to completion</em>, however as we mentioned above, some objects &#8212; such as
   <em>generators</em>, may violate LIFO order of the stack. A generator function may suspend its running context, and
@@ -893,7 +893,7 @@ foo(30); // 150
   <strong>Note:</strong> you can get detailed information about lexical environment in
   <a href='http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-2-lexical-environments-ecmascript-implementation/'>this article</a>.
 </p>
-<p class='note'><strong>Hinweis:</strong> Mehr Informationen über lexikalische Umgebungn finden Sie <a href='http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-2-lexical-environments-ecmascript-implementation/'>in diesem Artikel</a>.</p>
+<p class='note'><strong>Hinweis:</strong> Mehr Informationen über lexikalische Umgebungen finden Sie <a href='http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-2-lexical-environments-ecmascript-implementation/'>in diesem Artikel</a>.</p>
 <p lang='en'>Environment records differ by <em>type</em>. There are
   <strong><em>object</em></strong> environment records and
   <strong><em>declarative</em></strong> environment records. On top of the declarative record there are also
@@ -906,7 +906,7 @@ foo(30); // 150
   <em>global environment</em>. Such record has also associated
   <em>binding object</em>, which may store some properties from the record, but not the others, and vice-versa. The binding object can also be provided as
   <code>this</code> value.</p>
-<p>Ein Beispiel für ein <em>Objekt-Umgebungsregister</em> ist das Register der <em>globalen Umgebung</em>. Dieses Register besitzt ein zugehöriges <em>Verbindungs-Objekt</em> (<em lang='en'>binding object</em>), welches einige Eigenschaften des Registers speichern kann, andere jedoch nicht [XXXX vice-versa?]. Das Verbindungs-Objekt kann außerdem als <code>this</code>-Wert dienen.</p>
+<p>Ein Beispiel für ein <em>Objekt-Umgebungsregister</em> ist das Register der <em>globalen Umgebung</em>. Dieses Register besitzt ein zugehöriges <em>Verbindungsobjekt</em> (<em lang='en'>binding object</em>). Das Verbindungsobjekt kann einige Eigenschaften des Registers speichern, aber nicht alle. Dasselbe gilt umgekehrt. Das Verbindungsobjekt kann außerdem als <code>this</code>-Wert dienen.</p>
 <pre lang='en'>
 // Legacy variables using `var`.
 var x = 10;
@@ -952,8 +952,8 @@ console.log(
   y, // 20
 );
 
-// Lediglich `x` wird zum »Verbindungs-Objekt« hinzugefügt.
-// Das Verbindungs-Objekt der globalen Umgebung ist
+// Lediglich `x` wird zum »Verbindungsobjekt« hinzugefügt.
+// Das Verbindungsobjekt der globalen Umgebung ist
 // das globale Objekt, das auch über `this` verfügbar ist:
 
 console.log(
@@ -961,7 +961,7 @@ console.log(
   this.y, // undefined!
 );
 
-// Das Verbindungs-Objekt kann einen Namen speichern,
+// Das Verbindungsobjekt kann einen Namen speichern,
 // der nicht im Umgebungsregister steht,
 // weil er kein gültiger Bezeichner ist:
 
@@ -978,14 +978,14 @@ console.log(
   <figcaption>Figure 7. A binding object.</figcaption>
 </figure>
 <figure>
-  <img src='env-binding-object.png' width='500' alt='Abbildung 7. Ein Verbindungs-Objekt.'>
+  <img src='env-binding-object.png' width='500' alt='Abbildung 7. Ein Verbindungsobjekt.'>
   <figcaption>
-    <p>Abbildung 7. Ein Verbindungs-Objekt.</p>
+    <p>Abbildung 7. Ein Verbindungsobjekt.</p>
     <table>
       <caption>Legende</caption>
       <tr><th>Global env</th><td>Globale Umgebung</td></tr>
       <tr><th>Global EnvRec</th><td>Globales Umgebungsregister</td></tr>
-      <tr><th>Global EnvRec BindingObject</th><td>Verbindungs-Objekt des globalen Umgebungsregisters</td></tr>
+      <tr><th>Global EnvRec BindingObject</th><td>Verbindungsobjekt des globalen Umgebungsregisters</td></tr>
     </table>
   </figcaption>
 </figure>
@@ -994,7 +994,7 @@ console.log(
   <code>var</code>-declarations, and
   <code>with</code>-statements, which also provide their object as a binding object. These are historical reason when environments were represented as simple objects. Currently the environments model is much more optimized, however as a result we can’t access binding as properties anymore.
 </p>
-<p>Beachten Sie, dass das Verbindungs-Objekt bloß existiert, um <em>veraltete Sprachkonstrukte</em> zu abzudecken. Das sind beispielsweise die <code>var</code>-Deklaration und das <code>with</code>-Statement, das ein Objekt als Verbindungs-Objekt zur Verfügung stellt. Heute hingegen ist das Modell der Umgebungen weit ausgereifter. Dies hat jedoch dazu geführt, dass wir auf Verbindungen nicht mehr als Eigenschaften zugreifen können.</p>
+<p>Beachten Sie, dass das Verbindungsobjekt bloß existiert, um <em>veraltete Sprachkonstrukte</em> zu abzudecken. Das sind beispielsweise die <code>var</code>-Deklaration und das <code>with</code>-Statement, das ein Objekt als Verbindungsobjekt zur Verfügung stellt. Aus historischen Gründen wurde eine Umgebung als einfaches Objekt modelliert. Heute hingegen ist das Modell der Umgebungen weit ausgereifter. Dies hat jedoch dazu geführt, dass wir auf Verbindungen nicht mehr als Eigenschaften zugreifen können.</p>
 <p lang='en'>We have already seen how environments are related via the parent link. Now we shall see how an environment can
   <em>outlive</em> the context which creates it. This is the basis for the mechanism of
   <em>closures</em> which we’re about to discuss.</p>
@@ -1014,7 +1014,7 @@ console.log(
   <a href='https://en.wikipedia.org/wiki/Funarg_problem'>&#8220;Funarg problem&#8221;</a> is related (or
   <em>&#8220;A problem of a functional argument&#8221;</em>). The problem arises when a function has to deal with
   <em>free variables</em>.</p>
-<p>Eng verknüpft mit dem Konzept der Funktionen erster Klasse ist das sogenannte <a href='https://en.wikipedia.org/wiki/Funarg_problem'>»Funarg problem«</a> (das <em>Problem eines funktionalen Parameters</em>). Dieses Problem tritt auf, wenn eine Funktion auf <em>freie Variablen</em> zugreifen muss.</p>
+<p>Eng verknüpft mit dem Konzept der Funktionen erster Klasse ist das sogenannte <a href='https://en.wikipedia.org/wiki/Funarg_problem'>»Funarg problem«</a> (das <em>Problem des funktionalen Parameters</em>). Dieses Problem tritt auf, wenn eine Funktion auf <em>freie Variablen</em> zugreifen muss.</p>
 <p class='definition' lang='en'>
   <b>Def. 12: Free variable:</b> a variable which is
   <em>neither a parameter</em>,
@@ -1073,11 +1073,11 @@ bar(foo);
   <em>correct environment</em> of a binding: should it be an environment of the
   <em>creation time</em>, or environment of the <em>call time</em>?
 </p>
-<p>Der obige Anwendungsfall ist als <strong><em>Abwärts-Funarg-Problem</em></strong> (<em lang='en'>downward funarg problem</em>) bekannt. Das Problem besteht in der <em>Mehrdeutigkeit</em> beim Bestimmen der <em>korrekten Umgebung</em> einer Verbindung: Wird die Umgebung zum <em>Zeitpunkts der Erzeugung</em> verwendet oder die Umgebung zum <em>Zeitpunkts des Aufrufs</em>?</p>
+<p>Der obige Anwendungsfall ist als <strong><em>Abwärts-Funarg-Problem</em></strong> (<em lang='en'>downward funarg problem</em>) bekannt. Das Problem besteht in einer <em>Mehrdeutigkeit</em> beim Bestimmen der <em>korrekten Umgebung</em> einer Verbindung: Wird die Umgebung zum <em>Zeitpunkts der Erzeugung</em> verwendet oder die Umgebung zum <em>Zeitpunkts des Aufrufs</em>?</p>
 <p lang='en'>This is solved by an agreement of using
   <em>static scope</em>, that is the scope of the
   <em>creation time</em>.</p>
-<p>ECMAScript löst das Problem, indem man sich auf einen <em>statischen Geltungsbereich</em> geeinigt hat. Das ist der Geltungsbereich zum <em>Zeitpunkt der Erzeugung</em>.</p>
+<p>ECMAScript löst das Problem, indem man sich auf einen <em>statischen</em>, das heißt unveränderlichen Geltungsbereich geeinigt hat. Das ist der Geltungsbereich zum <em>Zeitpunkt der Erzeugung</em>.</p>
 <p class='definition' lang='en'>
   <b>Def. 13: Static scope:</b> a language implements
   <em>static scope</em>, if only by looking at the source code one can determine in which environment a binding is resolved.
@@ -1175,7 +1175,7 @@ bar(); // 10, nicht 20!
   <em>captured</em> it, so it
   <em>cannot be deallocated</em>, and is preserved &#8212; to support
   <em>static scope</em> semantics.</p>
-<p>Technisch gesehen haben wir es mit dem gleichen Mechanismus zu tun, der die Umgebung festhält, in dem eine Funktion definiert wurde. In diesem Fall jedoch würde die Aktivierungsumgebung von <code>foo</code> <em>zerstört werden</em>, wenn es die Closure nicht gäbe. Aber wir haben sie <em>festgehalten</em>, sodass sie nicht aus dem Speicher geräumt (dealloziert) wird. Daher bleibt die Aktivierungsumgebung erhalten, um das Verhalten des <em>statische Geltungsbereichs</em> zu ermöglichen.</p>
+<p>Technisch gesehen haben wir es mit dem gleichen Mechanismus zu tun, der die Umgebung festhält, in dem eine Funktion definiert wurde. In diesem Fall jedoch würde die Aktivierungsumgebung von <code>foo</code> <em>zerstört werden</em>, wenn es die Closure nicht gäbe. Aber wir haben sie <em>festgehalten</em>, sodass sie nicht aus dem Speicher geräumt (dealloziert) wird. Daher bleibt die Aktivierungsumgebung erhalten, um das Verhalten des <em>statischen Geltungsbereichs</em> zu ermöglichen.</p>
 <p lang='en'>Often there is an incomplete understanding of closures &#8212; usually developers think about closures only in terms of the upward funarg problem (and practically it really makes more sense). However, as we can see, technical mechanism for
   <em>downward</em> and <em>upward funarg problem</em> is
   <em>exactly the same</em> &#8212; and is the
@@ -1235,12 +1235,12 @@ console.log(
 <p lang='en'>You can find a detailed discussion on closures and the Funarg problem in the
   <a href='http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/'>appropriate chapter</a>.
 </p>
-<p>Sie finden eine genaue Beschreibung von Closures und des Funarg-Problems im <a href='http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/'>entsprechenden Kapitel</a>.</p>
+<p>Sie finden eine genaue Beschreibung von Closures und des Funarg-Problems <a href='http://dmitrysoshnikov.com/ecmascript/chapter-6-closures/'>im entsprechenden Kapitel</a>.</p>
 <p lang='en'>So all identifiers are statically scoped. There is however
   <em>one</em> value which is
   <em>dynamically scoped</em> in ECMAScript. It’s the value of
   <code>this</code>.</p>
-<p>Alle Bezeichner werden also in einem statischen, unveränderlichen Geltungsbereich aufgelöst. Es gibt jedoch <em>genau einen</em> Wert in ECMAScript, der <em>dynamisch aufgelöst</em> wird. Es ist der Wert <code>this</code>.</p>
+<p>Alle Bezeichner werden also in einem statischen Geltungsbereich aufgelöst. Es gibt jedoch <em>genau einen</em> Wert in ECMAScript, der <em>dynamisch aufgelöst</em> wird. Es ist der Wert <code>this</code>.</p>
 
 <h2 id='this'>This</h2>
 <p lang='en'>The <code>this</code> value is a special object which is
@@ -1325,7 +1325,7 @@ console.log(
   <code>this</code> value is exactly
   <code>p1</code>, and in the second case it’s <code>p2</code>.
 </p>
-<p>Wenn die Methode <code>getX</code> aufgerufen wird, wird eine neue Umgebung erzeugt, um die lokalen Variablen und Parameter zu speichern. Zudem bekommt der Eintrag <code>[[ThisValue]]</code> im <em>Funktions-Umgebungsregister</em> einen Wert zugewiesen. Dieser Wert wird <em>dynamisch</em> bestimmt abhängig davon, wie die Funktion aufgerufen wird. Wenn die Funktion mit <code>p1</code> aufgerufen wird, so ist der <code>this</code>-Wert eben <code>p1</code>. Im zweiten Fall ist der Wert <code>p2</code>.</p>
+<p>Wenn die Methode <code>getX</code> aufgerufen wird, wird eine neue Umgebung erzeugt, um die lokalen Variablen und Parameter zu speichern. Zudem bekommt der Eintrag <code>[[ThisValue]]</code> im <em>Funktions-Umgebungsregister</em> einen Wert zugewiesen. Dieser Wert wird <em>dynamisch</em> bestimmt abhängig davon, wie die Funktion aufgerufen wird. Word die Funktion als Methode von <code>p1</code> aufgerufen, so ist der <code>this</code>-Wert eben <code>p1</code>. Im zweiten Fall ist der Wert <code>p2</code>.</p>
 <p lang='en'>Another application of <code>this</code>, is
   <em>generic interface functions</em>, which can be used in
   <em>mixins</em> or <em>traits</em>.</p>
@@ -1462,7 +1462,7 @@ console.log(savedBaz()); // Das globale Objekt
   <code>this</code> value is determined, and why the code from above works the way it does, in the
   <a href='http://dmitrysoshnikov.com/ecmascript/chapter-3-this/'>appropriate chapter</a>.
 </p>
-<p class='note'><strong>Hinweis:</strong> Sie finden eine genaue Erklärung, wie der Wert <code>this</code> bestimmt wird, im <a href='http://dmitrysoshnikov.com/ecmascript/chapter-3-this/'>entsprechenden Kapitel</a>. Es erklärt auch, wieso sich der Code im Beispiel so verhält, wie er sich verhält.</p>
+<p class='note'><strong>Hinweis:</strong> Sie finden eine genaue Erklärung, wie der Wert <code>this</code> bestimmt wird, <a href='http://dmitrysoshnikov.com/ecmascript/chapter-3-this/'>im entsprechenden Kapitel</a>. Es erklärt auch, wieso sich der Code im Beispiel so verhält, wie er sich verhält.</p>
 <p lang='en'>The
   <strong><em>arrow functions</em></strong> are special in terms of
   <code>this</code> value: their <code>this</code> is
@@ -1534,13 +1534,13 @@ console.log(
   <em>global environment record</em>). Previously there was only one global object. In current version of the spec there might be
   <em>multiple global objects</em> which are part of
   <em>code realms</em>. Let’s discuss this structure.</p>
-<p>Wie gesagt ist der Wert von <code>this</code> im <em>globalen Kontext</em> das <em>globale Objekt</em> (das <em>Verbindungs-Objekt</em> des <em>globalen Umgebungsregisters</em>). Früher gab es nur ein globales Objekt. In der aktuellen Version der ECMAScript-Spezifikation kann es <em>mehrere globale Objekte</em> geben, die Teil <em>Code-Gebieten</em> sind. Schauen wir uns nun diese Struktur an.</p>
+<p>Wie gesagt ist der Wert von <code>this</code> im <em>globalen Kontext</em> das <em>globale Objekt</em> (das <em>Verbindungsobjekt</em> des <em>globalen Umgebungsregisters</em>). Früher gab es nur ein globales Objekt. In der aktuellen Version der ECMAScript-Spezifikation kann es <em>mehrere globale Objekte</em> geben, die Teil von <em>Code-Gebieten</em> sind. Schauen wir uns nun diese Struktur an.</p>
 
-<h2 id='realm'>Gebiet (<span lang='en'>Realm</span>)</h2>
+<h2 id='realm'>Gebiet (<em lang='en'>Realm</em>)</h2>
 <p lang='en'>Before it is evaluated, all ECMAScript code must be associated with a
   <em>realm</em>. Technically a realm just provides a global environment for a context.
 </p>
-<p>Bevor ECMAScript-Code ausgeführt werden kann, muss er einem <em>Gebiet</em> zugewiesen werden. Die Aufgabe eines Gebiets ist, eine globale Umgebung für einen Kontext bereitzustellen.</p>
+<p>Bevor ECMAScript-Code ausgeführt wird, muss er einem <em>Gebiet</em> zugewiesen werden. Die Aufgabe eines Gebiets ist, eine globale Umgebung für einen Kontext bereitzustellen.</p>
 <p class='definition' lang='en'>
   <b>Def. 16: Realm:</b> A
   <em>code realm</em> is an object which encapsulates a separate
@@ -1560,7 +1560,7 @@ console.log(
 <p lang='en'>Current version of the specification doesn’t provide an ability to explicitly create realms, but they can be created implicitly by the implementations. There is a
   <a href='https://github.com/tc39/proposal-realms/'>proposal</a> though to expose this API to user-code.
 </p>
-<p>Die aktuelle Version der ECMAScript-Spezifikation bietet keine Möglichkeit, um Gebiete programmatisch zu erstellen. Sie können jedoch implizit von den Implementierungen erstellt werden. Es gibt einen <a href='https://github.com/tc39/proposal-realms/'>Vorschlag</a>, der vorsieht diese Programmierschnittstelle (API) für normalen Benutzer-Code zugänglich zu machen.</p>
+<p>Die aktuelle Version der ECMAScript-Spezifikation bietet keine Möglichkeit, um Gebiete programmatisch zu erstellen. Sie können jedoch implizit von den Implementierungen erstellt werden. Es gibt einen <a href='https://github.com/tc39/proposal-realms/'>Vorschlag</a>, der vorsieht diese Programmierschnittstelle (API) für gewöhnlichen Code zugänglich zu machen.</p>
 <p lang='en'>Logically though, each context from the stack is always associated with its realm:</p>
 <p>Jeder Kontext auf dem Stapel hat eine logische Verbindung zu seinem Gebiet:</p>
 <figure lang='en'>
@@ -1573,7 +1573,7 @@ console.log(
 </figure>
 <p lang='en'>Let’s see the separate realms example, using the
   <code>vm</code> module:</p>
-<p>Schauen wir uns ein Beispiel mit unterschiedlichen Gebieten an, das das <code>vm</code>-Modul benutzt:</p>
+<p>Schauen wir uns ein Beispiel mit unterschiedlichen Gebieten an, erzeugt durch das <code>vm</code>-Modul:</p>
 <pre lang='en'>
 const vm = require('vm');
 
@@ -1612,7 +1612,7 @@ vm.runInContext(code, realm2); // 20
 
 <h2 id='job'>Auftrag (<em lang='en'>Job</em>)</h2>
 <p lang='en'>Some operations can be postponed, and executed as soon as there is an available spot on the execution context stack.</p>
-<p>Manche Operationen können aufgeschoben werden und erst ausgeführt werden, sobald ein geeignet Platz im Stapiel der Ausführungskontexte frei wird.</p>
+<p>Manche Operationen können aufgeschoben werden und erst ausgeführt werden, sobald ein Platz im Stapel der Ausführungskontexte frei wird.</p>
 <p class='definition' lang='en'>
   <b>Def. 17: Job:</b> A
   <em>job</em> is an abstract operation that initiates an ECMAScript computation when
@@ -1623,7 +1623,7 @@ vm.runInContext(code, realm2); // 20
   <strong><em>job queues</em></strong>, and in current spec version there are two job queues:
   <strong><em>ScriptJobs</em></strong>, and
   <strong><em>PromiseJobs</em></strong>.</p>
-<p>Aufträge werden die die <strong><em>Auftrags-Warteschlange</em></strong> eingereiht. In der aktuellen Spezifikation gibt es zwei solche  Warteschlangen: <strong><em>ScriptJobs</em></strong> und <strong><em>PromiseJobs</em></strong>.</p>
+<p>Aufträge werden die die <strong><em>Auftrags-Warteschlange</em></strong> eingereiht. In der aktuellen Spezifikation gibt es zwei solcher Warteschlangen: <strong><em>ScriptJobs</em></strong> und <strong><em>PromiseJobs</em></strong>.</p>
 <p lang='en'>And <em>initial job</em> on the <em>ScriptJobs</em> queue is the
   <em>main entry point</em> to our program &#8212; initial script which is loaded and evaluated: a realm is created, a global context is created and is associated with this realm, it’s pushed onto the stack, and the global code is executed.
 </p>
@@ -1641,7 +1641,7 @@ vm.runInContext(code, realm2); // 20
   <em>empty</em>, the ECMAScript implementation removes the first
   <em>pending job</em> from a job queue, creates an execution context and starts its execution.
 </p>
-<p>Wenn es keinen <em>aktuell laufenden</em> Ausführungskontext gibt und der Stapel an Ausführungskontexten <em>leer</em> ist, so nommt die ECMAScript-Implementierung den <em>ersten wartenden Auftrag</em> aus der Warteschlange und arbeitet ihn ab. Dann wird ein Ausführungskontext erzeugt und seine Ausführung gestartet.</p>
+<p>Wenn es keinen <em>aktuell laufenden</em> Ausführungskontext gibt und der Stapel von Ausführungskontexten <em>leer</em> ist, so nimmt die ECMAScript-Implementierung den <em>ersten wartenden Auftrag</em> aus der Warteschlange und arbeitet ihn ab. Dazu wird ein Ausführungskontext erzeugt und seine Ausführung gestartet.</p>
 <p class='note' lang='en'>
   <strong>Note:</strong> the job queues are usually handled by the abstraction known as the
   <strong><em>&#8220;Event loop&#8221;</em></strong>. ECMAScript standard doesn’t specify the event loop, leaving it up to implementations, however you can find an educational example &#8212;
@@ -1666,8 +1666,8 @@ console.log(20);
 new Promise(resolve =&gt; setTimeout(() =&gt; resolve(10), 0))
   .then(value =&gt; console.log(value));
 
-// Diese Ausgabe findet vorher statt, da sie Teil des laufenden Kontexts ist.
-// Der anstehende Auftrag vorher nicht abgearbeitet werden.
+// Diese Ausgabe findet vorher statt, da sie Teil des laufenden Kontexts
+// ist. Der anstehende Auftrag vorher nicht abgearbeitet werden.
 console.log(20);
 
 // Ausgabe: 20, 10
@@ -1735,11 +1735,11 @@ console.log(20);
   <b>Def. 18: Agent:</b> An
   <em>agent</em> is an abstraction encapsulating execution context stack, set of job queues, and code realms.
 </p>
-<p class='definition'><strong>Definition 18: Agent:</strong> Ein <em>Agent</em> ist eine Abstraktion, die den Stapel von Ausführungskontexten, eine Zusammenstellung von Auftrags-Warteschlangen sowie Code-Gebiete beinhaltet.</p>
+<p class='definition'><strong>Definition 18: Agent:</strong> Ein <em>Agent</em> ist eine Abstraktion, die den Stapel von Ausführungskontexten, eine Anzahl von Auftrags-Warteschlangen sowie Code-Gebiete beinhaltet.</p>
 <p lang='en'>Implementation dependent an agent can run on the same thread, or on a separate thread. The
   <code>Worker</code> agent in the browser environment is an example of the
   <em>Agent</em> concept.</p>
-<p>Abhängig von der Implementierung kann ein Agent auf demselben oder einem eigenen Thread ausgeführt werden. In der Browserumgebung ist der der <em>Worker</em> ein Beispiel für das Agenten-Konzept.</p>
+<p>Abhängig von der Implementierung kann ein Agent auf demselben oder einem eigenen Thread ausgeführt werden. In der Browserumgebung ist der <em>Worker</em> ein Beispiel für das Agenten-Konzept.</p>
 <p lang='en'>The agents are
   <em>state isolated</em> from each other, and can communicate by
   <em>sending messages</em>. Some data can be shared though between agents, for example
@@ -1820,7 +1820,7 @@ onmessage = (message) => {
 
 // Empfange den geteilten Array-Buffer in diesem Worker.
 onmessage = (message) =&gt; {
-// Die Sicht des Workers auf die geteilten Daten.
+  // Die Sicht des Workers auf die geteilten Daten.
   let heapArray = new Int32Array(message.data);
 
   let indexToModify = 1;
@@ -1852,11 +1852,11 @@ onmessage = (message) =&gt; {
   <em>modules</em>, properties of objects can be tracked by
   <code>Proxy</code> objects, etc, etc. &#8212; there are many user-level details which you can find in different documentations on JavaScript language.
 </p>
-<p>Wir kommen nun zum Ende. Dies sind alle Informationen zum JavaScript-Kern, die ein Überblicksartikel abdecken kann. wie gesagt kann JavaScript-Code in <em>Modulen</em> gruppiert werden, der Zugriff auf Eigenschaften kann durch <code>Proxy</code>-Objekte abgefangen werden usw. usf. Es gibt viele für praxisrelevante Details, über die Sie in anderen Dokumentationen der Sprache JavaScript lesen können.</p>
+<p>Wir kommen nun zum Ende. Dies sind alle Informationen zum JavaScript-Kern, die ein Überblicksartikel abdecken kann. Wie gesagt kann JavaScript-Code in <em>Modulen</em> gruppiert werden, der Zugriff auf Eigenschaften kann durch <code>Proxy</code>-Objekte abgefangen werden usw. usf. Es gibt viele praxisrelevante Details, über die Sie in anderen Dokumentationen der Sprache JavaScript lesen können.</p>
 <p lang='en'>Here though we tried to represent the
   <em>logical structure</em> of an ECMAScript program itself, and hopefully it clarified these details. If you have any questions, suggestions or feedback, &#8212; as always I’ll be glad to discuss them in comments.
 </p>
-<p>Dieser Artikel hingegen hat versucht, die <em>logische Struktur</em> eines ECMAScript-Programms darzustellen. Falls Sie Fragen, Anregungen oder Feedback haben – ich freue mich immer darauf, sie im <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/#comments'>Kommentarbereich</a> zu diskutieren.</p>
+<p>Dieser Artikel hingegen hat versucht, die <em>logische Struktur</em> eines ECMAScript-Programms darzustellen. Falls Sie Fragen, Anregungen oder Feedback haben: wie immer freue ich mich darauf, sie <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/#comments'>im Kommentarbereich</a> zu diskutieren.</p>
 <p lang='en'>I’d like to thank the TC-39 representatives and spec editors which helped with clarifications for this article. The discussion can be found in
   <a href='https://twitter.com/DmitrySoshnikov/status/930507793047592960'>this Twitter thread</a>.
 </p>
