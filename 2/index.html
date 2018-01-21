@@ -199,7 +199,7 @@ hr {
 p[lang='en'],
 pre[lang='en'],
 figure[lang='en'] {
-  color: #aaa;
+  color: #777;
   font-size: 0.9rem;
 }
 </style>
@@ -230,7 +230,7 @@ figure[lang='en'] {
 <p>Dies ist die <strong>zweite Ausgabe</strong> des Übersichtsartikels <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/' lang='de'>JavaScript. The Core</a>, der sich der Programmiersprache ECMAScript und den Kernkomponenten ihrer Laufzeitumgebung widmet.</p>
 
 <p lang='en'><strong>Audience:</strong> experienced programmers, experts.</p>
-<p>Die <strong>Zielgruppe</strong> dieses Artikels sind erfahrene Programmierer und Experten.</p>
+<p>Die <strong>Zielgruppe</strong> dieses Artikels sind erfahrene ProgrammiererInnen und ExpertInnen.</p>
 
 <nav>
   <ol>
@@ -251,9 +251,9 @@ figure[lang='en'] {
 <p lang='en'>The
   <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/'>first edition</a> of the article covers generic aspects of JS language, using abstractions mostly from the legacy ES3 spec, with some references to the appropriate changes in ES5 and ES6 (aka ES2015).
 </p>
-<p>Die <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/' lang='en'>erste Ausgabe dieses Artikels</a> (<a href='../'>deutsche Übersetzung</a>) behandelte die allgemeinen Aspekte der Sprache JavaScript unter Bezugnahme auf Konzepte der veralteten ECMAScript-3-Spezifikation mit Verweis auf Änderungen in ECMAScript 5 und 6 (auch ES2015 genannt).</p>
+<p>Die <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core/' lang='en'>erste Ausgabe dieses Artikels</a> (<a href='../'>deutsche Übersetzung</a>) behandelt die allgemeinen Aspekte der Sprache JavaScript unter Bezugnahme auf Konzepte der veralteten ECMAScript-3-Spezifikation mit ein paar Verweisen auf Änderungen in ECMAScript 5 und 6 (auch ES2015 genannt).</p>
 <p lang='en'>Starting since ES2015, the specification changed descriptions and structures of some core components, introduced new models, etc. And in this edition we focus on the newer abstractions, updated terminology, but still maintaining the very basic JS structures which stay consistent throughout the spec versions.</p>
-<p>Mit ES2015 änderten sich die Beschreibungen und Strukturen mancher Kernkomponenten. Neue Modelle wurden eingefügt. In dieser Ausgabe richten wir unser Augenmerk auf die neueren Konzepte und die aktualisierte Terminologie. Dabei behalten wir die basalen JavaScript-Strukturen bei, die durch die Versionen gleich geblieben sind. </p>
+<p>Mit ES2015 änderten sich die Beschreibungen und Strukturen mancher Kernkomponenten. Neue Modelle wurden eingeführt. In dieser Ausgabe richten wir unser Augenmerk auf die neueren Konzepte und die aktualisierte Terminologie. Dabei behalten wir die fundamentalen JavaScript-Strukturen bei, die durch die Versionen gleich geblieben sind. </p>
 <p lang='en'>This article covers ES2017+ runtime system.</p>
 <p>Dieser Artikel deckt die die Laufzeitumgebung von ECMAScript 2017 und neuer ab.</p>
 <p class='note' lang='en'>
@@ -270,7 +270,7 @@ figure[lang='en'] {
   <em>object-oriented</em> programming language with the
   <em>prototype-based</em> organization, having the concept of an
   <em>object</em> as its core abstraction.</p>
-<p>ECMAScript ist eine <em>objektoriente</em> Programmiersprache mit einem <em>prototyp-basierten</em> Aufbau. Dabei ist das Konzept des <em>Objekts</em> eine grundlegende Abstraktion.</p>
+<p>ECMAScript ist eine <em>objektoriente</em> Programmiersprache mit einem <em>prototyp-basierten</em> Aufbau. Dabei ist das Konzept des <em>Objekts</em> die grundlegende Abstraktion.</p>
 <p class='definition' lang='en'>
   <b>Def. 1: Object:</b> An <em>object</em> is a
   <em>collection of properties</em>, and has a
@@ -413,7 +413,7 @@ console.log(
 <p class='note'><strong>Hinweis:</strong> Bei der <em>statischen Auslieferung</em> werden Verweise schon zur Übersetzungszeit (zum Zeitpunkt des Kompilierens) aufgelöst. Bei der <em>dynamischen Auslieferung</em> hingegen werden Verweise erst zur Laufzeit aufgelöst.</p>
 <p lang='en'>And if a property eventually is not found in the prototype chain, the
   <code>undefined</code> value is returned:</p>
-<p>Wenn eine Eigenschaft in der Prototypen-Kette nicht gefunden wurde, wird schließlich der Wert <code>undefined</code> zurückgegeben:</p>
+<p>Wenn eine Eigenschaft in der Prototypen-Kette nicht gefunden wurde, wird der Wert <code>undefined</code> zurückgegeben:</p>
 <pre lang='en'>
 // An &quot;empty&quot; object.
 let empty = {};
@@ -448,7 +448,7 @@ console.log(
   <code>Object.prototype</code>. To create a
   <em>prototype-less dictionary</em>, we have to explicitly set its prototype to
   <code>null</code>:</p>
-<p>Wie Sie sehen, ist ein einfaches Objekt tatsächlich <em>niemals leer</em> – es erbt immer <em>etwas</em> von <code>Object.prototype</code>. Wenn wir ein <a href='https://de.wikipedia.org/wiki/Assoziatives_Datenfeld'>Assoziatives Datenfeld</a> (auch Map oder Dictionary genannt) benötigen, so müssen wir ein Objekt ohne Prototyp erzeugen. Dazu müssen wir ausdrücklich den Prototyp auf <code>null</code> setzen:</p>
+<p>Wie wir sehen, ist ein einfaches Objekt tatsächlich <em>niemals leer</em> – es erbt immer <em>etwas</em> von <code>Object.prototype</code>. Wenn wir ein <a href='https://de.wikipedia.org/wiki/Assoziatives_Datenfeld'>Assoziatives Datenfeld</a> (auch Map oder Dictionary genannt) benötigen, so müssen wir ein Objekt ohne Prototyp erzeugen. Dazu müssen wir ausdrücklich den Prototyp auf <code>null</code> setzen:</p>
 <pre lang='en'>
 // Doesn't inherit from anything.
 let dict = Object.create(null);
@@ -501,7 +501,7 @@ console.log(objectC.x); // 20
   <em>multiple objects</em>. On this principle the
   <em>class-based inheritance</em> is implemented in ECMAScript. Let’s see the example, and look under the hood of the &#8220;class&#8221; abstraction in JS.
 </p>
-<p>Am Beispiel von <code>Object.prototype</code> zeigt sich, dass sich <em>viele Objekte</em> <em>denselben Prototyp</em> teilen können. Auf diesem Prinzip basiert die <em>klassen-basierte Vererbung</em> in ECMAScript. Schauen wir uns nun an, wie die Abstraktion der »Klasse« unter der Haube gelöst ist.</p>
+<p>Am Beispiel von <code>Object.prototype</code> zeigt sich, dass sich <em>viele Objekte</em> <em>denselben Prototyp</em> teilen können. Auf diesem Prinzip basiert die <em>klassen-basierte Vererbung</em> in ECMAScript. Schauen wir uns anhand eines Beispiels unter die Haube der Abstraktion der »Klasse«.</p>
 
 <h2 id='class'>Klasse</h2>
 <p lang='en'>When several objects share the same initial state and behavior, they form a
@@ -558,7 +558,7 @@ console.log(
 <p>Wir können die Beziehungen zwischen den Objekten folgendermaßen veranschaulichen:</p>
 <figure lang='en'>
   <img src='shared-prototype.png' width='500' alt='Figure 3. A shared prototype.' title='Figure 3. A shared prototype.' />
-  <figure>Figure 3. A shared prototype.</figure>
+  <figcaption>Figure 3. A shared prototype.</figcaption>
 </figure>
 <figure>
   <img src='shared-prototype.png' width='500' alt='Abbildung 3. Ein geteilter Prototyp.'>
@@ -570,7 +570,7 @@ console.log(
   <em>semantically does the same</em>, but in a much
   <em>nicer syntactic form</em>), it allows creating such multiple objects with the convenient pattern:
 </p>
-<p>Allerdings ist das offensichtlich <em>mühsam</em>. Die Abstraktion der Klasse hilft uns hier weiter, denn sie dient genau diesem Zweck: Sie ist »Syntaxzucker« für das Erzeugen mehrerer solcher Objekte. (»Syntaxzucker« ist ein Sprachkonstrukt, das <em>semantisch</em> dasselbe tut, allerdings in einer <em>schöneren syntaktischen Form</em>.)</p>
+<p>Allerdings ist das offensichtlich <em>mühsam</em>. Die Abstraktion der Klasse hilft uns hier weiter, denn sie dient genau einem Zweck: Sie ist »Syntaxzucker« für das komfortable Erzeugen mehrerer solcher Objekte. (»Syntaxzucker« ist ein Sprachkonstrukt, das <em>semantisch</em> dasselbe tut, allerdings in einer <em>schöneren syntaktischen Form</em>.)</p>
 <pre>
 class Letter {
   constructor(number) {
@@ -616,7 +616,7 @@ console.log(
 </p>
 <p class='definition'><strong>Definition 6: Konstruktor:</strong> Ein <em>Konstruktor</em> ist eine Funktion zum Erzeugen von Instanzen. Sie setzt automatisch deren Prototyp.</p>
 <p lang='en'>It is possible to use a constructor function explicitly. Moreover, before the class abstraction was introduced, JS developers used to do so not having a better alternative (we can still find a lot of such legacy code allover the internets):</p>
-<p>Es ist durchaus möglich, eine Konstruktorfunktion direkt zu definieren. Bevor die Klassen-Abstraktion eingeführt wurde, haben JavaScript-Entwickler dies in Ermangelung einer besseren Alternative lange getan. Wir finden immer noch eine Menge dieser Hinterlassenschaften im Internet verstreut:</p>
+<p>Es ist durchaus möglich, eine Konstruktorfunktion direkt zu definieren. Bevor die Klassen-Abstraktion eingeführt wurde, haben JavaScript-EntwicklerInnen dies in Ermangelung einer besseren Alternative lange getan. Wir finden immer noch eine Menge dieser Hinterlassenschaften im Internet verstreut:</p>
 <pre>
 function Letter(number) {
   this.number = number;
@@ -640,7 +640,7 @@ console.log(
 <p lang='en'>And while creating a single-level constructor was pretty easy, the inheritance pattern from parent classes required much more boilerplate. Currently this boilerplate is hidden as an
   <em>implementation detail</em>, and that exactly what happens under the hood when we create a class in JavaScript.
 </p>
-<p>Einen losgelösten Konstruktor so zu notieren war noch recht einfach. Eine Vererbungsstruktur hingegen benötigte einen langen, vordefinierten Codebaustein. Heute ist dieser Code versteckt und nur noch ein <em>Implementierungsdetail</em>. Doch unter der Haube passiert nach wie vor dasselbe, wenn wir in JavaScript eine Klasse erzeugen.</p>
+<p>Einen losgelösten Konstruktor so zu notieren war noch recht einfach. Eine Vererbungsstruktur hingegen benötigte einen langen Codebaustein. Heute ist dieser Code versteckt und nur noch ein <em>Implementierungsdetail</em>. Doch unter der Haube passiert nach wie vor dasselbe, wenn wir in JavaScript eine Klasse erzeugen.</p>
 <p class='note' lang='en'><strong>Note:</strong>
   <em>constructor functions</em> are just
   <em>implementation details</em> of the class-based inheritance.
@@ -663,7 +663,7 @@ console.log(
   <code>Letter.prototype</code> is the prototype of the Letter
   <em>instances</em>, that is <code>a</code>, <code>b</code>, and
   <code>z</code>.</p>
-<p>Die Abbildung zeigt zunächst einmal, dass <em>jedes Objekt</em> mit einem Prototypen verbunden ist. Sogar die Konstruktorfunktion (die Klasse) <code>Letter</code> hat ihren eigenen Prototyp, nämlich <code>Function.prototype</code>. Beachten Sie, dass <code>Letter.prototype</code> der Prototyp aller <code>Letter</code>-<em>Instanzen</em> ist. Das sind <code>a</code>, <code>b</code> und <code>z</code>.</p>
+<p>Die Abbildung zeigt, dass <em>jedes Objekt</em> mit einem Prototypen verbunden ist. Sogar die Konstruktorfunktion (die Klasse) <code>Letter</code> hat ihren eigenen Prototyp, nämlich <code>Function.prototype</code>. Beachten Sie, dass <code>Letter.prototype</code> der Prototyp aller <code>Letter</code>-<em>Instanzen</em> ist. Das sind <code>a</code>, <code>b</code> und <code>z</code>.</p>
 <p class='note' lang='en'><strong>Note:</strong> the
   <em>actual</em> prototype of <em>any</em> object is
   <em>always</em> the
@@ -677,7 +677,7 @@ console.log(
 <p lang='en'>You can find a detailed discussion on generic OPP concepts (including detailed descriptions of the class-based, prototype-based, etc) in the
   <a href='http://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/'>ES3. 7.1 OOP: The general theory</a> article.
 </p>
-<p>Sie finden eine detaillierte Erörterung der allgemeinen Konzepte der Objekt-orientierten Programmierung einschließlich einer Beschreibung von Klassen-Basierung, Prototypen-Basierung usw. im Artikel <a href='http://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/'>ES3. 7.1 OOP: The general theory</a>.</p>
+<p>Sie finden eine detaillierte Erörterung der allgemeinen <abbr title='objekt-orientierte Programmierung'>OOP</abbr>-Konzepte einschließlich einer Beschreibung von Klassen-Basierung, Prototypen-Basierung usw. im Artikel <a href='http://dmitrysoshnikov.com/ecmascript/chapter-7-1-oop-general-theory/'>ES3. 7.1 OOP: The general theory</a>.</p>
 <p lang='en'>Now when we understand the basic relationships between ECMAScript objects, let’s take a deeper look at JS
   <em>runtime system</em>. As we will see, almost everything there can also be presented as an object.
 </p>
@@ -689,12 +689,12 @@ console.log(
   <em>stack</em> (the
   <em>execution context stack</em> as we will see shortly), which corresponds to the generic concept of a
   <em>call-stack</em>.</p>
-<p>Um JavaScript-Code auszuführen und den Überblick über die Auswertung zur Laufzeit zu behalten, definiert die ECMAScript-Spezifikation das Konzept des <em>Ausführungskontexts</em>. Diese Ausführungskontexte werden in einem <em><a href='https://de.wikipedia.org/wiki/Stapelspeicher'>Stapelspeicher (Stack)</a></em> vorgehalten. Wir kommen bald auf diesen <em>Stapel von Ausführungskontexten</em> zu sprechen. Er entspricht dem allgemeinen Konzept des <em><a href='https://de.wikipedia.org/wiki/Aufrufstapel'>Aufrufstapels</a></em>.</p>
+<p>Um JavaScript-Code auszuführen und den Überblick über die Ausführung zur Laufzeit zu behalten, definiert die ECMAScript-Spezifikation das Konzept des <em>Ausführungskontexts</em>. Diese Ausführungskontexte werden in einem <em><a href='https://de.wikipedia.org/wiki/Stapelspeicher'>Stapelspeicher (Stack)</a></em> vorgehalten. Wir kommen bald auf diesen <em>Stapel von Ausführungskontexten</em> zu sprechen. Er entspricht dem allgemeinen Konzept des <em><a href='https://de.wikipedia.org/wiki/Aufrufstapel'>Aufrufstapels</a></em>.</p>
 <p class='definition' lang='en'>
   <b>Def. 7: Execution context:</b> An
   <em>execution context</em> is a specification device that is used to track the runtime evaluation of the code.
 </p>
-<p class='definition'><strong>Definition 7: Ausführungskontext:</strong> Ein <em>Ausführungskontext</em> ist das Mittel der ECMAScript-Spezifikation, um die Auswertung des Codes zur Laufzeit zu protokollieren.</p>
+<p class='definition'><strong>Definition 7: Ausführungskontext:</strong> Ein <em>Ausführungskontext</em> ist das Mittel der ECMAScript-Spezifikation, um die Ausführung des Codes zur Laufzeit zu protokollieren.</p>
 <p lang='en'>There are several types of ECMAScript code: the
   <em>global code</em>, <em>function code</em>,
   <em><code>eval</code> code</em>, and
@@ -702,8 +702,8 @@ console.log(
   <em>generator functions</em> save their
   <em>generator object</em> on the context.</p>
 <p>Es gibt verschiedene Arten von ECMAScript-Code: <em>globalen Code</em>, <em>Funktionscode</em>, <code>eval</code>-Code und <em>Modul-Code</em>. Jede dieser Codearten wird in einem eigenen Kontext ausgeführt. Verschiedene Arten von Code und ihre jeweiligen Objekte beeinflussen die Struktur des Ausführungskontexts. Zum Beispiel speichern <em>Generator-Funktionen</em> ihr <em>Generator-Objekt</em> im Ausführungskontext.</p>
-<p>Let’s consider a recursive function call:</p>
-<p>Schauen wir uns zum Beispiel einen rekursiven Funktionsaufruf an:</p>
+<p lang='en'>Let’s consider a recursive function call:</p>
+<p>Schauen wir uns einen rekursiven Funktionsaufruf an:</p>
 <pre lang='en'>
 function recursive(flag) {
 
@@ -1860,7 +1860,7 @@ onmessage = (message) =&gt; {
 <p lang='en'>I’d like to thank the TC-39 representatives and spec editors which helped with clarifications for this article. The discussion can be found in
   <a href='https://twitter.com/DmitrySoshnikov/status/930507793047592960'>this Twitter thread</a>.
 </p>
-<p>Ich möchte mich bei den Mitgliedern der <abbr title='Technical Committee' lang='en'>TC</abbr>-39-Arbeitsgruppe und den Autor/innen der Spezifikation bedanken, die mir mit Erklärungen bei diesem Artikel geholfen haben. Die Diskussion finden Sie <a href='https://twitter.com/DmitrySoshnikov/status/930507793047592960'>in diesem Twitter-Thread</a>.</p>
+<p>Ich möchte mich bei den Mitgliedern der <abbr title='Technical Committee' lang='en'>TC</abbr>-39-Arbeitsgruppe und den AutorInnen der Spezifikation bedanken, die mir mit Erklärungen bei diesem Artikel geholfen haben. Die Diskussion finden Sie <a href='https://twitter.com/DmitrySoshnikov/status/930507793047592960'>in diesem Twitter-Thread</a>.</p>
 <p lang='en'>Good luck in studying ECMAScript!</p>
 <p>Viel Erfolg beim Lernen von ECMAScript!</p>
 <p lang='en'><strong>Written by:</strong> Dmitry Soshnikov<br />
