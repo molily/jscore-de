@@ -797,7 +797,7 @@ console.log(
   <em>resumed</em>. Such context may
   <em>outlive</em> the caller which creates it, hence the violation of the LIFO structure.
 </p>
-<p>Das <code>yield</code>-Statement gibt einen Wert an den Aufrufer zurück und nimmt den Kontext vom Stapel. Beim zweiten Aufruf der <code>next</code>-Methode wird <em>eben dieser Kontext</em> wieder auf den Stapel gelegt und die Ausführung wird wiederaufgenommen. Ein solcher Kontext kann <em>länger leben</em> als der Aufrufer, der ihn erzeugt hat. Dies ist der besagte Versoß gegen die <abbr title='Last In First Out'>LIFO</abbr>-Datenstruktur.</p>
+<p>Das <code>yield</code>-Statement gibt einen Wert an den Aufrufer zurück und nimmt den Kontext vom Stapel. Beim zweiten Aufruf der <code>next</code>-Methode wird <em>eben dieser Kontext</em> wieder auf den Stapel gelegt und die Ausführung wird wiederaufgenommen. Ein solcher Kontext kann <em>länger leben</em> als der Aufrufer, der ihn erzeugt hat. Dies ist der besagte Verstoß gegen die <abbr title='Last In First Out'>LIFO</abbr>-Datenstruktur.</p>
 <p class='note' lang='en'>
   <strong>Note:</strong> you can read more about generators and iterators in
   <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators'>this documentation</a>.
