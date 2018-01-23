@@ -12,23 +12,21 @@ Realm
 Gebiet
 
 evaluate, evaluation
-meistens: Ausführung, nicht Berechnung
+Auswertung
 
 abstraction
 meistens: Konzept
 
 mechanism
-meistens weglassen, oder »Verhalten«
+meistens weglassen«
+oder Verhalten
+selten Mechanismus
 
 prototype chain
 Prototypen-Kette
 
-dispatch
-Auslieferung
-  oder Bindung
-  oder Zustellung
-  oder Versenden, Absenden
-  oder Abarbeitung
+dynamic dispatch
+dynamische Bindung
 
 technically
 meistens: intern
@@ -316,7 +314,7 @@ let point = {
   <em>dynamic dispatch</em>. Let’s consider the
   <em>prototype chain</em> concept to see this mechanism in detail.
 </p>
-<p>Prototypen-Objekte dienen dazu, um <em>Vererbung</em> mithilfe der <em>dynamischen Auslieferung</em> (<em lang='en'>dynamic dispatch</em>) umzusetzen. Schauen wir uns das Konzept der Prototypen-Kette an, um diesen Mechanismus zu verstehen.</p>
+<p>Prototypen-Objekte dienen dazu, um <em>Vererbung</em> mithilfe der <em>dynamischen Bindung</em> (<em lang='en'>dynamic dispatch</em>) umzusetzen. Schauen wir uns das Konzept der Prototypen-Kette an, um diesen Mechanismus zu verstehen.</p>
 
 <h2 id='prototype'>Prototyp</h2>
 <p lang='en'>Every object, when is created, receives its
@@ -399,18 +397,18 @@ console.log(
 <p>Die Funktionsweise ist sehr einfach: Wenn eine Eigenschaft am Objekt selbst nicht gefunden wird, so wird versucht, sie am Prototyp <em>aufzulösen</em>, dann an dessen Prototyp und so weiter – bis die gesamte Prototype-Kette abgesucht wurde.</p>
 <p lang='en'>Technically this mechanism is known as
   <em>dynamic dispatch</em> or <em>delegation</em>.</p>
-<p>Der Fachbegriff für diesen Mechanismus lautet <em>dynamische Auslieferung</em> oder auch <em>Delegation</em>.</p>
+<p>Der Fachbegriff für diesen Mechanismus lautet <em>dynamische Bindung</em> oder auch <em>Delegation</em>.</p>
 <p class='definition' lang='en'>
   <b>Def. 4: Delegation:</b> a mechanism used to resolve a property in the inheritance chain. The process happens at runtime, hence is also called
   <strong><em>dynamic dispatch</em></strong>.
 </p>
-<p class='definition'><strong>Definition 4: Delegation:</strong> Ein Mechanismus zur Auflösung einer Eigenschaft entlang der Vererbungskette. Dieser Prozess findet zur Laufzeit statt, daher wird er auch <strong><em>dynamische Auslieferung</em></strong> (<em lang='en'>dynamic dispatch</em>) genannt.</p>
+<p class='definition'><strong>Definition 4: Delegation:</strong> Ein Mechanismus zur Auflösung einer Eigenschaft entlang der Vererbungskette. Dieser Prozess findet zur Laufzeit statt, daher wird er auch <strong><em>dynamische Bindung</em></strong> (<em lang='en'>dynamic dispatch</em>) genannt.</p>
 <p class='note' lang='en'><strong>Note:</strong> in contrast with
   <em>static dispatch</em> when references are resolved at
   <em>compile time</em>,
   <em>dynamic dispatch</em> resolves the references at
   <em>runtime</em>.</p>
-<p class='note'><strong>Hinweis:</strong> Bei der <em>statischen Auslieferung</em> werden Verweise schon zur Übersetzungszeit (zum Zeitpunkt des Kompilierens) aufgelöst. Bei der <em>dynamischen Auslieferung</em> hingegen werden Verweise erst zur Laufzeit aufgelöst.</p>
+<p class='note'><strong>Hinweis:</strong> Bei der <em>statischen Bindung</em> werden Verweise schon zur Übersetzungszeit (zum Zeitpunkt des Kompilierens) aufgelöst. Bei der <em>dynamischen Bindung</em> hingegen werden Verweise erst zur Laufzeit aufgelöst.</p>
 <p lang='en'>And if a property eventually is not found in the prototype chain, the
   <code>undefined</code> value is returned:</p>
 <p>Wenn eine Eigenschaft in der Prototypen-Kette nicht gefunden wurde, wird der Wert <code>undefined</code> zurückgegeben:</p>
@@ -464,7 +462,7 @@ console.log(dict.toString); // undefined
 <p lang='en'>The <em>dynamic dispatch</em> mechanism allows
   <em>full mutability</em> of the inheritance chain, providing an ability to change the delegation object:
 </p>
-<p>Die <em>dynamische Auslieferung</em> ermöglicht das <em>uneingeschränkte Ändern</em> der Vererbungskette. Sie erlaubt es, das Objekt zu ändern, an das delegiert wird:</p>
+<p>Die <em>dynamische Bindung</em> ermöglicht das <em>uneingeschränkte Ändern</em> der Vererbungskette. Sie erlaubt es, das Objekt zu ändern, an das delegiert wird:</p>
 <pre lang='en'>
 let protoA = {x: 10};
 let protoB = {x: 20};
@@ -603,7 +601,7 @@ console.log(
   <em>static dispatch</em> as in Java or C++, or
   <em>dynamic dispatch (delegation)</em> as in JavaScript, Python, Ruby, etc.
 </p>
-<p class='note'><strong>Note:</strong> Eine <em>»Klasse«</em> ist lediglich eine <em>theoretische Abstraktion</em>. Technisch gesehen kann sie mittels <em>statischer Auslieferung</em> umgesetzt werden, wie in Java oder C++, oder mittels <em>dynamischer Auslieferung (Delegation)</em>, wie in JavaScript, Python, Ruby usw.</p>
+<p class='note'><strong>Note:</strong> Eine <em>»Klasse«</em> ist lediglich eine <em>theoretische Abstraktion</em>. Technisch gesehen kann sie mittels <em>statischer Bindung</em> umgesetzt werden, wie in Java oder C++, oder mittels <em>dynamischer Bindung (Delegation)</em>, wie in JavaScript, Python, Ruby usw.</p>
 <p lang='en'>Technically a &#8220;class&#8221; is represented as a
   <em>&#8220;constructor function + prototype&#8221;</em> pair. Thus, a constructor function
   <em>creates objects</em>, and also <em>automatically</em> sets the
@@ -689,19 +687,19 @@ console.log(
   <em>stack</em> (the
   <em>execution context stack</em> as we will see shortly), which corresponds to the generic concept of a
   <em>call-stack</em>.</p>
-<p>Um JavaScript-Code auszuführen und den Überblick über die Ausführung zur Laufzeit zu behalten, definiert die ECMAScript-Spezifikation das Konzept des <em>Ausführungskontexts</em>. Diese Ausführungskontexte werden in einem <em><a href='https://de.wikipedia.org/wiki/Stapelspeicher'>Stapelspeicher (Stack)</a></em> vorgehalten. Wir kommen bald auf diesen <em>Stapel von Ausführungskontexten</em> zu sprechen. Er entspricht dem allgemeinen Konzept des <em><a href='https://de.wikipedia.org/wiki/Aufrufstapel'>Aufrufstapels</a></em>.</p>
+<p>Um JavaScript-Code auszuführen und den Überblick über die Auswertung zur Laufzeit zu behalten, definiert die ECMAScript-Spezifikation das Konzept des <em>Ausführungskontexts</em>. Diese Ausführungskontexte werden in einem <em><a href='https://de.wikipedia.org/wiki/Stapelspeicher'>Stapelspeicher (Stack)</a></em> vorgehalten. Wir kommen bald auf diesen <em>Stapel von Ausführungskontexten</em> zu sprechen. Er entspricht dem allgemeinen Konzept des <em><a href='https://de.wikipedia.org/wiki/Aufrufstapel'>Aufrufstapels</a></em>.</p>
 <p class='definition' lang='en'>
   <b>Def. 7: Execution context:</b> An
   <em>execution context</em> is a specification device that is used to track the runtime evaluation of the code.
 </p>
-<p class='definition'><strong>Definition 7: Ausführungskontext:</strong> Ein <em>Ausführungskontext</em> ist das Mittel der ECMAScript-Spezifikation, um die Ausführung des Codes zur Laufzeit zu protokollieren.</p>
+<p class='definition'><strong>Definition 7: Ausführungskontext:</strong> Ein <em>Ausführungskontext</em> ist das Mittel der ECMAScript-Spezifikation, um die Auswertung des Codes zur Laufzeit zu protokollieren.</p>
 <p lang='en'>There are several types of ECMAScript code: the
   <em>global code</em>, <em>function code</em>,
   <em><code>eval</code> code</em>, and
   <em>module code</em>; each code is evaluated in its execution context. Different code types, and their appropriate objects may affect the structure of an execution context: for example,
   <em>generator functions</em> save their
   <em>generator object</em> on the context.</p>
-<p>Es gibt verschiedene Arten von ECMAScript-Code: <em>globalen Code</em>, <em>Funktionscode</em>, <code>eval</code>-Code und <em>Modul-Code</em>. Jede dieser Codearten wird in einem eigenen Kontext ausgeführt. Verschiedene Arten von Code und ihre jeweiligen Objekte beeinflussen die Struktur des Ausführungskontexts. Zum Beispiel speichern <em>Generator-Funktionen</em> ihr <em>Generator-Objekt</em> im Ausführungskontext.</p>
+<p>Es gibt verschiedene Arten von ECMAScript-Code: <em>globalen Code</em>, <em>Funktionscode</em>, <code>eval</code>-Code und <em>Modul-Code</em>. Jede dieser Codearten wird in einem eigenen Kontext ausgewertet. Verschiedene Arten von Code und ihre jeweiligen Objekte beeinflussen die Struktur des Ausführungskontexts. Zum Beispiel speichern <em>Generator-Funktionen</em> ihr <em>Generator-Objekt</em> im Ausführungskontext.</p>
 <p lang='en'>Let’s consider a recursive function call:</p>
 <p>Schauen wir uns einen rekursiven Funktionsaufruf an:</p>
 <pre lang='en'>
@@ -1540,7 +1538,7 @@ console.log(
 <p lang='en'>Before it is evaluated, all ECMAScript code must be associated with a
   <em>realm</em>. Technically a realm just provides a global environment for a context.
 </p>
-<p>Bevor ECMAScript-Code ausgeführt wird, muss er einem <em>Gebiet</em> zugewiesen werden. Die Aufgabe eines Gebiets ist, eine globale Umgebung für einen Kontext bereitzustellen.</p>
+<p>Bevor ECMAScript-Code ausgewertet wird, muss er einem <em>Gebiet</em> zugewiesen werden. Die Aufgabe eines Gebiets ist, eine globale Umgebung für einen Kontext bereitzustellen.</p>
 <p class='definition' lang='en'>
   <b>Def. 16: Realm:</b> A
   <em>code realm</em> is an object which encapsulates a separate
@@ -1627,7 +1625,7 @@ vm.runInContext(code, realm2); // 20
 <p lang='en'>And <em>initial job</em> on the <em>ScriptJobs</em> queue is the
   <em>main entry point</em> to our program &#8212; initial script which is loaded and evaluated: a realm is created, a global context is created and is associated with this realm, it’s pushed onto the stack, and the global code is executed.
 </p>
-<p>Der <em>erste Auftrag</em> in der <em>ScriptJobs</em>-Warteschlange ist der <em>Haupt-Einstiegspunkt</em> zu unserem Programm. Der Auftrag lädt das erste Script und führt es aus: ein Gebiet wird erzeugt, der globale Kontext wird erzeugt und mit dem Gebiet verknüpft, er wird auf den Stapel gelegt und der globale Code wird ausgeführt.</p>
+<p>Der <em>erste Auftrag</em> in der <em>ScriptJobs</em>-Warteschlange ist der <em>Haupt-Einstiegspunkt</em> zu unserem Programm. Der Auftrag lädt das erste Script und wertet es aus: ein Gebiet wird erzeugt, der globale Kontext wird erzeugt und mit dem Gebiet verknüpft, er wird auf den Stapel gelegt und der globale Code wird ausgeführt.</p>
 <p lang='en'>Notice, the <em>ScriptJobs</em> queue manages both,
   <em>scripts</em> and <em>modules</em>.</p>
 <p>Beachten Sie, dass die <em>ScriptJobs</em>-Warteschlange sowohl für <em>Scripte</em> als auch für <em>Module</em> zuständig ist.</p>
