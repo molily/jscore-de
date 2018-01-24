@@ -301,7 +301,13 @@ let point = {
 </figure>
 <figure>
   <img src='js-object.png' width='500' alt='Abbildung 1. Ein einfaches Objekt mit einem Prototyp.' />
-  <figcaption>Abbildung 1. Ein einfaches Objekt mit einem Prototyp.</figcaption>
+  <figcaption>
+    <p>Abbildung 1. Ein einfaches Objekt mit einem Prototyp.</p>
+    <table>
+      <caption>Legende</caption>
+      <tr><th lang='en'>some properties</th><td>einige Eigenschaften</td></tr>
+    </table>
+  </figcaption>
 </figure>
 <p class='note' lang='en'><strong>Note:</strong> objects may store also
   <em>symbols</em>. You can get more info on symbols in
@@ -560,7 +566,13 @@ console.log(
 </figure>
 <figure>
   <img src='shared-prototype.png' width='500' alt='Abbildung 3. Ein geteilter Prototyp.'>
-  <figcaption>Abbildung 3. Ein geteilter Prototyp.</figcaption>
+  <figcaption>
+    <p>Abbildung 3. Ein geteilter Prototyp.</p>
+    <table>
+      <caption>Legende</caption>
+      <tr><th lang='en'>built-in</th><td>Eingebaute Eigenschaften</td></tr>
+    </table>
+  </figcaption>
 </figure>
 <p lang='en'>However, this is obviously
   <em>cumbersome</em>. And the class abstraction serves exactly this purpose &#8212; being a
@@ -652,7 +664,13 @@ console.log(
 </figure>
 <figure>
   <img src='js-constructor.png' alt='Abbildung 4. Die Beziehungen zwischen Objekten und dem Konstruktor.'>
-  <figcaption>Abbildung 4. Die Beziehungen zwischen Objekten und dem Konstruktor.</figcaption>
+  <figcaption>
+    <p>Abbildung 4. Die Beziehungen zwischen Objekten und dem Konstruktor.</p>
+    <table>
+      <caption>Legende</caption>
+      <tr><th lang='en'>built-in</th><td>Eingebaute Eigenschaften</td></tr>
+    </table>
+  </figcaption>
 </figure>
 <p lang='en'>The figure above shows that
   <em>every object</em> has an associated prototype. Even the constructor function (class)
@@ -758,7 +776,14 @@ recursive(0);
 </figure>
 <figure>
   <img src='execution-stack.png' alt='Abbildung 5. Ein Stapel von Ausführungskontexten.'>
-  <figcaption>Abbildung 5. Ein Stapel von Ausführungskontexten.</figcaption>
+  <figcaption>
+    <p>Abbildung 5. Ein Stapel von Ausführungskontexten.</p>
+    <table>
+      <caption>Legende</caption>
+      <tr><th lang='en'>EC stack</th><td>Stapel von Ausführungskontexten</td></tr>
+      <tr><th lang='en'>Global context</th><td>Globaler Kontext</td></tr>
+    </table>
+  </figcaption>
 </figure>
 <p lang='en'>As we can also see, the
   <em>global context</em> is always at the bottom of the stack, it is created prior execution of any other context.
@@ -855,10 +880,10 @@ foo(30); // 150
     <p>Abbildung 6. Eine Kette von Umgebungen</p>
     <table>
       <caption>Legende</caption>
-      <tr><th>foo env</th><td>Umgebung der Funktion <code>foo</code></td></tr>
-      <tr><th>Global env</th><td>Globale Umgebung</td></tr>
-      <tr><th>Foo EnvRec</th><td>Umgebungsregister der Funktion <code>foo</code></td></tr>
-      <tr><th>Global EnvRec</th><td>Globales Umgebungsregister</td></tr>
+      <tr><th lang='en'>foo env</th><td>Umgebung der Funktion <code>foo</code></td></tr>
+      <tr><th lang='en'>Global env</th><td>Globale Umgebung</td></tr>
+      <tr><th lang='en'>Foo EnvRec</th><td>Umgebungsregister der Funktion <code>foo</code></td></tr>
+      <tr><th lang='en'>Global EnvRec</th><td>Globales Umgebungsregister</td></tr>
     </table>
   </figcaption>
 </figure>
@@ -981,9 +1006,9 @@ console.log(
     <p>Abbildung 7. Ein Verbindungsobjekt.</p>
     <table>
       <caption>Legende</caption>
-      <tr><th>Global env</th><td>Globale Umgebung</td></tr>
-      <tr><th>Global EnvRec</th><td>Globales Umgebungsregister</td></tr>
-      <tr><th>Global EnvRec BindingObject</th><td>Verbindungsobjekt des globalen Umgebungsregisters</td></tr>
+      <tr><th lang='en'>Global env</th><td>Globale Umgebung</td></tr>
+      <tr><th lang='en'>Global EnvRec</th><td>Globales Umgebungsregister</td></tr>
+      <tr><th lang='en'>Global EnvRec BindingObject</th><td>Verbindungsobjekt des globalen Umgebungsregisters</td></tr>
     </table>
   </figcaption>
 </figure>
@@ -1103,7 +1128,14 @@ bar(foo);
 </figure>
 <figure>
   <img src='closure.png' width='400' alt='Abbildung 8. Eine Closure.'>
-  <figcaption>Abbildung 8. Eine Closure.</figcaption>
+  <figcaption>
+    <p>Abbildung 8. Eine Closure.</p>
+    <table>
+      <caption>Legende</caption>
+      <tr><th lang='en'>Global env</th><td>Globale Umgebung</td></tr>
+      <tr><th lang='en'>Global EnvRec</th><td>Globales Umgebungsregister</td></tr>
+    </table>
+  </figcaption>
 </figure>
 <p lang='en'>We can see that an environment references a function, which in turn reference the environment
   <em>back</em>.</p>
@@ -1219,7 +1251,14 @@ console.log(
 </figure>
 <figure>
   <img src='shared-environment.png' width='600' alt='Abbildung 9. Eine geteilte Umgebung.'>
-  <figcaption>Abbildung 9. Eine geteilte Umgebung.</figcaption>
+  <figcaption>
+    <p>Abbildung 9. Eine geteilte Umgebung.</p>
+    <table>
+      <caption>Legende</caption>
+      <tr><th lang='en'>createCounter env</th><td>Umgebung von createCounter</td></tr>
+      <tr><th lang='en'>createCounter EnvRec</th><td>Umgebungsregister von createCounter</td></tr>
+    </table>
+  </figcaption>
 </figure>
 <p lang='en'>Some languages may capture
   <em>by-value</em>, making a copy of a captured variable, and do not allow changing it in the parent scopes. However in JS, to repeat, it is always the
@@ -1567,7 +1606,14 @@ console.log(
 </figure>
 <figure>
   <img src='context-realm.png' width='400' alt='Abbildung 10. Ein Kontext und seine Verbindung zum Gebiet.'/>
-  <figcaption>Abbildung 10. Ein Kontext und seine Verbindung zum Gebiet.</figcaption>
+  <figcaption>
+    <p>Abbildung 10. Ein Kontext und seine Verbindung zum Gebiet.</p>
+    <table>
+      <caption>Legende</caption>
+      <tr><th lang='en'>EC stack</th><td>Stapel der Ausführungskontexte</td></tr>
+      <tr><th lang='en'>Realm 1, Realm 2</th><td>Gebiet 1, Gebiet 2</td></tr>
+    </table>
+  </figcaption>
 </figure>
 <p lang='en'>Let’s see the separate realms example, using the
   <code>vm</code> module:</p>
