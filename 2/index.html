@@ -37,6 +37,10 @@ meistens: weglassen
 job
 Auftrag
   oder: Aufgabe
+
+running execution context
+active execution context
+  beide: aktiver Kontext
 -->
 <html lang='de'>
 <head>
@@ -194,6 +198,13 @@ hr {
   height: 0;
 }
 
+.translation-note {
+  color: #505050;
+  font-size: 0.9rem;
+  text-align: left;
+  font-style: normal;
+}
+
 p[lang='en'],
 pre[lang='en'],
 figure[lang='en'] {
@@ -240,8 +251,8 @@ figure[lang='en'] {
     </li>
     <li><a href='#closure'>Closure</a></li>
     <li><a href='#this'>This</a></li>
-    <li><a href='#realm'>Gebiet (<span lang='en'>Realm</span>)</a></li>
-    <li><a href='#job'>Auftrag (<span lang='en'>Job</span>)</a></li>
+    <li><a href='#realm'>Gebiet</a></li>
+    <li><a href='#job'>Auftrag</a></li>
     <li><a href='#agent'>Agent</a></li>
   </ol>
 </nav>
@@ -268,7 +279,7 @@ figure[lang='en'] {
   <em>object-oriented</em> programming language with the
   <em>prototype-based</em> organization, having the concept of an
   <em>object</em> as its core abstraction.</p>
-<p>ECMAScript ist eine <em>objektoriente</em> Programmiersprache mit einem <em>prototyp-basierten</em> Aufbau. Dabei ist das Konzept des <em>Objekts</em> die grundlegende Abstraktion.</p>
+<p>ECMAScript ist eine <em>objektorientierte</em> Programmiersprache mit einem <em>prototyp-basierten</em> Aufbau. Dabei ist das Konzept des <em>Objekts</em> die grundlegende Abstraktion.</p>
 <p class='definition' lang='en'>
   <b>Def. 1: Object:</b> An <em>object</em> is a
   <em>collection of properties</em>, and has a
@@ -395,12 +406,15 @@ console.log(
 </figure>
 <figure>
   <img src='prototype-chain.png' width='600' alt='Figure 2. Eine Prototypen-Kette.'>
-  <figcaption>Abbildung 2. Eine Prototypen-Kette.</figcaption>
+  <figcaption>
+    <p>Abbildung 2. Eine Prototypen-Kette.</p>
+    <p class="translation-note">Anmerkung der Übersetzung: Die Illustration zeigt die Prototypen-Kette für den obigen Beispielcode. Die Kette beginnt mit dem Objekt <code>point3D</code> auf der linken Seite. Es hat das Objekt <code>point</code> als Prototypen, daher zeigt ein Verweis-Pfeil darauf. <code>point</code> wiederum besitzt den Standard-Prototypen <code>Object.prototype</code>, daher ein weiterer Verweis-Pfeil. <code>Object.prototype</code> hat schließlich keinen Prototypen mehr (<code>null</code>).</p>
+  </figcaption>
 </figure>
 <p lang='en'>The rule is very simple: if a property is not found in the object itself, there is an attempt to
   <em>resolve</em> it in the prototype; in the prototype of the prototype, etc. &#8212; until the whole prototype chain is considered.
 </p>
-<p>Die Funktionsweise ist sehr einfach: Wenn eine Eigenschaft am Objekt selbst nicht gefunden wird, so wird versucht, sie am Prototyp <em>aufzulösen</em>, dann an dessen Prototyp und so weiter – bis die gesamte Prototype-Kette abgesucht wurde.</p>
+<p>Die Funktionsweise ist sehr einfach: Wenn eine Eigenschaft am Objekt selbst nicht gefunden wird, so wird versucht, sie am Prototyp <em>aufzulösen</em>, dann an dessen Prototyp und so weiter – bis die gesamte Prototypen-Kette abgesucht wurde.</p>
 <p lang='en'>Technically this mechanism is known as
   <em>dynamic dispatch</em> or <em>delegation</em>.</p>
 <p>Der Fachbegriff für diesen Mechanismus lautet <em>dynamische Bindung</em> oder auch <em>Delegation</em>.</p>
@@ -570,7 +584,7 @@ console.log(
     <p>Abbildung 3. Ein geteilter Prototyp.</p>
     <table>
       <caption>Legende</caption>
-      <tr><th lang='en'>built-in</th><td>Eingebaute Eigenschaften</td></tr>
+      <tr><th lang='en'>built-ins</th><td>Eingebaute Eigenschaften der ECMAScript-Kernobjekte</td></tr>
     </table>
   </figcaption>
 </figure>
@@ -668,7 +682,7 @@ console.log(
     <p>Abbildung 4. Die Beziehungen zwischen Objekten und dem Konstruktor.</p>
     <table>
       <caption>Legende</caption>
-      <tr><th lang='en'>built-in</th><td>Eingebaute Eigenschaften</td></tr>
+      <tr><th lang='en'>built-ins</th><td>Eingebaute Eigenschaften der ECMAScript-Kernobjekte</td></tr>
     </table>
   </figcaption>
 </figure>
@@ -766,7 +780,7 @@ recursive(0);
   <b>Def. 8: Execution context stack:</b> An
   <em>execution context stack</em> is a LIFO structure used to maintain control flow and order of execution.
 </p>
-<p class='definition'><strong>Definition 8: Stapel von Ausführungskontexten:</strong> Der Stapel von Ausführungskontexten ist eine Datenstruktur der Sorte <em lang='em'>Last In First out (LIFO)</em>, mit der der Kontrollfluss und die Abarbeitungsreihenfolge gesteuert wird.</p>
+<p class='definition'><strong>Definition 8: Stapel von Ausführungskontexten:</strong> Der Stapel von Ausführungskontexten ist eine Datenstruktur der Sorte <em lang='em'>Last In First out (LIFO)</em>, mit der der Kontrollfluss und die Ausführungsreihenfolge gesteuert wird.</p>
 <p lang='en'>For our example from above we have the following stack
   <em>&#8220;push-pop&#8221;</em> modifications:</p>
 <p>In unserem Beispiel finden folgende <em>Push- und Pop-Änderungen</em> am Stack statt:</p>
@@ -783,6 +797,7 @@ recursive(0);
       <tr><th lang='en'>EC stack</th><td>Stapel von Ausführungskontexten</td></tr>
       <tr><th lang='en'>Global context</th><td>Globaler Kontext</td></tr>
     </table>
+    <p class="translation-note">Anmerkung der Übersetzung: Die Pfeile zeigen die Reihenfolge der Änderungen am Stapel an. Zunächst liegt nur der globale Kontext auf dem Stapel, dann werden nach und nach Kontexte auf den Stapel gelegt (entlang der Pfeile nach rechts). Schließlich werden nach und nach Kontexte wieder vom Stapel genommen (entlang der Pfeile nach links). Der Stapel wird wieder abgebaut.</p>
   </figcaption>
 </figure>
 <p lang='en'>As we can also see, the
@@ -881,8 +896,8 @@ foo(30); // 150
     <table>
       <caption>Legende</caption>
       <tr><th lang='en'>foo env</th><td>Umgebung der Funktion <code>foo</code></td></tr>
-      <tr><th lang='en'>Global env</th><td>Globale Umgebung</td></tr>
       <tr><th lang='en'>Foo EnvRec</th><td>Umgebungsregister der Funktion <code>foo</code></td></tr>
+      <tr><th lang='en'>Global env</th><td>Globale Umgebung</td></tr>
       <tr><th lang='en'>Global EnvRec</th><td>Globales Umgebungsregister</td></tr>
     </table>
   </figcaption>
@@ -894,7 +909,7 @@ foo(30); // 150
   <em>own</em> environment, there is an attempt to lookup it in the
   <em>parent environment</em>, in the parent of the parent, and so on &#8212; until the whole
   <em>environment chain</em> is considered.</p>
-<p>Dieser Aufbau erinnert uns stark an die <em>Prototype-Kette</em>, die wir oben kennengelernt haben. Und tatsächlich funktioniert die <em>Auflösung von Bezeichnern</em> (<em lang='en'>identifier resolution</em>) sehr ähnlich: Wenn eine Variable in der <em>eigenen</em> Umgebung nicht gefunden wird, so wird versucht, sie in der <em>Elternumgebung</em> nachzuschlagen, dann in deren Elternumgebung und so weiter – bis die gesamte <em>Kette von Umgebungen</em> abgesucht wurde.</p>
+<p>Dieser Aufbau erinnert uns stark an die <em>Prototypen-Kette</em>, die wir oben kennengelernt haben. Und tatsächlich funktioniert die <em>Auflösung von Bezeichnern</em> (<em lang='en'>identifier resolution</em>) sehr ähnlich: Wenn eine Variable in der <em>eigenen</em> Umgebung nicht gefunden wird, so wird versucht, sie in der <em>Elternumgebung</em> nachzuschlagen, dann in deren Elternumgebung und so weiter – bis die gesamte <em>Kette von Umgebungen</em> abgesucht wurde.</p>
 <p class='definition' lang='en'>
   <b>Def. 10: Identifier resolution:</b> the process of resolving a variable
   <em>(binding)</em> in an environment chain. An unresolved binding results to
@@ -909,7 +924,7 @@ foo(30); // 150
   <code>z</code> &#8212; it’s also just stored on the
   <em>activation environment</em>; and also why we can access the variable
   <code>y</code> &#8212; it is found in the parent environment.</p>
-<p>Dies erklärt, warum die Variable <code>x</code> zum Wert <code>100</code> aufgelöst wird und nicht etwa zum Wert <code>10</code> – die Variable wird direkt in der <em>eigenen</em> Umgebung der Funktion <code>foo</code> gefunden. Dies erklärt auch, warum wir auf den Funktionsparameter <code>z</code> zugreifen können – der Parameter wird ebenfalls in der <em>Aktivierungsumgebung</em> gespeichert. Schließlich verstehen wir nun, warum wir auf die Variable <code>y</code> zugreifen können – sie wird in der Elternumgebung gefunden.</p>
+<p>Dies erklärt, warum im Beispiel die Variable <code>x</code> zum Wert <code>100</code> aufgelöst wird und nicht etwa zum Wert <code>10</code> – die Variable wird direkt in der <em>eigenen</em> Umgebung der Funktion <code>foo</code> gefunden. Dies erklärt auch, warum wir auf den Funktionsparameter <code>z</code> zugreifen können – der Parameter wird ebenfalls in der <em>Aktivierungsumgebung</em> gespeichert. Schließlich verstehen wir nun, warum wir auf die Variable <code>y</code> zugreifen können – sie wird in der Elternumgebung gefunden.</p>
 <p lang='en'>Similarly to prototypes, the same parent environment can be shared by several child environments: for example, two global functions share the same global environment.</p>
 <p>Ähnlich wie bei Prototypen können sich verschiedene Kindumgebung ein und dieselbe Elternumgebung teilen: Beispielsweise teilen sich zwei globale Funktionen dieselbe globale Umgebung.</p>
 <p class='note' lang='en'>
@@ -966,7 +981,7 @@ console.log(
 // Herkömmliche Variablen mit `var`.
 var x = 10;
 
-// Moderne Variables mit `let`.
+// Moderne Variablen mit `let`.
 let y = 20;
 
 // Beide werden dem Umgebungsregister hinzugefügt:
@@ -1017,7 +1032,7 @@ console.log(
   <code>var</code>-declarations, and
   <code>with</code>-statements, which also provide their object as a binding object. These are historical reason when environments were represented as simple objects. Currently the environments model is much more optimized, however as a result we can’t access binding as properties anymore.
 </p>
-<p>Beachten Sie, dass das Verbindungsobjekt bloß existiert, um <em>veraltete Sprachkonstrukte</em> zu abzudecken. Das sind beispielsweise die <code>var</code>-Deklaration und das <code>with</code>-Statement, das ein Objekt als Verbindungsobjekt zur Verfügung stellt. Aus historischen Gründen wurde eine Umgebung als einfaches Objekt modelliert. Heute hingegen ist das Modell der Umgebungen weit ausgereifter. Dies hat jedoch dazu geführt, dass wir auf Verbindungen nicht mehr als Eigenschaften zugreifen können.</p>
+<p>Beachten Sie, dass das Verbindungsobjekt bloß existiert, um <em>veraltete Sprachkonstrukte</em> abzudecken. Das sind beispielsweise die <code>var</code>-Deklaration und das <code>with</code>-Statement, das ein Objekt als Verbindungsobjekt zur Verfügung stellt. Aus historischen Gründen wurde eine Umgebung als einfaches Objekt modelliert. Heute hingegen ist das Modell der Umgebungen weit ausgereifter. Dies hat jedoch dazu geführt, dass wir auf Verbindungen nicht mehr als Eigenschaften zugreifen können.</p>
 <p lang='en'>We have already seen how environments are related via the parent link. Now we shall see how an environment can
   <em>outlive</em> the context which creates it. This is the basis for the mechanism of
   <em>closures</em> which we’re about to discuss.</p>
@@ -1573,7 +1588,7 @@ console.log(
   <em>code realms</em>. Let’s discuss this structure.</p>
 <p>Wie gesagt ist der Wert von <code>this</code> im <em>globalen Kontext</em> das <em>globale Objekt</em> (das <em>Verbindungsobjekt</em> des <em>globalen Umgebungsregisters</em>). Früher gab es nur ein globales Objekt. In der aktuellen Version der ECMAScript-Spezifikation kann es <em>mehrere globale Objekte</em> geben, die Teil von <em>Code-Gebieten</em> sind. Schauen wir uns nun diese Struktur an.</p>
 
-<h2 id='realm'>Gebiet (<em lang='en'>Realm</em>)</h2>
+<h2 id='realm'>Gebiet</h2>
 <p lang='en'>Before it is evaluated, all ECMAScript code must be associated with a
   <em>realm</em>. Technically a realm just provides a global environment for a context.
 </p>
@@ -1654,7 +1669,7 @@ vm.runInContext(code, realm2); // 20
   <em>jobs</em> and <em>job queues</em>.</p>
 <p>Langsam bekommen wir eine Übersicht über die ECMAScript-Laufzeitumgebung. Wir müssen aber noch den <em>Einstiegspunkt</em> zum Code finden sowie den <em>Initialisierungsprozess</em>. Dieser wird geregelt durch den Mechanismus der <em>Aufträge</em> und der <em>Auftrags-Warteschlange</em>.</p>
 
-<h2 id='job'>Auftrag (<em lang='en'>Job</em>)</h2>
+<h2 id='job'>Auftrag</h2>
 <p lang='en'>Some operations can be postponed, and executed as soon as there is an available spot on the execution context stack.</p>
 <p>Manche Operationen können aufgeschoben werden und erst ausgeführt werden, sobald ein Platz im Stapel der Ausführungskontexte frei wird.</p>
 <p class='definition' lang='en'>
@@ -1667,7 +1682,7 @@ vm.runInContext(code, realm2); // 20
   <strong><em>job queues</em></strong>, and in current spec version there are two job queues:
   <strong><em>ScriptJobs</em></strong>, and
   <strong><em>PromiseJobs</em></strong>.</p>
-<p>Aufträge werden die die <strong><em>Auftrags-Warteschlange</em></strong> eingereiht. In der aktuellen Spezifikation gibt es zwei solcher Warteschlangen: <strong><em>ScriptJobs</em></strong> und <strong><em>PromiseJobs</em></strong>.</p>
+<p>Aufträge werden in die <strong><em>Auftrags-Warteschlange</em></strong> eingereiht. In der aktuellen Spezifikation gibt es zwei solcher Warteschlangen: <strong><em>ScriptJobs</em></strong> und <strong><em>PromiseJobs</em></strong>.</p>
 <p lang='en'>And <em>initial job</em> on the <em>ScriptJobs</em> queue is the
   <em>main entry point</em> to our program &#8212; initial script which is loaded and evaluated: a realm is created, a global context is created and is associated with this realm, it’s pushed onto the stack, and the global code is executed.
 </p>
@@ -1685,13 +1700,13 @@ vm.runInContext(code, realm2); // 20
   <em>empty</em>, the ECMAScript implementation removes the first
   <em>pending job</em> from a job queue, creates an execution context and starts its execution.
 </p>
-<p>Wenn es keinen <em>aktuell laufenden</em> Ausführungskontext gibt und der Stapel von Ausführungskontexten <em>leer</em> ist, so nimmt die ECMAScript-Implementierung den <em>ersten wartenden Auftrag</em> aus der Warteschlange und arbeitet ihn ab. Dazu wird ein Ausführungskontext erzeugt und seine Ausführung gestartet.</p>
+<p>Wenn es <em>keinen aktiven</em> Ausführungskontext gibt und der Stapel von Ausführungskontexten <em>leer</em> ist, so nimmt die ECMAScript-Implementierung den <em>ersten wartenden Auftrag</em> aus der Warteschlange und arbeitet ihn ab. Dazu wird ein Ausführungskontext erzeugt und seine Ausführung gestartet.</p>
 <p class='note' lang='en'>
   <strong>Note:</strong> the job queues are usually handled by the abstraction known as the
   <strong><em>&#8220;Event loop&#8221;</em></strong>. ECMAScript standard doesn’t specify the event loop, leaving it up to implementations, however you can find an educational example &#8212;
   <a href='https://gist.github.com/DmitrySoshnikov/26e54990e7df8c3ae7e6e149c87883e4'>here</a>.
 </p>
-<p class='note'><strong>Hinweis:</strong> Auftrags-Warteschlangen werden üblicherweise mthilfe des Konzepts der <strong><em>»Ereignis-Schleife«</em></strong> (<em lang='en'>event loop</em>) abgearbeitet. Der ECMAScript-Standard definiert die Ereignis-Schleife nicht und überlässt sie den Implementierungen. Sie können jedoch <a href='https://gist.github.com/DmitrySoshnikov/26e54990e7df8c3ae7e6e149c87883e4'>ein Lehrbeispiel hier finden</a>.</p>
+<p class='note'><strong>Hinweis:</strong> Auftrags-Warteschlangen werden üblicherweise mithilfe des Konzepts der <strong><em>»Ereignisschleife«</em></strong> (<em lang='en'>event loop</em>) abgearbeitet. Der ECMAScript-Standard definiert die Ereignisschleife nicht und überlässt sie den Implementierungen. Sie können jedoch <a href='https://gist.github.com/DmitrySoshnikov/26e54990e7df8c3ae7e6e149c87883e4'>ein Lehrbeispiel hier finden</a>.</p>
 <p lang='en'>Example:</p>
 <p>Ein Beispiel:</p>
 <pre lang='en'>
@@ -1710,7 +1725,7 @@ console.log(20);
 new Promise(resolve =&gt; setTimeout(() =&gt; resolve(10), 0))
   .then(value =&gt; console.log(value));
 
-// Diese Ausgabe findet vorher statt, da sie Teil des laufenden Kontexts
+// Diese Ausgabe findet vorher statt, da sie Teil des aktiven Kontexts
 // ist. Der anstehende Auftrag vorher nicht abgearbeitet werden.
 console.log(20);
 
