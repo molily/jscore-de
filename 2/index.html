@@ -366,7 +366,7 @@ console.log(
 );
 </pre>
 <p class='note'><strong>Hinweis:</strong> <em>Klassen-basierte Vererbung</em> in ECMAScript ist auf Basis der <em>Prototyp-basierten Delegation</em> umgesetzt.</p>
-<p class='note'><strong>Note:</strong> Eine <em>»Klasse«</em> ist lediglich eine <em>theoretische Abstraktion</em>. Technisch gesehen kann sie mittels <em>statischer Bindung</em> umgesetzt werden, wie in Java oder C++, oder mittels <em>dynamischer Bindung (Delegation)</em>, wie in JavaScript, Python, Ruby usw.</p>
+<p class='note'><strong>Hinweis:</strong> Eine <em>»Klasse«</em> ist lediglich eine <em>theoretische Abstraktion</em>. Technisch gesehen kann sie mittels <em>statischer Bindung</em> umgesetzt werden, wie in Java oder C++, oder mittels <em>dynamischer Bindung (Delegation)</em>, wie in JavaScript, Python, Ruby usw.</p>
 <p>Intern wird eine »Klasse« durch zwei Bestandteile abgebildet: eine Konstruktorfunktion und ein Prototyp. Die Konstruktorfunktion <em>erzeugt Objekte</em>. Außerdem setzt sie <em>automatisch</em> den <em>Prototyp</em> der von ihr erzeugten Instanzen. Dieser Prototyp ist in der Eigenschaft <code>&lt;Konstruktorfunktion&gt;.prototype</code> gespeichert.</p>
 <p class='definition'><strong>Definition 6: Konstruktor:</strong> Ein <em>Konstruktor</em> ist eine Funktion zum Erzeugen von Instanzen. Sie setzt automatisch deren Prototyp.</p>
 <p>Es ist durchaus möglich, eine Konstruktorfunktion direkt zu definieren. Bevor die Klassen-Abstraktion eingeführt wurde, haben JavaScript-EntwicklerInnen dies in Ermangelung einer besseren Alternative lange getan. Wir finden immer noch eine Menge dieser Hinterlassenschaften im Internet verstreut:</p>
