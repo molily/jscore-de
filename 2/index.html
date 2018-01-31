@@ -263,7 +263,7 @@ console.log(
   <img src='prototype-chain.png' width='600' alt='Figure 2. Eine Prototypen-Kette.'>
   <figcaption>
     <p>Abbildung 2. Eine Prototypen-Kette.</p>
-    <p class="translation-note">Anmerkung der Übersetzung: Die Illustration zeigt die Prototypen-Kette für den obigen Beispielcode. Die Kette beginnt mit dem Objekt <code>point3D</code> auf der linken Seite. Es hat das Objekt <code>point</code> als Prototypen, daher zeigt ein Verweis-Pfeil darauf. <code>point</code> wiederum besitzt den Standard-Prototypen <code>Object.prototype</code>, daher ein weiterer Verweis-Pfeil. <code>Object.prototype</code> hat schließlich keinen Prototypen mehr (<code>null</code>).</p>
+    <p class='translation-note'>Anmerkung der Übersetzung: Die Illustration zeigt die Prototypen-Kette für den obigen Beispielcode. Die Kette beginnt mit dem Objekt <code>point3D</code> auf der linken Seite. Es hat das Objekt <code>point</code> als Prototypen, daher zeigt ein Verweis-Pfeil darauf. <code>point</code> wiederum besitzt den Standard-Prototypen <code>Object.prototype</code>, daher ein weiterer Verweis-Pfeil. <code>Object.prototype</code> hat schließlich keinen Prototypen mehr (<code>null</code>).</p>
   </figcaption>
 </figure>
 <p>Die Funktionsweise ist sehr einfach: Wenn eine Eigenschaft am Objekt selbst nicht gefunden wird, so wird versucht, sie am Prototyp <em>aufzulösen</em>, dann an dessen Prototyp und so weiter – bis die gesamte Prototypen-Kette abgesucht wurde.</p>
@@ -441,7 +441,7 @@ recursive(0);
       <tr><th lang='en'>EC stack</th><td>Stapel von Ausführungskontexten</td></tr>
       <tr><th lang='en'>Global context</th><td>Globaler Kontext</td></tr>
     </table>
-    <p class="translation-note">Anmerkung der Übersetzung: Die Pfeile zeigen die Reihenfolge der Änderungen am Stapel an. Zunächst liegt nur der globale Kontext auf dem Stapel, dann werden nach und nach Kontexte auf den Stapel gelegt (entlang der Pfeile nach rechts). Schließlich werden nach und nach Kontexte wieder vom Stapel genommen (entlang der Pfeile nach links). Der Stapel wird wieder abgebaut.</p>
+    <p class='translation-note'>Anmerkung der Übersetzung: Die Pfeile zeigen die Reihenfolge der Änderungen am Stapel an. Zunächst liegt nur der globale Kontext auf dem Stapel, dann werden nach und nach Kontexte auf den Stapel gelegt (entlang der Pfeile nach rechts). Schließlich werden nach und nach Kontexte wieder vom Stapel genommen (entlang der Pfeile nach links). Der Stapel wird wieder abgebaut.</p>
   </figcaption>
 </figure>
 <p>Wir können in der Illustration sehen, dass der <em>globale Kontext</em> immer zuunterst im Stapel liegt. Er wird erzeugt, bevor alle anderen Kontexte ausgeführt werden.</p>
@@ -917,7 +917,7 @@ onmessage = (message) =&gt; {
 <p>Viel Erfolg beim Lernen von ECMAScript!</p>
 <p>
 <strong>Autor:</strong> Dmitry Soshnikov<br>
-<strong>Veröffentlicht am:</strong> <time datetime="2017-11-14">14. November 2017</time>
+<strong>Veröffentlicht am:</strong> <time datetime='2017-11-14'>14. November 2017</time>
 </p>
 
 <hr>
