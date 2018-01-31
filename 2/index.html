@@ -410,7 +410,7 @@ console.log(
 
 <h2 id='execution-context'>Ausführungskontext</h2>
 <p>Um JavaScript-Code auszuführen und den Überblick über die Auswertung zur Laufzeit zu behalten, definiert die ECMAScript-Spezifikation das Konzept des <em>Ausführungskontexts</em>. Diese Ausführungskontexte werden in einem <em><a href='https://de.wikipedia.org/wiki/Stapelspeicher'>Stapelspeicher (Stack)</a></em> vorgehalten. Wir kommen bald auf diesen <em>Stapel von Ausführungskontexten</em> zu sprechen. Er entspricht dem allgemeinen Konzept des <em><a href='https://de.wikipedia.org/wiki/Aufrufstapel'>Aufrufstapels</a></em>.</p>
-<p class='definition'><strong>Definition 7: Ausführungskontext:</strong> Ein <em>Ausführungskontext</em> ist das Mittel der ECMAScript-Spezifikation, um die Auswertung des Codes zur Laufzeit zu protokollieren.</p>
+<p class='definition'><strong>Definition 7: Ausführungskontext:</strong> Ein <em>Ausführungskontext</em> (<em lang='en'>execution context</em>) ist das Mittel der ECMAScript-Spezifikation, um die Auswertung des Codes zur Laufzeit zu protokollieren.</p>
 <p>Es gibt verschiedene Arten von ECMAScript-Code: <em>globalen Code</em>, <em>Funktionscode</em>, <code>eval</code>-Code und <em>Modul-Code</em>. Jede dieser Codearten wird in einem eigenen Kontext ausgewertet. Verschiedene Arten von Code und ihre jeweiligen Objekte beeinflussen die Struktur des Ausführungskontexts. Zum Beispiel speichern <em>Generator-Funktionen</em> ihr <em>Generator-Objekt</em> im Ausführungskontext.</p>
 <p>Schauen wir uns einen rekursiven Funktionsaufruf an:</p>
 <pre>
@@ -430,7 +430,7 @@ recursive(0);
 </pre>
 <p>Wenn eine Funktion aufgerufen wird, so wird ein <em>neuer Ausführungskontext</em> erzeugt und <em>auf den Stapel gelegt</em> (<em lang='en'>Push</em>). Damit wird er zum <em>aktiven Ausführungskontext</em>. Nachdem sich eine Funktion beendet, wird der Kontext wieder vom Stapel genommen (<em lang='en'>Pop</em>).</p>
 <p>Der Kontext, der einen anderen Kontext aufruft, wird <em>Aufrufer</em> (<em lang='en'>caller</em>) genannt. Der aufgerufene Kontext wird dementsprechend <em>Aufgerufener</em> (<em lang='en'>callee</em>) genannt. Im obigen Beispiel spielt die <em>rekursive</em> Funktion beide Rollen: Die des Aufgerufenen und die des Aufrufers, wenn sie sich selbst rekursiv aufruft.</p>
-<p class='definition'><strong>Definition 8: Stapel von Ausführungskontexten:</strong> Der Stapel von Ausführungskontexten ist eine Datenstruktur der Sorte <em lang='em'>Last In First out (LIFO)</em>, mit der der Kontrollfluss und die Ausführungsreihenfolge gesteuert wird.</p>
+<p class='definition'><strong>Definition 8: Stapel von Ausführungskontexten:</strong> Der Stapel von Ausführungskontexten (<em lang='en'>execution context stack</em>) ist eine Datenstruktur der Sorte <em lang='em'>Last In First out (LIFO)</em>, mit der der Kontrollfluss und die Ausführungsreihenfolge gesteuert wird.</p>
 <p>In unserem Beispiel finden folgende <em>Push- und Pop-Änderungen</em> am Stack statt:</p>
 <figure>
   <img src='execution-stack.png' alt='Abbildung 5. Ein Stapel von Ausführungskontexten.'>
@@ -465,7 +465,7 @@ console.log(
 <p>Wir schauen uns nun die wichtigen Teile eines Ausführungskontexts an. Insbesondere werden wir erfahren, wie die ECMAScript-Laufzeitumgebung die <em>Speicherung von Variablen</em> bewerkstellt und wie verschachtelte Code-Blöcke <em>Geltungsbereiche</em> erzeugen. Das dahinterstehende Konzept heißt <em>lexikalische Umgebung</em>. Es wird in JavaScript genutzt, um Daten zu speichern und das »Funarg-Problem« mithilfe von <em>Closures</em> zu lösen.</p>
 
 <h2 id='environment'>Umgebung</h2>
-<p>Jeder Ausführungskontext hat eine zugehörige <em>lexikalische Umgebung</em> (<em lang='en'>lexical environment</em>).</p>
+<p>Jeder Ausführungskontext hat eine zugehörige <em>lexikalische Umgebung</em>.</p>
 <p class='definition'><strong>Definition 9: Lexikalische Umgebung:</strong> Die <em>lexikalische Umgebung</em> (<em lang='en'>lexical environment</em>) ist eine Datenstruktur, in der Verbindungen zwischen den <em>Bezeichnern</em> (<em lang='en'>identifiers</em>) eines Kontexts und ihren Werten gespeichert werden. Jede Umgebung kann einen Verweis auf eine <em>Eltern-Umgebung</em> besitzen.</p>
 <p>Eine Umgebung ist also ein <em>Speicher</em> mit allen Variablen, Funktionen und Klassen, die in einem Geltungsbereich definiert sind.</p>
 <p>Technisch gesehen besteht eine Umgebung aus zwei Teilen: Zum einen das <em>Umgebungsregister</em> (<em lang='en'>environment record</em>). Dies ist die tatsächliche Speichertabelle, die Bezeichner auf ihre Werte abbildet. Zum anderen der Verweis auf die Elternumgebung, der <code>null</code> sein kann.</p>
@@ -575,8 +575,8 @@ bar(foo);
 <p>Aus Sicht der Funktion <code>foo</code> ist die Variable <code>x</code> eine freie Variable. Wenn die Funktion <code>foo</code> aufgerufen wird (als Parameter <code>funArg</code>), so muss die Verbindung für <code>x</code> aufgelöst werden. Woher kommt nun diese Verbindung? Aus dem <em>äußeren Geltungsbereich</em>, in dem die Funktion <em>erzeugt</em> wurde? Oder aus dem <em>Geltungsbereich des Aufrufers</em>, der die Funktion schließlich aufruft? Wie wir im Beispiel sehen, stellt der Aufrufer, das ist die Funktion <code>bar</code>, ebenfalls eine Verbindung zwischen <code>x</code> und dem Wert <code>20</code> bereit.</p>
 <p>Der obige Anwendungsfall ist als <strong><em>Abwärts-Funarg-Problem</em></strong> (<em lang='en'>downward funarg problem</em>) bekannt. Das Problem besteht in einer <em>Mehrdeutigkeit</em> beim Bestimmen der <em>korrekten Umgebung</em> einer Verbindung: Wird die Umgebung zum <em>Zeitpunkts der Erzeugung</em> verwendet oder die Umgebung zum <em>Zeitpunkts des Aufrufs</em>?</p>
 <p>ECMAScript löst das Problem, indem man sich auf einen <em>statischen</em>, das heißt unveränderlichen Geltungsbereich geeinigt hat. Das ist der Geltungsbereich zum <em>Zeitpunkt der Erzeugung</em>.</p>
-<p class='definition'><strong>Definition 13: Statischer Geltungsbereich:</strong> Eine Sprache arbeitet mit einem <em>statischen Geltungsbereich</em>, wenn alleine durch das Anschauen des Quellcodes bestimmt werden kann, in welcher Umgebung eine Verbindung aufgelöst wird.</p>
-<p>Der statische Geltungsbereich wird auch manchmal <em>lexikalischer Geltungsbereich</em> genannt. Daher stammt die Bezeichnung für die <em>lexikalischen Umgebungen</em>.</p>
+<p class='definition'><strong>Definition 13: Statischer Geltungsbereich:</strong> Eine Sprache arbeitet mit einem <em>statischen Geltungsbereich</em> (<em lang='en'>static scope</em>), wenn alleine durch das Anschauen des Quellcodes bestimmt werden kann, in welcher Umgebung eine Verbindung aufgelöst wird.</p>
+<p>Der statische Geltungsbereich wird auch manchmal <em>lexikalischer Geltungsbereich</em> (<em lang='en'>lexical scope</em>) genannt. Daher stammt die Bezeichnung für die <em>lexikalischen Umgebungen</em>.</p>
 <p>Intern wird der statische Geltungsbereich folgendermaßen umgesetzt: Zum Zeitpunkt der <em>Erzeugung</em> einer Funktion wird deren Umgebung <em>festgehalten</em> und gespeichert.</p>
 <p class='note'><strong>Hinweis:</strong> Erfahren Sie mehr über <em>statische</em> und <em>dynamische</em> Geltungsbereiche <a href='https://codeburst.io/js-scope-static-dynamic-and-runtime-augmented-5abfee6223fe'>in diesem Artikel</a>.</p>
 <p>Im obigen Beispiel hält die Funktion <code>foo</code> die <em>globale Umgebung</em> fest:</p>
@@ -785,7 +785,7 @@ console.log(
 <p class='definition'><strong>Definition 16: Gebiet:</strong> Ein <em>Code-Gebiet</em> (<em lang='en'>realm</em>) ist ein Objekt, das eine eigenständige <em>globale Umgebung</em> umhüllt.</p>
 <p>Wenn ein <em>Ausführungskontext</em> erzeugt wird, wird er einem bestimmten <em>Code-Gebiet</em> zugeordnet. Das Gebiet stellt die <em>globale Umgebung</em> für diesen Kontext bereit. Diese Zuordnung ist <em>unveränderlich</em>.</p>
 <p class='note'><strong>Hinweis:</strong> Das direkte Äquivalent eines Gebiets im Browser ist das <code>iframe</code>-Element, welches eine eigene globale Umgebung bereitstellt. Bei Node.js sind die Sandkasten (<em lang='en'>sandboxes</em>) aus dem <a href='https://nodejs.org/api/vm.html'>vm-Modul</a> mit Gebieten vergleichbar.</p>
-<p>Die aktuelle Version der ECMAScript-Spezifikation bietet keine Möglichkeit, um Gebiete programmatisch zu erstellen. Sie können jedoch implizit von den Implementierungen erstellt werden. Es gibt einen <a href='https://github.com/tc39/proposal-realms/'>Vorschlag</a>, der vorsieht diese Programmierschnittstelle (API) für gewöhnlichen Code zugänglich zu machen.</p>
+<p>Die aktuelle Version der ECMAScript-Spezifikation bietet keine Möglichkeit, um Gebiete programmatisch zu erstellen. Sie können jedoch implizit von den Implementierungen erstellt werden. Es gibt einen <a href='https://github.com/tc39/proposal-realms/'>Vorschlag</a>, der vorsieht, diese Programmierschnittstelle (API) für gewöhnlichen Code zugänglich zu machen.</p>
 <p>Jeder Kontext auf dem Stapel hat eine logische Verbindung zu seinem Gebiet:</p>
 <figure>
   <img src='context-realm.png' width='400' alt='Abbildung 10. Ein Kontext und seine Verbindung zum Gebiet.'/>
@@ -858,7 +858,7 @@ console.log(20);
 <p class='note'><strong>Hinweis:</strong> Lesen Sie mehr über <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function'>asynchrone Funktionen hier</a>.</p>
 <p>Wir sind dem Ziel näher gekommen, einen vollständigen Überblick über das derzeitige ECMAScript-Universum zu bekommen. Wenden wir uns schließlich den <em>Haupteignern</em> aller genannten Komponenten zu, den <em>Agenten</em>.</p>
 
-<h2 id='agent'>Agent (<em lang='en'>Agent</em>)</h2>
+<h2 id='agent'>Agent</h2>
 <p><em>Nebenläufigkeit</em> (<em lang='en'>concurrency</em>) und <em>parallele Programmierung</em> sind in ECMAScript mithilfe des <em>Agenten-Musters</em> (<em lang='en'>agent pattern</em>) umgesetzt. Das Agenten-Muster ähnelt dem <a href='https://de.wikipedia.org/wiki/Actor_Model'>Aktorenmodell</a>. Aktoren sind <em>leichtgewichtige Prozesse</em>, die miteinander kommunizieren, indem sie <em>Nachrichten austauschen</em>.</p>
 <p class='definition'><strong>Definition 18: Agent:</strong> Ein <em>Agent</em> ist eine Abstraktion, die den Stapel von Ausführungskontexten, eine Anzahl von Auftrags-Warteschlangen sowie Code-Gebiete beinhaltet.</p>
 <p>Abhängig von der Implementierung kann ein Agent auf demselben oder einem eigenen Thread ausgeführt werden. In der Browserumgebung ist der <em>Worker</em> ein Beispiel für das Agenten-Konzept.</p>
