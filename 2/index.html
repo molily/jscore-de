@@ -2,7 +2,7 @@
 <html lang='de'>
 <head>
 <meta charset='utf-8'>
-<title>Die Grundlagen von JavaScript: Zweite Ausgabe von Dmitry A. Soshnikov (Deutsche Übersetzung)</title>
+<title>Die Grundlagen von JavaScript: Zweite Ausgabe von Dmitry Soshnikov (Deutsche Übersetzung)</title>
 <meta name='description' content='Die wichtigsten Konzepte und Interna von JavaScript / ECMAScript 8 (2017)'>
 <meta name='viewport' content='width=device-width'>
 <meta name="twitter:card" content="summary">
@@ -180,7 +180,7 @@ hr {
   </h1>
   <p class='subtitle'>Deutsche Übersetzung des Artikels
     <a href='http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/'>JavaScript. The Core: 2nd Edition</a><br>
-    von <a href='http://dmitrysoshnikov.com/'>Dmitry A. Soshnikov</a>
+    von <a href='http://dmitrysoshnikov.com/'>Dmitry Soshnikov</a>
   </p>
 </header>
 
@@ -622,7 +622,7 @@ let bar = foo();
 bar(); // 10, nicht 20!
 </pre>
 <p>Technisch gesehen haben wir es mit dem gleichen Mechanismus zu tun, der die Umgebung festhält, in dem eine Funktion definiert wurde. In diesem Fall jedoch würde die Aktivierungsumgebung von <code>foo</code> <em>zerstört werden</em>, wenn es die Closure nicht gäbe. Aber wir haben sie <em>festgehalten</em>, sodass sie nicht aus dem Speicher geräumt (dealloziert) wird. Daher bleibt die Aktivierungsumgebung erhalten, um das Verhalten des <em>statischen Geltungsbereichs</em> zu ermöglichen.</p>
-<p>Das Verständnis von Closures ist oftmals unvollständig: Meist denken Entwickler nur an das Aufwärts-Funarg-Problem, wenn es um Closures geht. Tatsächlich tritt dieser Fall in der Praxis häufiger auf. Allerdings ist die technische Lösung des Abwärts-Problems <em>genau dieselbe</em> wie die des Aufwärts-Problems, nämlich der <em>statische Geltungsbereich</em>.</p>
+<p>Das Verständnis von Closures ist oftmals unvollständig: Meist denken EntwicklerInnen nur an das Aufwärts-Funarg-Problem, wenn es um Closures geht. Tatsächlich tritt dieser Fall in der Praxis häufiger auf. Allerdings ist die technische Lösung des Abwärts-Problems <em>genau dieselbe</em> wie die des Aufwärts-Problems, nämlich der <em>statische Geltungsbereich</em>.</p>
 <p>Wie gesagt können sich <em>mehrere</em> Closures ein und dieselbe Elternumgebung <em>teilen</em>, ähnlich wie es bei Prototypen der Fall ist. Dies ermöglicht es, auf die geteilten Daten zuzugreifen und diese auch zu ändern:</p>
 <pre>
 function createCounter() {
