@@ -1,0 +1,160 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  margin: 0;
+  padding: 2rem;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 43rem;
+  color: #202020;
+  background-color: white;
+  font-family: 'Fontin Sans', '-apple-system', system-ui, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.8;
+  text-decoration-skip-ink: auto;
+}
+
+header {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+h1 {
+  border-style: solid none solid;
+  border-width: 2px;
+  border-color: navy;
+  margin: 0;
+  padding: 2rem 0;
+  font-size: 2.5rem;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.subtitle {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+nav {
+  margin: 2rem 0;
+}
+
+h2 {
+  margin: 2rem 0 1.5rem;
+  border-bottom: 2px solid navy;
+  padding-left: 2px;
+  font-size: 1.7rem;
+  font-weight: normal;
+}
+
+p, pre {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.definition {
+  margin-left: 3px;
+  border-left: 3px solid navy;
+  padding-left: 1rem;
+  color: black;
+}
+
+.note {
+  padding-left: 2rem;
+  font-size: 0.95rem;
+}
+
+figure {
+  margin: 2rem 0;
+}
+
+figcaption {
+  margin-top: 1rem;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+figcaption table {
+  margin: auto;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-style: normal;
+  color: #202020;
+}
+
+figcaption caption {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+figcaption th,
+figcaption td {
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  padding: 0.25rem 0.5rem;
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+pre, code {
+  color: #02a;
+  font-family: 'Monaco', 'Consolas', 'Droid Sans Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', 'Liberation Mono', 'Courier New', monospace;
+}
+
+pre {
+  border: 1px solid #e0e0e0;
+  padding: 1rem 1.5rem;
+  background-color: #fbfbfb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+pre strong {
+  color: green;
+  font-weight: normal;
+}
+
+code {
+  padding: 2px;
+}
+
+a:link {
+  color: #00b;
+}
+
+a:visited {
+  color: #006;
+}
+
+em[lang='en'] {
+  color: #705050;
+}
+
+hr {
+  border-style: none none solid;
+  border-width: 1px;
+  border-color: #ccc;
+  height: 0;
+}
+
+.bct {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.translation-note {
+  color: #505050;
+  font-size: 0.9rem;
+  text-align: left;
+  font-style: normal;
+}
