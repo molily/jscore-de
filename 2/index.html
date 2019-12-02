@@ -539,7 +539,7 @@ console.log(
   p2.getX(), // 3
 );
 </pre>
-<p>Wenn die Methode <code>getX</code> aufgerufen wird, wird eine neue Umgebung erzeugt, um die lokalen Variablen und Parameter zu speichern. Zudem bekommt der Eintrag <code>[[ThisValue]]</code> im <em>Funktions-Umgebungsregister</em> einen Wert zugewiesen. Dieser Wert wird <em>dynamisch</em> bestimmt abhängig davon, wie die Funktion aufgerufen wird. Word die Funktion als Methode von <code>p1</code> aufgerufen, so ist der <code>this</code>-Wert eben <code>p1</code>. Im zweiten Fall ist der Wert <code>p2</code>.</p>
+<p>Wenn die Methode <code>getX</code> aufgerufen wird, wird eine neue Umgebung erzeugt, um die lokalen Variablen und Parameter zu speichern. Zudem bekommt der Eintrag <code>[[ThisValue]]</code> im <em>Funktions-Umgebungsregister</em> einen Wert zugewiesen. Dieser Wert wird <em>dynamisch</em> bestimmt abhängig davon, wie die Funktion aufgerufen wird. Wird die Funktion als Methode von <code>p1</code> aufgerufen, so ist der <code>this</code>-Wert eben <code>p1</code>. Im zweiten Fall ist der Wert <code>p2</code>.</p>
 <p>Ein weiterer Anwendungsfall von <code>this</code> sind <em>generische Interface-Funktionen</em>, wie sie in <em>Mixins</em> oder <em>Traits</em> Verwendung finden.</p>
 <p>Im folgenden Beispiel enthält das <code>Movable</code>-Interface eine generische (verallgemeinerte) Funktion <code>move</code>. Sie erwartet von den Nutzern des Mixins, dass sie die Eigenschaften <code>_x</code> und <code>_y</code> implementieren:</p>
 <pre>
