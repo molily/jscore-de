@@ -12,7 +12,7 @@ body {
   max-width: 43rem;
   color: #202020;
   background-color: white;
-  font-family: 'Fontin Sans', '-apple-system', system-ui, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Fontin Sans', '-apple-system', BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.8;
   text-decoration-skip-ink: auto;
 }
